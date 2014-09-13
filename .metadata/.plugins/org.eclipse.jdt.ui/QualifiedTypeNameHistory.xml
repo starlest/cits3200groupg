@@ -20,7 +20,6 @@
 <fullyQualifiedTypeName name="java.io.OutputStream"/>
 <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
 <fullyQualifiedTypeName name="android.database.SQLException"/>
-<fullyQualifiedTypeName name="android.R"/>
 <fullyQualifiedTypeName name="android.R.layout"/>
 <fullyQualifiedTypeName name="android.widget.ListAdapter"/>
 <fullyQualifiedTypeName name="android.widget.SimpleCursorAdapter"/>
@@ -39,4 +38,5 @@
 <fullyQualifiedTypeName name="com.example.prototype.AlphabetListAdapter.Row"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
 <fullyQualifiedTypeName name="android.database.Cursor"/>
+<fullyQualifiedTypeName name="android.R"/>
 </qualifiedTypeNameHistroy>
