@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;&apos; to &apos;ECDAGMapComplexityTest.strings&apos;&#x0D;&#x0A;- Original project: &apos;CITS2200&apos;&#x0D;&#x0A;- Destination element: &apos;ECDAGMapComplexityTest.strings&apos;&#x0D;&#x0A;- Original element: &apos;ECDAGMapComplexityTest.strings&apos;" description="Copy field" destination="/src&lt;{ECDAGMapComplexityTest.java[ECDAGMapComplexityTest^strings" element1="/src&lt;{ECDAGMapComplexityTest.java[ECDAGMapComplexityTest^strings" flags="589830" id="org.eclipse.jdt.ui.copy" members="1" policy="org.eclipse.jdt.ui.copyMembers" stamp="1401213374649" version="1.0"/>
+</session>

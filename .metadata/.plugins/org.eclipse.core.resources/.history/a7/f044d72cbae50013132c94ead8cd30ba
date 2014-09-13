@@ -1,0 +1,360 @@
+import java.util.*;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+import org.junit.Before;
+
+
+/*
+2014 CITS2200 Project
+Done by: Edwin Chia (21193891)
+Submitted on: 26/05/2014
+*/
+
+/**
+ * A test class to test that the practical complexity of the methods 
+ * agrees with the theoretical growth rate
+ * 
+ * @author Edwin Chia 
+ * @version 1.0
+ * @since 2014-05-1
+ */
+@RunWith(JUnit4.class)
+public class ECDAGMapComplexityTest {
+	private ECDAGMap<Integer, Integer> v1000e100, v1000e500, v2000e200, v2000e1000, v5000e500, 
+	v5000e2500, v10000e1000, v10000e5000;
+	private ArrayList<ECDAGMap<Integer, Integer>> array;
+	private String[] strings;
+	private int[] sizes, edges;
+
+	private static ECDAGMap<Integer, Integer> createGraph(int numberOfVertices, int numberOfEdges) {
+		ECDAGMap <Integer, Integer> g = new ECDAGMap<Integer, Integer>();
+		for (int i = 0; i < numberOfVertices; i++) {
+			g.put(i, i);
+		}
+
+		Random randomGenerator = new Random();
+		
+		if (numberOfEdges > 0) {
+			int n = 0;
+			while (n != numberOfEdges - 1) {
+				int randomInt1 = randomGenerator.nextInt(numberOfVertices - 2);
+				int randomInt2 = randomInt1 + randomGenerator.nextInt(99 - randomInt1);
+				if (randomInt1 == randomInt2) randomInt2++;
+				g.addDependency(randomInt2 ,randomInt1);
+				n++;
+			}
+		}
+		return g;
+	}
+	
+	@Before
+	public void setup() {
+		v1000e100 = createGraph(1000, 100);
+		v1000e500 = createGraph(1000, 500);
+		v2000e200 = createGraph(2000, 200);
+		v2000e1000 = createGraph(2000, 1000);
+		v5000e500 = createGraph(5000, 500);
+		v5000e2500 = createGraph(5000, 2500);
+		v10000e1000 = createGraph(10000, 1000);
+		v10000e5000 = createGraph(10000, 5000);
+		array = new ArrayList<ECDAGMap<Integer, Integer>>();
+		array.add(v1000e100);
+		array.add(v1000e500);
+		array.add(v2000e200);
+		array.add(v2000e1000);
+		array.add(v5000e500);
+		array.add(v5000e2500);
+		array.add(v10000e1000);
+		array.add(v10000e5000);
+		strings = new String[8];
+		strings[0] = "v1000e100";
+		strings[1] = "v1000e500";
+		strings[2] = "v2000e200";
+		strings[3] = "v2000e1000";
+		strings[4] = "v5000e500";
+		strings[5] = "v5000e2500";
+		strings[6] = "v10000e1000";
+		strings[7] = "v10000e5000";
+		sizes = new int[8];
+		sizes[0] = 1000;
+		sizes[1] = 1000;
+		sizes[2] = 2000;
+		sizes[3] = 2000;
+		sizes[4] = 5000;
+		sizes[5] = 5000;
+		sizes[6] = 10000;
+		sizes[7] = 10000;
+		edges = new int[8];
+		edges[0] = 100;
+		edges[1] = 500;
+		edges[2] = 200;
+		edges[3] = 1000;
+		edges[4] = 500;
+		edges[5] = 2500;
+		edges[6] = 1000;
+		edges[7] = 5000;
+	}
+	
+    @Test
+    public void testPutComplexity() {
+    	for (int i = 0; i < 8; i++) {
+    		long startTime = System.nanoTime();
+    		createGraph().put(100000, 100000);
+    		long endTime = System.nanoTime();
+    		long timeTaken = endTime - startTime;
+    		System.out.println("testPut" + strings[i] + ": " + timeTaken);
+    	}
+    	System.out.println();
+    }
+    
+    @Test
+    public void testGetComplexity() {
+    	for (int i = 0; i < array.size(); i++) {
+    		long startTime = System.nanoTime();
+    		array.get(i).get(sizes[i] - 1);
+    		long endTime = System.nanoTime();
+    		long timeTaken = endTime - startTime;
+    		System.out.println("testGet" + strings[i] + ": " + timeTaken);
+    	}
+    	System.out.println();
+    }
+    
+    @Test
+    public void testRemoveComplexity() {
+    	for (int i = 0; i < array.size(); i++) {
+    		long startTime = System.nanoTime();
+    		array.get(i).remove(sizes[i] - 1);
+    		long endTime = System.nanoTime();
+    		long timeTaken = endTime - startTime;
+    		System.out.println("testRemove" + strings[i] + ": " + timeTaken);
+    	}
+    	System.out.println();
+    }
+    
+    @Test
+    public void testAddDependencyComplexity() {
+    	for (int i = 0; i < array.size(); i++) {
+    		long startTime = System.nanoTime();
+    		array.get(i).addDependency(sizes[i] - 1, sizes[i] - 2);
+    		long endTime = System.nanoTime();
+    		long timeTaken = endTime - startTime;
+    		System.out.println("testAddDependency" + strings[i] + ": " + timeTaken);
+    	}
+    	System.out.println();
+    }
+    
+    @Test
+    public void testRemoveDependencyComplexity() {
+    	for (int i = 0; i < array.size(); i++) {
+    		array.get(i).addDependency(sizes[i] - 1, sizes[i] - 2);
+    		long startTime = System.nanoTime();
+    		array.get(i).removeDependency(sizes[i] - 1, sizes[i] - 2);
+    		long endTime = System.nanoTime();
+    		long timeTaken = endTime - startTime;
+    		System.out.println("testRemoveDependency" + strings[i] + ": " + timeTaken);
+    	}
+    	System.out.println();
+    }
+    
+    @Test
+    public void testIsEmptyComplexity() {
+    	for (int i = 0; i < array.size(); i++) {
+    		long startTime = System.nanoTime();
+    		array.get(i).isEmpty();
+    		long endTime = System.nanoTime();
+    		long timeTaken = endTime - startTime;
+    		System.out.println("testIsEmpty" + strings[i] + ": " + timeTaken);
+    	}
+    	System.out.println();
+    }
+    
+    @Test
+    public void testContainsKeyComplexity() {
+    	for (int i = 0; i < array.size(); i++) {
+    		long startTime = System.nanoTime();
+    		array.get(i).containsKey(sizes[i] -1);
+    		long endTime = System.nanoTime();
+    		long timeTaken = endTime - startTime;
+    		System.out.println("testContainsKey" + strings[i] + ": " + timeTaken);
+    	}
+    	System.out.println();
+    }
+    
+    @Test
+    public void testContainsValueComplexity() {
+    	for (int i = 0; i < array.size(); i++) {
+    		long startTime = System.nanoTime();
+    		array.get(i).containsValue(sizes[i] -1);
+    		long endTime = System.nanoTime();
+    		long timeTaken = endTime - startTime;
+    		System.out.println("testContainsValue" + strings[i] + ": " + timeTaken);
+    	}
+    	System.out.println();
+    }
+    
+    @Test
+    public void testIsDependentComplexity() {
+    	for (int i = 0; i < array.size(); i++) {
+    		ECDAGMap<Integer, Integer> m1 = createGraph(1000, 100 + (i * 100));
+    		long startTime = System.nanoTime();
+    		m1.isDependent(0, 100 + (i * 100) - 1);
+    		long endTime = System.nanoTime();
+    		long timeTaken = endTime - startTime;
+    		System.out.println("testIsDependent" + "v1000" + "e" + (100 + (i * 100)) + ": " + timeTaken);
+    	}
+    	for (int i = 0; i < array.size(); i++) {
+    		ECDAGMap<Integer, Integer> m1 = createGraph((1000 + (i * 1000)), 100);
+    		long startTime = System.nanoTime();
+    		m1.isDependent(0, (1000 + (i * 1000)) - 1);
+    		long endTime = System.nanoTime();
+    		long timeTaken = endTime - startTime;
+    		System.out.println("testIsDependent" + "v" + (1000 + (i * 1000)) + "e100" + ": " + timeTaken);
+    	}
+    	System.out.println();
+    }
+    
+    @Test
+    public void testCloneComplexity() {
+    	for (int i = 0; i < array.size(); i++) {
+    		ECDAGMap<Integer, Integer> m1 = createGraph((1000 + (i * 1000)), (1000 + (i * 1000)) / 10);
+    		long startTime = System.nanoTime();
+    		m1.clone();
+    		long endTime = System.nanoTime();
+    		long timeTaken = endTime - startTime;
+    		System.out.println("testClone" + (1000 + (i * 1000)) + "e" + (1000 + (i * 1000)) / 10 + ": " + timeTaken);
+    	}
+    	System.out.println();
+    }
+    
+    @Test
+    public void testIteratorComplexity() {
+    	for (int i = 0; i < array.size(); i++) {
+    		ECDAGMap<Integer, Integer> m1 = createGraph(1000, 100 + (i * 100));
+    		long startTime = System.nanoTime();
+    		m1.iterator();
+    		long endTime = System.nanoTime();
+    		long timeTaken = endTime - startTime;
+    		System.out.println("testIterator" + "v10000" + "e" + (100 + (i * 100)) + ": " + timeTaken);
+    	}
+    	for (int i = 0; i < array.size(); i++) {
+    		ECDAGMap<Integer, Integer> m1 = createGraph((1000 + (i * 1000)), 100);
+    		long startTime = System.nanoTime();
+    		m1.iterator();
+    		long endTime = System.nanoTime();
+    		long timeTaken = endTime - startTime;
+    		System.out.println("testIterator" + "v" + (1000 + (i * 1000)) + "e100" + ": " + timeTaken);
+    	}
+    	System.out.println();
+    }
+    
+    @SuppressWarnings("unchecked")
+	@Test
+    public void testEqualsComplexity() {
+    	for (int i = 0; i < array.size(); i++) {
+    		ECDAGMap<Integer, Integer> m = (ECDAGMap<Integer, Integer>) array.get(i).clone();
+    		long startTime = System.currentTimeMillis();
+    		array.get(i).equals(m);
+    		long endTime = System.currentTimeMillis();
+    		long timeTaken = endTime - startTime;
+    		System.out.println("testEquals" + strings[i] + ": " + timeTaken);
+    	}
+    	System.out.println();
+    }
+    
+    @Test
+    public void testGetKeySetComplexity() {
+    	for (int i = 0; i < array.size(); i++) {
+    		long startTime = System.nanoTime();
+    		array.get(i).getKeySet();
+    		long endTime = System.nanoTime();
+    		long timeTaken = endTime - startTime;
+    		System.out.println("testGetKeySet" + strings[i] + ": " + timeTaken);
+    	}
+    	System.out.println();
+    }
+    
+    @Test
+    public void testGetSuccessorsComplexity() {
+    	for (int i = 0; i < array.size(); i++) {
+    		long startTime = System.nanoTime();
+    		array.get(i).getSuccessors(sizes[i] - 1);
+    		long endTime = System.nanoTime();
+    		long timeTaken = endTime - startTime;
+    		System.out.println("testGetSuccessors" + strings[i] + ": " + timeTaken);
+    	}
+    	System.out.println();
+    }
+    
+    @Test
+    public void testGetPredecessorsComplexity() {
+    	for (int i = 0; i < array.size(); i++) {
+    		long startTime = System.nanoTime();
+    		array.get(i).getPredecessors(sizes[i] - 1);
+    		long endTime = System.nanoTime();
+    		long timeTaken = endTime - startTime;
+    		System.out.println("testGetPredecessors" + strings[i] + ": " + timeTaken);
+    	}
+    	System.out.println();
+    }
+    
+    @Test
+    public void testGeWidth() {
+    	for (int i = 0; i < array.size(); i++) {
+    		long startTime = System.nanoTime();
+    		array.get(i).getWidth();
+    		long endTime = System.nanoTime();
+    		long timeTaken = endTime - startTime;
+    		System.out.println("testGetWidth" + strings[i] + ": " + timeTaken);
+    	}
+    	System.out.println();
+    }
+    
+    @Test
+    public void testGetLongestPath() {
+    	for (int i = 0; i < array.size(); i++) {
+    		ECDAGMap<Integer, Integer> m1 = createGraph((1000 + (i * 1000)), (1000 + (i * 1000)) / 10);
+    		long startTime = System.nanoTime();
+    		m1.getLongestPath();
+    		long endTime = System.nanoTime();
+    		long timeTaken = endTime - startTime;
+    		System.out.println("testGetLongestPath" + (1000 + (i * 1000)) + "e" + (1000 + (i * 1000)) / 10 + ": " + timeTaken);
+    	}
+    	System.out.println();
+    }
+    
+    @Test
+    public void testGetMaxFlow() {
+    	for (int i = 0; i < array.size(); i++) {
+    		ECDAGMap<Integer, Integer> m1 = createGraph(10000, 1000 + (i * 1000));
+    		long startTime = System.nanoTime();
+    		m1.getMaxFlow(0, 999);
+    		long endTime = System.nanoTime();
+    		long timeTaken = endTime - startTime;
+    		System.out.println("testMaxFlow" + "v10000" + "e" + (1000 + (i * 1000)) + ": " + timeTaken);
+    	}
+    	for (int i = 0; i < array.size(); i++) {
+    		ECDAGMap<Integer, Integer> m1 = createGraph((1000 + (i * 1000)), 1000);
+    		long startTime = System.nanoTime();
+    		m1.getMaxFlow(0, (1000 + (i * 1000)) - 1);
+    		long endTime = System.nanoTime();
+    		long timeTaken = endTime - startTime;
+    		System.out.println("testMaxFlow" + "v" + (1000 + (i * 1000)) + "e1000" + ": " + timeTaken);
+    	}
+    	System.out.println();
+    }
+    
+    @Test
+    public void testToString() {
+    	for (int i = 2; i < 6; i++) {
+    		ECDAGMap<Integer, Integer> m1 = createGraph(((int) Math.pow(10.0, i)), ((int) Math.pow(10.0, i)) / 10);
+    		long startTime = System.nanoTime();
+    		m1.toString();
+    		long endTime = System.nanoTime();
+    		long timeTaken = endTime - startTime;
+    		System.out.println("testToString" + (int) Math.pow(10.0, i) + "e" + (int) Math.pow(10.0, i) / 10 + ": " + timeTaken);
+    	}
+    	System.out.println();
+    }
+}

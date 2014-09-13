@@ -1,0 +1,530 @@
+import java.lang.IllegalArgumentException;
+import java.util.*;
+import java.util.concurrent.ConcurrentLinkedQueue;
+
+/*
+ 2014 CITS2200 Project
+ Done by: Edwin Chia (21193891)
+ Submitted on: 27/05/2014
+*/
+
+ /**
+  * An implementation ECDAGMap (Edwin Chia's DAGMap) of a class DAMap for maintaining a directed 
+  * acyclic labeled graph; 
+  * The graph is defined over a set of vertices, and the labels are maps from vertices to values; 
+  * As it is both a Directed Acyclic Graph and a Map, the terms vertex and key are used interchangeably
+  *
+  * @author Edwin Chia
+  * @version 1.0
+  * @since 2014-05-11
+  */
+public class ECDAGMap<K, V> implements DAGMap<K, V> {
+	
+	/**
+	 * the adjacency list of the graph
+	 */
+	private LinkedList<LinkedList<K>> adj;				
+	/**
+	 * the map of the graph
+	 */
+	private LinkedHashMap<K, V> map;					
+	
+	/**
+	 * constant to represent the colour white
+	 */
+	private static final int WHITE = -1;			
+	/**
+	 * constant to represent the colour grey
+	 */
+	private static final int GREY = 0;	
+	/**
+	 * constant to represent the colour black
+	 */
+	private static final int BLACK = 1;		
+	
+	/**
+	 * array to mark the statuses of the vertices in the graph while performing topSort
+	 */
+	private int[] colour;		
+	/**
+	 * list to store the topologically sorted vertices of the graph
+	 */
+	private LinkedList<K> topSorted;						
+	/**
+	 * to mark if a cycle is found while performing topSort
+	 */
+	private boolean foundCycle;										
+	
+	/** 
+	 * Constructor.
+     */
+	public ECDAGMap() {
+		adj = new LinkedList<LinkedList<K>>();
+		map = new LinkedHashMap<K, V>();
+	}
+
+	/**
+	 * Helper method to topologically sort the elements of the graph or to find
+	 * a cycle in the graph 
+	 */
+	private void topSort(int startVertex) {
+		if (colour[startVertex] == GREY) foundCycle = true; 	// if vertex was visited before, it means the graph is cyclic
+		if (colour[startVertex] == WHITE) {						// if the vertex is marked WHITE, it means it is an unvisited vertex
+			colour[startVertex] = GREY;							// mark the visited vertex as GREY  									
+			// for every successor of the vertex
+			for (int i = 1; i < adj.get(startVertex).size(); i++) {	
+				K successor = adj.get(startVertex).get(i);
+				int successorIndex = -1;
+				// look for the index of the successor in the adjacency list
+				for (int j = 0; j < adj.size(); j++) {				
+					if (adj.get(j).get(0).equals(successor)) {
+						successorIndex = j; 
+						break;
+					}
+				}
+				topSort(successorIndex);						// perform topSort on the successor
+			}
+			colour[startVertex] = BLACK;					// mark the vertex as BLACK indicating done examining it
+			topSorted.push(adj.get(startVertex).get(0));	// add the key to the front of the topologically sorted list
+		}
+	}
+	
+	/**
+	 * Helper method to determine if the graph is acyclic
+	 * @return true if the graph is acyclic, false otherwise.
+	 */
+	public boolean isAcyclic() {
+		colour = new int[adj.size()];
+		topSorted = new LinkedList<K>();
+		foundCycle = false;
+		
+		// Set the colour array to hold default values of WHITE and parent array to -1 values
+		for (int i = 0; i < colour.length; i++) colour[i] = WHITE;
+		
+		for (int i = 0; i < colour.length; i++) {
+			// If there are vertices not visited, perform topSort on those vertices
+			if (colour[i] == WHITE) topSort(i); 
+		}
+		
+		return !foundCycle;
+	}
+	
+	/**
+	 * Standard map operation:
+	 * Adds the vertex key to the graph (with no edges) and maps key to value
+	 * @param key the new vertex added to the graph
+	 * @param value the label of the vertex
+	 * @throws IllegalArgumentException if key is null, or is already in the graph
+	**/ 
+	public void put(K key, V value) throws IllegalArgumentException {
+		if (key == null) throw new IllegalArgumentException("Key is null.");
+		else if (containsKey(key)) throw new IllegalArgumentException("Key is already in the graph.");
+		else {
+			LinkedList<K> newEntry = new LinkedList<K>();
+			newEntry.add(key);		// associate the new entry with the key to be added into the graph
+			adj.add(newEntry);		// add the the new entry into the adjacency list 
+			map.put(key, value);	// add the key and value into the map
+		}
+	}
+	
+	/**
+	 * Standard map operation:
+	 * Gives the value corresponding to the given key
+	 * @param key the vertex to return the value
+	 * @return the value corresponding to key
+	 * @throws IllegalArgumentException if they key does not exist in the DAG
+	**/
+	public V get(K key) throws IllegalArgumentException {
+		if (!containsKey(key)) throw new IllegalArgumentException("Key does not exist in the DAG"); 
+		else return map.get(key);
+	 }
+	
+	/**
+	 * Standard map operation:
+	 * Removes the vertex key from the graph, as well as its label, and any associated edges
+	 * @param key the vertex to be removed
+	 * @throws IllegalArgumentException if key is not a vertex in the graph
+	**/
+	public void remove(K key) throws IllegalArgumentException {
+		if (!containsKey(key)) throw new IllegalArgumentException("Key is not a vertex in the graph");
+		else {
+			map.remove(key);	// remove the key from the map
+			// look for the key in the adjacency list and remove it
+			for (int i = 0; i < adj.size(); i++) {	
+				if (adj.get(i).get(0).equals(key)) {
+					adj.remove(i);
+					break;
+				}
+			}
+			// as well as removing the key from being a successor of any other keys
+			for (int i = 0; i < adj.size(); i++) {
+				for (int j = 1; j < adj.get(i).size(); j++) {
+					if (adj.get(i).get(j).equals(key)) adj.get(i).remove(j);
+				}
+			}
+		}
+	}
+	
+	/**
+	 * DAG operation: adds a directed edge between two vertices, provided that no cycle is created
+	 * @param requirement the vertex at the start of the edge
+	 * @param dependent the vertex at the end of the edge
+	 * @throws IllegalArgumentException if requirement or dependent are not elements of the graph, or if the new edge would create a cycle,
+	**/
+	public void addDependency(K requirement, K dependent) throws IllegalArgumentException {
+		if (!containsKey(requirement)) throw new IllegalArgumentException("Requirement is not an element of the graph.");
+		else if (!containsKey(dependent)) throw new IllegalArgumentException("Dependent is not an element of the graph.");
+		else {
+			// look for the requirement vertex in the adjacency list and add a new dependent to it
+			for (int i = 0; i < adj.size(); i++) {	
+				if (adj.get(i).get(0).equals(requirement)) {	
+					if (adj.get(i).contains(dependent)) break;	// if the dependency already exists in the graph, do not add another one
+					adj.get(i).add(dependent);
+					break;
+				}
+			}
+			// if the new edge would create a cycle, remove the dependency and throw an exception
+			if (!this.isAcyclic()) {	
+				this.removeDependency(requirement, dependent);
+				throw new IllegalArgumentException("New edge would create a cycle");
+			}
+		}
+	}
+	
+	/**
+	 * DAG operation: removes an edge between two vertices, if it exists
+	 * @param requirement the vertex at the start of the edge
+	 * @param dependent the vertex at the end of the edge
+	 * @throws IllegalArgumentException if either requirement or dependent are not vertices in the graph
+	**/
+	public void removeDependency(K requirement, K dependent) throws IllegalArgumentException {
+		if (!containsKey(requirement)) throw new IllegalArgumentException("Requirement is not an element of the graph.");
+		else if (!containsKey(dependent)) throw new IllegalArgumentException("Dependent is not an element of the graph.");
+		else {	
+			// look for the requirement vertex in the adjacency list
+			for (int i = 0; i < adj.size(); i++) {
+				if (adj.get(i).get(0).equals(requirement)) {
+					// when found, look for the dependent vertex and remove it (if present)
+					for (int j = 1; j < adj.get(i).size(); j++) {
+						if (adj.get(i).get(j).equals(dependent)) {
+							adj.get(i).remove(j);
+							break;
+						}
+					}
+					break;
+				}
+			}
+		}
+	} 
+	
+	/**
+	 * Tests whether there are any vertices defined in the graph
+	 * @return true if and only if there are no vertices in the graph
+	**/
+	public boolean isEmpty() { 
+		return adj.size() == 0; 
+	}
+	
+	/**
+	 * Tests whether a key is defined in the map, using the equals method
+	 * @param key the key to be tested
+	 * @return true if and only if the key is a vertex of the graph
+	 **/
+	public boolean containsKey(K key) {
+		// look for the requirement vertex in the adjacency list and return true if found
+		for (int i = 0; i < adj.size(); i++) {
+			if (adj.get(i).get(0).equals(key)) return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * Tests whether there is some vertex in the graph that has a label equal to value
+	 * @param value the value to be tested
+	 * @return true if and only if there is at least one vertex in the graph with a label equal to value
+	**/
+	public boolean containsValue(V value) {
+		return map.containsValue(value);
+	}
+	
+	/**
+	 * Tests whether key1 is a requirement for key2 (or is key2 is dependent on key1)
+	 * This is defined by either there being an edge from key1 to key2, 
+	 * or there being some other vertex v that is dependent on key1, where there is an edge from v to key2
+	 * @param key1 the requirement vertex
+	 * @param key2 the dependent vertex
+	 * @return true if and only if key1 is a requirement for key2. If either key is not an element of the graph, return false.
+	**/   
+	public boolean isDependent(K key1, K key2) {
+		if (!containsKey(key1) || !containsKey(key2)) return false;
+		
+		// the index of key1 in the adjacency list
+		int n1 = -1;	
+		for (int i = 0; i < adj.size(); i++) {
+			if (adj.get(i).get(0).equals(key1)) n1 = i;
+		}
+
+		colour = new int[adj.size()];
+		topSorted = new LinkedList<K>();
+		foundCycle = false;
+		
+		// set the colour array to hold default values of WHITE
+		for (int j = 0; j < colour.length; j++) {
+			colour[j] = WHITE;
+		}
+		
+		// perform topSort on the requirement vertex to find all its dependencies stored in the topologically sorted list
+		topSort(n1);
+		
+		return topSorted.contains(key2);	// if topSort contains key2 it means that it is dependent on key1
+	}
+	
+	/**
+	 * Creates a shallow clone of the DAGMap, by cloning the data structure (and internal variables) 
+	 * but not the keys or the values. That is adding or removing dependencies to the clone should 
+	 * not impact the original object.
+	 * @return A DAGMap that is equal to this map, but with cloned vertices
+	**/
+	public Object clone() {	
+		DAGMap<K, V> clone = new ECDAGMap<K, V>();
+		// copy all keys, values in the original DAGMap over to its clone
+		for (int i = 0; i < adj.size(); i++) {
+			clone.put(adj.get(i).get(0), map.get(adj.get(i).get(0)));
+		}
+		
+		// copy all dependencies in the original DAGMap over to its clone
+		for (int i = 0; i < adj.size(); i++) {
+			for (int j = 1; j < adj.get(i).size(); j++) clone.addDependency(adj.get(i).get(0), adj.get(i).get(j));
+		}
+		return clone;
+	}
+	
+	/**
+	 * Produces a iterator that is guaranteed to process the elements in some topologically sorted order
+	 * where each call to next will return the next vertex
+	 * That is, the iterator will never return a dependent vertex until all of the 
+	 * requirements of the vertex have been returned
+	 * @return an iterator that will process the labels of the graph in topologically sorted order
+	**/ 
+	public Iterator<K> iterator() {
+		colour = new int[adj.size()];
+		topSorted = new LinkedList<K>();
+		foundCycle = false;
+		
+		// Set the colour array to hold default values of WHITE and parent array to -1 values
+		for (int i = 0; i < colour.length; i++) colour[i] = WHITE;
+		
+		for (int i = 0; i < colour.length; i++) {
+			// If there are vertices not visited, perform topSort on those vertices
+			if (colour[i] == WHITE) topSort(i); 
+		}
+		return topSorted.listIterator(0); // return the topSorted list's iterator
+	}
+	
+	/**
+	 * Tests whether this is equal to some object: The Object must be an implementation of DAGMap 
+	 * and the two DAGMaps are equal if they have equal sets of keys; equal sets of values;
+	 * equal keys map to equal values; and there is a dependency (not just an edge) between two keys in one graph if 
+	 * and only if there is a dependency between the two equal keys in the second graph;
+	 * (Note that equal DAGMap's will not necessarily have the same behavior with respect to the removeDependency operation).
+	 * @param o the object to be tested
+	 * @return true if and only this is equal to o 
+	**/
+	@SuppressWarnings("unchecked")
+	public boolean equals(Object o) {
+		if (!(o instanceof DAGMap) || o == null) return false;
+		DAGMap<K, V> temp = (DAGMap<K, V>) o;
+		if (temp.isEmpty() && this.isEmpty()) return true;
+		if ((this.isEmpty() && !temp.isEmpty()) || (!this.isEmpty() && temp.isEmpty())) return false;
+		
+		// check if the keys, values and dependencies in both DAGMaps are the same
+		if (this.getKeySet().size() != temp.getKeySet().size()) return false;
+		Iterator<K> it1 = temp.getKeySet().iterator();
+		while (it1.hasNext()) {
+			K tempKey = it1.next();
+			if (!this.getKeySet().contains(tempKey)) return false;
+			if (!this.get(tempKey).equals(temp.get(tempKey))) return false;
+			else {
+				Set<K> s1 = this.getSuccessors(tempKey);
+				Set<K> s2 = temp.getSuccessors(tempKey);
+				if (s1.size() != s2.size()) return false;
+				Iterator<K> it2 = s2.iterator();
+				while (it2.hasNext()) {
+					if (!s1.contains(it2.next())) return false;
+				}
+			}
+		}
+		return true;	// if all tests are passed, return true
+	}
+
+	/**
+	 * Returns the set of vertices in the DAG  
+	 * @return the set of vertices in the graph
+	**/ 
+	public Set<K> getKeySet() {
+		Set<K> set = new HashSet<K>(adj.size());
+		// add all the keys present in the adjacency list into the set
+		for (int i = 0; i < adj.size(); i++) set.add(adj.get(i).get(0));	
+		return set;
+	}
+
+	/**
+	 * Returns the set of keys that are immediately dependent on the given key 
+	 * (that is, there are edges from key to exactly the vertices in the returned set)
+	 * @param key the vertex on which the returned set must be dependent
+	 * @return the set of vertices dependent on key
+	 * @throws IllegalArgumentException if key is not a vertex of the DAG
+	**/ 
+	public Set<K> getSuccessors(K key) throws IllegalArgumentException {
+		if (!containsKey(key)) throw new IllegalArgumentException("Key is not a vertex of the DAG.");
+		else {
+			Set<K> successors = new HashSet<K>(adj.size());
+			// look for the key in the adjacency list and add its successors into the set
+			for (int i = 0; i < adj.size(); i++) {
+				if (adj.get(i).get(0).equals(key)) {			
+					for (int j = 1; j < adj.get(i).size(); j++) successors.add(adj.get(i).get(j));
+					break;
+				}
+			}
+			return successors;
+		}
+	}
+
+	/**
+	 * Returns the set of keys that are immediate requirements for the given key 
+	 * (that is, there is an edge from every vertex, and only these vertices, in the returned set to key)
+	 * @param key the vertex on which the returned set must be requirements
+	 * @return the set of vertices required for key
+	 * @throws IllegalArgumentException if key is not a vertex of the DAG
+	**/ 
+	public Set<K> getPredecessors(K key) throws IllegalArgumentException {
+		if (!containsKey(key)) throw new IllegalArgumentException("Key is not a vertex of the DAG.");
+		else {
+			HashSet<K> predecessors = new HashSet<K>();
+			// add keys in the adjacency list that have the given key as one of their successors into the set
+			for (int i = 0; i < adj.size(); i++) {	
+				for (int j = 1; j < adj.get(i).size(); j++) {
+					if (adj.get(i).get(j).equals(key)) {
+						predecessors.add(adj.get(i).get(0));
+						break;
+					}
+				}
+			}
+			return predecessors;
+		}
+	}
+
+	/**
+	 * The width of a DAG is the minimum number of paths required to cover it
+	 * A path is a sequence (v(1),v(2),..,v(n)) where for each i greater than 1, 
+	 * v(i) is dependent on v(i-1): 
+	 * This method should aim to return the minimum number of sequences such that 
+	 * every vertex appears in at least one sequence (but potentially more): 
+	 * for example the width of an empty DAGMap is 0, and if there are n vertices 
+	 * with no requirements, then the width will be at least n
+	 * @return the width of the DAGMap
+	**/ 
+	public int getWidth() {
+		int path = 0;	// the number of paths required
+		/*
+		 *  a vertex with no successors represents the end of a path and hence
+		 *  the minimum number of paths is the number of vertices with no out edges
+		 */
+		for (int i = 0; i < adj.size(); i++) {
+			if (adj.get(i).size() == 1) path++;	
+		}
+		return path;
+	}
+
+	/**
+	 * Returns the length of the longest possible path through the DAGMap
+	 * A path is a sequence (v(1),v(2),..,v(n)) where for each i greater than 1, 
+	 * v(i) is dependent on v(i-1)
+	 * @return the length of the longest possible path in the DAGMap
+	**/ 
+	public int getLongestPath() {
+		if (this.isEmpty()) return 0;														
+		ConcurrentLinkedQueue<Integer> q = new ConcurrentLinkedQueue<Integer>();		// queue to hold the vertices to be examined
+		int[] dist = new int[adj.size()];												// key array to hold the shortest paths from the source vertex		 
+		colour = new int[adj.size()]; 	
+		int path = 0;																	// the length of the longest path
+		
+		for (int i = 0; i < adj.size(); i++) {
+			// initialise the colour array to all WHITE and key array's values to negative infinity 
+			for (int j = 0; j < adj.size(); j++) {
+				dist[j] = -Integer.MAX_VALUE;
+				colour[j] = WHITE;
+			}
+			dist[i] = 0;
+			q.add(i);
+			colour[i] = GREY;
+			while (!q.isEmpty()) {
+				int u = q.poll();	// the vertex to be examined next
+				// only examine those vertices that have not been examined
+				if (colour[u] != BLACK) {
+					// look into all successors of u
+					for (int j = 1; j < adj.get(u).size(); j++) {
+						K successor = adj.get(u).get(j);
+						int successorIndex = -1;
+						int weight = 1;
+						for (int k = 0; k < adj.size(); k++) {
+							if (adj.get(k).get(0).equals(successor)) {
+								successorIndex = k;
+								break;
+							}
+						}
+						// update the distance of the successor from the source if a longer path is found
+						if ((weight + dist[u]) > dist[successorIndex]) dist[successorIndex] = dist[u] + weight;
+						
+						// if the successor has not been added to the queue before, add it
+						if (colour[successorIndex] == WHITE) {	
+							q.add(successorIndex);
+							colour[successorIndex] = GREY;	// mark vertex under examination
+						}	
+					}
+					colour[u] = BLACK;	// mark vertex examined
+				}
+			}
+			// update the length of the longest path if need to
+			for (int j = 0; j < dist.length; j++) {
+				if (dist[j] > path) path = dist[j];
+			}
+		}
+		return path;
+	}
+
+	/**
+	 * Gets the maximum flow between two vertices in the DAG; The maximum flow is the maximum number of paths through the DAG that do not share a vertex.
+	 * @param source the start vertex
+	 * @param sink the end vertex
+	 * @return The maximum flow through the DAG
+	 **/
+	 public int getMaxFlow(K source, K sink) {
+		 return 0;
+	 }
+	 
+	
+	/**
+	 * Returns a multi-line String representation of the DAGMap
+	 * The representation should first present the mapping in the form<br>
+	 * <code> key : value</code><br>
+	 * one per line, where the order of the pairs is not important
+	 * Then, the representation should give the set of dependencies 
+	 * to completely describe the graph
+	 * <code> key1 : key2</code><br>
+	 * @return a String representation of the DAGMap
+	**/
+	public String toString(){
+		StringBuilder string = new StringBuilder();
+		for (int i = 0; i < adj.size(); i++) {
+			String s1 = adj.get(i).get(0) + " : " + map.get(adj.get(i).get(0)) + "\n";
+			string.append(s1);
+			for (int j = 1; j < adj.get(i).size(); j++) {
+				String s2 = adj.get(i).get(0) + " : " + adj.get(i).get(j) + "\n";
+				string.append(s2);
+			}
+		}
+		return string.toString();
+	}
+}
+ 
