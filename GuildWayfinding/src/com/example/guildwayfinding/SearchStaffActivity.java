@@ -54,7 +54,8 @@ public class SearchStaffActivity extends ListActivity {
 
         mGestureDetector = new GestureDetector(this, new SideIndexGestureListener());
 
-		List<String> staffs = populateStaffs();
+        DBHelper d = new DBHelper();
+		List<String> staffs = d.getStaffNames();
         Collections.sort(staffs);
 
         List<Row> rows = new ArrayList<Row>();
@@ -187,31 +188,5 @@ public class SearchStaffActivity extends ListActivity {
             //ListView listView = (ListView) findViewById(android.R.id.list);
             getListView().setSelection(subitemPosition);
         }
-    }
-
-    private List<String> populateStaffs() { 
-    	List<String> staffs = new ArrayList<String>(); 
-    	staffs.add("Abel Smith");
-    	staffs.add("Beatrice Shaw");
-    	staffs.add("Colin Lim");
-    	staffs.add("David Law");
-    	staffs.add("Edwin Chia");
-    	staffs.add("Frank Stein");
-    	staffs.add("Goal Keeper");
-    	staffs.add("Hay Luke");
-    	staffs.add("Ian Rush");
-    	staffs.add("Jay Han");
-    	staffs.add("King Mike");
-    	staffs.add("Luke Shaw");
-    	staffs.add("Mabel Sia");
-    	staffs.add("Natalie Teh");
-    	staffs.add("Oswald Tri");
-    	staffs.add("Peter Tan");
-    	staffs.add("Ross Bloom");
-    	staffs.add("Singa Pore");
-    	staffs.add("Tris Cabal");
-
-    	
-    	return staffs;
     }
 }
