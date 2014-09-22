@@ -31,6 +31,19 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.prototype.HomeActivity" />
         </activity>
+        <activity
+            android:name=".SearchFacultyActivity"
+            android:label="@string/title_activity_search_faculty" >
+                        android:parentActivityName=".HomeActivity"
+            android:screenOrientation="landscape" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.prototype.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".StaffActivity"
+            android:label="@string/title_activity_staff" >
+        </activity>
     </application>
 
 </manifest>

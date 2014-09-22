@@ -20,6 +20,10 @@ public class AlphabetListAdapter extends BaseAdapter {
         public Section(String text) {
             this.text = text;
         }
+        
+        public String toString() {
+        	return text;
+        }
     }
     
     public static final class Item extends Row {
@@ -27,6 +31,10 @@ public class AlphabetListAdapter extends BaseAdapter {
 
         public Item(String text) {
             this.text = text;
+        }
+        
+        public String toString() {
+        	return text;
         }
     }
     

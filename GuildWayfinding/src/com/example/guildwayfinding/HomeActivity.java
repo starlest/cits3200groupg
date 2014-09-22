@@ -14,9 +14,6 @@ public class HomeActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		GuildDB d = new GuildDB();
-		d.Create();
-		d.Tables();
 		setContentView(R.layout.activity_home);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeButtonEnabled(false);
@@ -44,6 +41,12 @@ public class HomeActivity extends ActionBarActivity {
 	/** Called when the user clicks the search staff button */
 	public void search_staff_button_message(View view) {
 		Intent intent = new Intent(this, SearchStaffActivity.class);
+		startActivity(intent);
+	}
+	
+	/** Called when the user clicks the search faculty button */
+	public void search_faculty_button_message(View view) {
+		Intent intent = new Intent(this, SearchFacultyActivity.class);
 		startActivity(intent);
 	}
 }

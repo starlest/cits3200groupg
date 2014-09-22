@@ -1,151 +1,124 @@
 package com.example.guildwayfinding;
 
-import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.database.sqlite.*;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
-public class DBHelper {
-	
-	public DBHelper()
-	{
-		AddPerson(1, "lucas", 1, "a", 2, "bar ",2, "bar",  "b"  );
-		AddPerson(2, "jorge", 1, "a", 2, "bar ",2, "bar",  "b"  );
-		AddPerson(3, "henrique", 1, "a", 2, "school ",2, "bar",  "b"  );
-	}
-	
-	public static void AddPerson(int id, String nam, int age, String address, int room, String department, int schedule, String telephone, String email)
-	{
-		Connection c = null;
-		 Statement stmt = null;
-		 try {
-			 Class.forName("org.sqlite.JDBC");
-			 c = DriverManager.getConnection("jdbc:sqlite:DataBase.db");
-			 c.setAutoCommit(false);
-			 System.out.println("Opened database successfully");
-			 stmt = c.createStatement();
-			 String sql = "INSERT INTO PERSON (ID,NAME,AGE,ADDRESS,ROOM,DEPARTMENT,SCHEDULE,TELEFONE,EMAIL) " +
-					 "VALUES (" + id + ", '" + nam + "', " + age + ", '" + address  +
-					 "', " + room + ", '" + department + "', " + schedule + ", '" + telephone + "', '" + email + "');";
-			 stmt.executeUpdate(sql);
-			 stmt.close();
-			 c.commit();
-			 c.close();
-		 } 
-		 catch ( Exception e ) {
-			 System.err.println( e.getClass().getName() + ": " + e.getMessage() );
-			 System.exit(0);
-		 }
-		 System.out.println("Records created successfully");
-	}
-	
-	public static void AddRoom(int id, String Name)
-	{
-		Connection c = null;
-		 Statement stmt = null;
-		 try {
-			 Class.forName("org.sqlite.JDBC");
-			 c = DriverManager.getConnection("jdbc:sqlite:DataBase.db");
-			 c.setAutoCommit(false);
-			 System.out.println("Opened database successfully");
-			 stmt = c.createStatement();
-			 String sql = "INSERT INTO ROOM (ID, NAME) " +
-					 "VALUES (" + id + ", '" + Name + "');";
-			 System.out.println("1");
-			 stmt.executeUpdate(sql);
-			 System.out.println("1");
-			 stmt.close();
-			 c.commit();
-			 c.close();
-		 } 
-		 catch ( Exception e ) {
-			 System.err.println( e.getClass().getName() + ": " + e.getMessage() );
-			 System.exit(0);
-		 }
-		 System.out.println("Records created successfully");	
-	}
-	
-	public static void addSchedule(int id, String monday, String tuesday, String wednesday, String thursday, String friday, String saturday, String sunday)
-	{
-		Connection c = null;
-		 Statement stmt = null;
-		 try {
-			 Class.forName("org.sqlite.JDBC");
-			 c = DriverManager.getConnection("jdbc:sqlite:DataBase.db");
-			 c.setAutoCommit(false);
-			 System.out.println("Opened database successfully");
-			 stmt = c.createStatement();
-			 String sql = "INSERT INTO SQUEDULE (ID, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY) " +
-					 "VALUES (" + id + ", " + monday + ", " + tuesday + ", " + thursday + 
-					 ", " + wednesday + ", " + thursday + ", " + friday + ", "
-					 + saturday + ", " + sunday + ");";
-			 stmt.executeUpdate(sql);
-			 stmt.close();
-			 c.commit();
-			 c.close();
-		 } 
-		 catch ( Exception e ) {
-			 System.err.println( e.getClass().getName() + ": " + e.getMessage() );
-			 System.exit(0);
-		 }
-		 System.out.println("Records created successfully");
-	}
-	
-	public static List<String> getStaffNames()
-	{
-		List<String> strlist = new ArrayList<String>();
-		Connection c = null;
-		 Statement stmt = null;
-		 try {
-			 Class.forName("org.sqlite.JDBC");
-			 c = DriverManager.getConnection("jdbc:sqlite:DataBase.db");
-			 c.setAutoCommit(false);
-			 System.out.println("Opened database successfully");
-			 stmt = c.createStatement();
-			 ResultSet rs = stmt.executeQuery( "SELECT NAME FROM PERSON;" );
-			 while ( rs.next() ) {
-				 String name = rs.getString("name");
-				 strlist.add(name);
-			 }
-			 rs.close();
-			 stmt.close();
-			 c.close();
-		 } 
-		 catch ( Exception e ) {
-			 System.err.println( e.getClass().getName() + ": " + e.getMessage() );
-			 System.exit(0);
-		 }
-		 System.out.println("Operation done successfully");
-		 return strlist;
+public class DBHelper extends SQLiteOpenHelper {
 
-	}
-	
-	public static List<String> getDepartmentNames()
-	{
-		List<String> strlist = new ArrayList<String>();
-		Connection c = null;
-		 Statement stmt = null;
-		 try {
-			 Class.forName("org.sqlite.JDBC");
-			 c = DriverManager.getConnection("jdbc:sqlite:DataBase.db");
-			 c.setAutoCommit(false);
-			 System.out.println("Opened database successfully");
-			 stmt = c.createStatement();
-			 ResultSet rs = stmt.executeQuery( "SELECT DISTINCT DEPARTMENT FROM PERSON;" );
-			 while ( rs.next() ) {
-				 String name = rs.getString("department");
-				 strlist.add(name);
-			 }
-			 rs.close();
-			 stmt.close();
-			 c.close();
-		 } 
-		 catch ( Exception e ) {
-			 System.err.println( e.getClass().getName() + ": " + e.getMessage() );
-			 System.exit(0);
-		 }
-		 System.out.println("Operation done successfully");
-		 return strlist;
-	}
-}
+
+  private static final String DATABASE_NAME = "guild.db";
+  private static final int DATABASE_VERSION = 5;
+
+  // Database creation sql statement
+  private static final String CREATE_STAFF = "CREATE TABLE STAFF " +
+			 "(ID INT PRIMARY KEY NOT NULL," +
+				" NAME TEXT NOT NULL, " +
+				 " ROOM INT SECONDARY KEY NOT NULL, " +
+				 " FACULTY TEXT NOT NULL, " + 
+				 " SCHEDULE INT SECONDARY KEY NOT NULL, " +
+				 " TELEPHONE TEXT, " +
+				 " EMAIL TEXT);";
+  
+  private static final String CREATE_SCHEDULE = "CREATE TABLE SCHEDULE " +
+			"(ID INT PRIMARY KEY NOT NULL, " +
+			" MONDAY TEXT NOT NULL, " + 
+			 " TUESDAY TEXT NOT NULL, " +
+			 " WEDNESDAY TEXT NOT NULL, " + 
+			 " THURSDAY TEXT NOT NULL, " +
+			 " FRIDAY TEXT NOT NULL, " +
+			 " SATURDAY TEXT NOT NULL, " +
+			 " SUNDAY TEXT NOT NULL); ";
+  
+
+  public DBHelper(Context context) {
+    super(context, DATABASE_NAME, null, DATABASE_VERSION);
+  }
+  
+
+  @Override
+  public void onCreate(SQLiteDatabase database) {
+    database.execSQL(CREATE_STAFF);
+    database.execSQL(CREATE_SCHEDULE);
+  }
+
+  @Override
+  public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    Log.w(DBHelper.class.getName(),
+        "Upgrading database from version " + oldVersion + " to "
+            + newVersion + ", which will destroy all old data");
+    db.execSQL("DROP TABLE IF EXISTS STAFF");
+    db.execSQL("DROP TABLE IF EXISTS SCHEDULE");
+    onCreate(db);
+  }
+  
+  public void addStaff(int id, String name, int room, String faculty, int schedule, String telephone, String email)
+  {
+	  SQLiteDatabase db = this.getWritableDatabase();
+	  String sql = "INSERT INTO STAFF (ID,NAME,ROOM,FACULTY,SCHEDULE,TELEPHONE,EMAIL) " +
+				 "VALUES (" + id + ", '" + name + "', " + room + ", '" + faculty + "', " + schedule + ", '" + telephone + "', '" + email + "');";
+	  db.execSQL(sql);
+  }
+  
+  public void addSchedule(int id, String monday, String tuesday, String wednesday, String thursday, String friday, String saturday, String sunday)
+  {
+	  SQLiteDatabase db = this.getWritableDatabase();
+	  String sql = "INSERT INTO SCHEDULE (ID, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY) " +
+				 "VALUES (" + id + ", '" + monday + "', '" + tuesday + "', '" + wednesday + 
+				 "', '" + thursday + "', '" + friday + "', '" + saturday + "', '"
+				 + sunday + "');";
+	  db.execSQL(sql);
+  }
+  
+  public List<String> getStaffNames()
+  {
+	  List<String> l = new ArrayList<String>();
+	  SQLiteDatabase db = this.getReadableDatabase();
+	  String sql = "SELECT NAME FROM STAFF;";
+	  Cursor c = db.rawQuery(sql, null);
+	  c.moveToFirst();
+	  while (!c.isAfterLast()) {
+		l.add(c.getString(0));
+		c.moveToNext();
+	  }
+	  c.close();
+	  return l;
+  }
+  
+  public List<String> getFacultyNames()
+  {
+	  List<String> l = new ArrayList<String>();
+	  SQLiteDatabase db = this.getReadableDatabase();
+	  String sql = "SELECT DISTINCT FACULTY FROM STAFF;";
+	  Cursor c = db.rawQuery(sql, null);
+	  c.moveToFirst();
+	  while (!c.isAfterLast()) {
+		l.add(c.getString(0));
+		c.moveToNext();
+	  }
+	  c.close();
+	  return l;
+  }
+  
+  public Staff getStaff(String name) {
+	  SQLiteDatabase db = this.getReadableDatabase();
+	  String sql = "SELECT * FROM STAFF WHERE NAME =  '" + name + "';";
+	  Cursor c = db.rawQuery(sql, null);
+	  c.moveToFirst();
+	  
+	  String sql1 = "SELECT * FROM SCHEDULE WHERE ID =  '" + c.getInt(4) + "';";
+	  Cursor c1 = db.rawQuery(sql1, null);
+	  c1.moveToFirst();
+	  Schedule sche = new Schedule(c1.getString(1), c1.getString(2), c1.getString(3), 
+			  c1.getString(4), c1.getString(5), c1.getString(6), c1.getString(7));
+			  
+	  Staff s = new Staff(name, c.getInt(2), c.getString(3), sche, c.getString(5), c.getString(6));
+	  return s;
+  }
+
+} 
