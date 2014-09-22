@@ -109,9 +109,11 @@ public class FacultyStaffsActivity extends ListActivity {
     @Override
     protected void onListItemClick (ListView l, View v, int position, long id) {
     	String staff = adapter.getItem(position).toString();
-    	Intent intent = new Intent(this, StaffActivity.class);
-    	intent.putExtra(STAFF_MESSAGE, staff);
-		startActivity(intent);
+    	if (staff.length() != 1) {
+    		Intent intent = new Intent(this, StaffActivity.class);
+    		intent.putExtra(STAFF_MESSAGE, staff);
+    		startActivity(intent);
+    	}
     }
     
     class SideIndexGestureListener extends GestureDetector.SimpleOnGestureListener {

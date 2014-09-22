@@ -42,11 +42,15 @@
         </activity>
         <activity
             android:name=".StaffActivity"
-            android:label="@string/title_activity_staff" >
+            android:label="@string/title_activity_staff" 
+            android:parentActivityName=".HomeActivity"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".FacultyStaffsActivity"
-            android:label="@string/title_activity_faculty_staffs" >
+            android:label="@string/title_activity_faculty_staffs" 
+            android:parentActivityName=".HomeActivity"
+            android:screenOrientation="landscape" >
         </activity>
     </application>
 

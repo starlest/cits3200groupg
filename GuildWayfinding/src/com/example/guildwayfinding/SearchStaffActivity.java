@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.app.ActionBar;
 
 import com.example.guildwayfinding.AlphabetListAdapter.Item;
 import com.example.guildwayfinding.AlphabetListAdapter.Row;
@@ -42,6 +43,10 @@ public class SearchStaffActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_alphabet);
 
+        ActionBar actionBar = getActionBar();
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setTitle("Back To Main Screen");
+        
         mGestureDetector = new GestureDetector(this, new SideIndexGestureListener());
 
         DBHelper d = new DBHelper(this);
@@ -106,9 +111,11 @@ public class SearchStaffActivity extends ListActivity {
     @Override
     protected void onListItemClick (ListView l, View v, int position, long id) {
     	String staff = adapter.getItem(position).toString();
-    	Intent intent = new Intent(this, StaffActivity.class);
-    	intent.putExtra(STAFF_MESSAGE, staff);
-		startActivity(intent);
+    	if (staff.length() != 1) {
+    		Intent intent = new Intent(this, StaffActivity.class);
+    		intent.putExtra(STAFF_MESSAGE, staff);
+    		startActivity(intent);
+    	}
     }
     
     class SideIndexGestureListener extends GestureDetector.SimpleOnGestureListener {

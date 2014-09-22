@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.regex.Pattern;
 
+import android.app.ActionBar;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -56,6 +57,10 @@ public class SearchFacultyActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_alphabet);
 
+        ActionBar actionBar = getActionBar();
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setTitle("Back To Main Screen");
+        
         mGestureDetector = new GestureDetector(this, new SideIndexGestureListener());
 
         DBHelper d = new DBHelper(this);
@@ -120,9 +125,11 @@ public class SearchFacultyActivity extends ListActivity {
     @Override
     protected void onListItemClick (ListView l, View v, int position, long id) {
     	String faculty = adapter.getItem(position).toString();
-    	Intent intent = new Intent(this, FacultyStaffsActivity.class);
-    	intent.putExtra(FACULTY_MESSAGE, faculty);
-		startActivity(intent);
+    	if (faculty.length() != 1) {
+    		Intent intent = new Intent(this, FacultyStaffsActivity.class);
+    		intent.putExtra(FACULTY_MESSAGE, faculty);
+    		startActivity(intent);
+    	}
     }
     
     @Override

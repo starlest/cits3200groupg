@@ -3,17 +3,22 @@ package com.example.guildwayfinding;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.MediaController;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 public class StaffActivity extends Activity {
 
@@ -24,6 +29,10 @@ public class StaffActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+        ActionBar actionBar = getActionBar();
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setTitle("Back To Main Screen");
+        
 		Intent intent = getIntent();
 		String staff_name = intent.getStringExtra(SearchStaffActivity.STAFF_MESSAGE);
 		
@@ -110,7 +119,7 @@ public class StaffActivity extends Activity {
 		lParams.weight = 5f;
 		parent.addView(layout, lParams);
 	
-		GifWebView map = new GifWebView(this, "file:///android_asset/piggy.gif");
+		GifWebView map = new GifWebView(this, "file:///android_asset/0.gif");
 		map.setId(8);
 		parent.addView(map, lParams);
 		

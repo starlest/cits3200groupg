@@ -17,6 +17,7 @@ public class HomeActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_home);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeButtonEnabled(false);
+        actionBar.setTitle("Home");
 	}
 
 	@Override
