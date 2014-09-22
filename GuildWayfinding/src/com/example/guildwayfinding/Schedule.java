@@ -1,16 +1,14 @@
 package com.example.guildwayfinding;
 
 public class Schedule {
-	private String mon, tue, wed, thu, fri, sat, sun;
+	private String mon, tue, wed, thu, fri;
 	
-	public Schedule(String mon, String tue, String wed, String thu, String fri, String sat, String sun) {
+	public Schedule(String mon, String tue, String wed, String thu, String fri) {
 		this.mon = mon;
 		this.tue = tue;
 		this.wed = wed;
 		this.thu = thu;
 		this.fri = fri;
-		this.sat = sat;
-		this.sun = sun;
 	}
 	
 	public String getMon() {
@@ -31,13 +29,5 @@ public class Schedule {
 	
 	public String getFri() {
 		return fri;
-	}
-	
-	public String getSat() {
-		return sat;
-	}
-	
-	public String getSun() {
-		return sun;
 	}
 }

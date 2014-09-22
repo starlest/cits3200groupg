@@ -120,7 +120,7 @@ public class SearchFacultyActivity extends ListActivity {
     @Override
     protected void onListItemClick (ListView l, View v, int position, long id) {
     	String faculty = adapter.getItem(position).toString();
-    	Intent intent = new Intent(this, StaffActivity.class);
+    	Intent intent = new Intent(this, FacultyStaffsActivity.class);
     	intent.putExtra(FACULTY_MESSAGE, faculty);
 		startActivity(intent);
     }
