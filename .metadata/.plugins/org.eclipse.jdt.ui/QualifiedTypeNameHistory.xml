@@ -1,2 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="android.content.Intent"/>
+<fullyQualifiedTypeName name="android.widget.TextView"/>
+<fullyQualifiedTypeName name="android.widget.ListView"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="android.widget.ArrayAdapter"/>
+<fullyQualifiedTypeName name="android.widget.RelativeLayout"/>
+<fullyQualifiedTypeName name="android.widget.ImageView"/>
+<fullyQualifiedTypeName name="com.example.guildwayfinding.R.drawable"/>
+<fullyQualifiedTypeName name="android.webkit.WebView"/>
+<fullyQualifiedTypeName name="android.content.Context"/>
+<fullyQualifiedTypeName name="android.widget.LinearLayout"/>
+<fullyQualifiedTypeName name="android.widget.VideoView"/>
+<fullyQualifiedTypeName name="android.widget.MediaController"/>
+<fullyQualifiedTypeName name="android.media.MediaPlayer"/>
+<fullyQualifiedTypeName name="android.media.MediaPlayer.OnPreparedListener"/>
+</qualifiedTypeNameHistroy>
