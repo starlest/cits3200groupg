@@ -59,7 +59,7 @@ public class SearchFacultyActivity extends ListActivity {
 
         ActionBar actionBar = getActionBar();
         actionBar.setHomeButtonEnabled(true);
-        actionBar.setTitle("Back To Main Screen");
+        actionBar.setTitle("Back To Home");
         
         mGestureDetector = new GestureDetector(this, new SideIndexGestureListener());
 
@@ -103,7 +103,7 @@ public class SearchFacultyActivity extends ListActivity {
             }
 
             // Add the country to the list
-            rows.add(new Item(faculty));
+            rows.add(new Item(faculty, -2));
             previousLetter = firstLetter;
         }
 

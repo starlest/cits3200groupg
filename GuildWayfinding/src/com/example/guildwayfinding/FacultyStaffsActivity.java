@@ -45,7 +45,7 @@ public class FacultyStaffsActivity extends ListActivity {
 
         ActionBar actionBar = getActionBar();
         actionBar.setHomeButtonEnabled(true);
-        actionBar.setTitle("Back To Main Screen");
+        actionBar.setTitle("Back To Home");
         
         mGestureDetector = new GestureDetector(this, new SideIndexGestureListener());
 
@@ -54,7 +54,7 @@ public class FacultyStaffsActivity extends ListActivity {
 		
         DBHelper d = new DBHelper(this);
         d.getReadableDatabase();
-		List<String> staffs = d.getFacultyStaffsNames(faculty_name);
+		List<String> staffs = d.getFacultyStaffsIdsNames(faculty_name);
 		d.close();
         Collections.sort(staffs);
 
@@ -92,7 +92,10 @@ public class FacultyStaffsActivity extends ListActivity {
             }
 
             // Add the staff to the list
-            rows.add(new Item(staff));
+            int i = staff.lastIndexOf(',');
+            String staffName = staff.substring(0, i);
+            int staffId = Integer.parseInt(staff.substring(i+1));
+            rows.add(new Item(staffName, staffId));
             previousLetter = firstLetter;
         }
 
@@ -113,10 +116,10 @@ public class FacultyStaffsActivity extends ListActivity {
 
     @Override
     protected void onListItemClick (ListView l, View v, int position, long id) {
-    	String staff = adapter.getItem(position).toString();
-    	if (staff.length() != 1) {
+    	int staffId = adapter.getItem(position).getId();
+    	if (staffId != 1) {
     		Intent intent = new Intent(this, StaffActivity.class);
-    		intent.putExtra(STAFF_MESSAGE, staff);
+    		intent.putExtra(STAFF_MESSAGE, staffId);
     		startActivity(intent);
     	}
     }

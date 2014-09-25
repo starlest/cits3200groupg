@@ -71,15 +71,15 @@ public class DBHelper extends SQLiteOpenHelper {
 	  db.execSQL(sql);
   }
   
-  public List<String> getStaffNames()
+  public List<String> getStaffsIdsNames()
   {
 	  List<String> l = new ArrayList<String>();
 	  SQLiteDatabase db = this.getReadableDatabase();
-	  String sql = "SELECT NAME FROM STAFF;";
+	  String sql = "SELECT id,NAME FROM STAFF;";
 	  Cursor c = db.rawQuery(sql, null);
 	  if( c != null && c.moveToFirst() ) {
 		  while (!c.isAfterLast()) {
-			  l.add(c.getString(0));
+			  l.add(c.getString(1) + "," + c.getString(0));
 			  c.moveToNext();
 		  }
 		  c.close();
@@ -105,15 +105,15 @@ public class DBHelper extends SQLiteOpenHelper {
 	  return l;
   }
   
-  public List<String> getFacultyStaffsNames(String faculty)
+  public List<String> getFacultyStaffsIdsNames(String faculty)
   {
 	  List<String> l = new ArrayList<String>();
 	  SQLiteDatabase db = this.getReadableDatabase();
-	  String sql = "SELECT NAME FROM STAFF WHERE FACULTY = '" + faculty + "';";
+	  String sql = "SELECT id, NAME FROM STAFF WHERE FACULTY = '" + faculty + "';";
 	  Cursor c = db.rawQuery(sql, null);
 	  if( c != null && c.moveToFirst() ) {
 		  while (!c.isAfterLast()) {
-			  l.add(c.getString(0));
+			  l.add(c.getString(1) + "," + c.getString(0));
 			  c.moveToNext();
 		  }
 		  c.close();
@@ -121,10 +121,10 @@ public class DBHelper extends SQLiteOpenHelper {
 	  return l;
   }
   
-  public Staff getStaff(String name) {
+  public Staff getStaff(int id) {
 	  Staff s = null;
 	  SQLiteDatabase db = this.getReadableDatabase();
-	  String sql = "SELECT * FROM STAFF WHERE NAME =  '" + name + "';";
+	  String sql = "SELECT * FROM STAFF WHERE id =  '" + id + "';";
 	  Cursor c = db.rawQuery(sql, null);
 	  
 	  if( c != null && c.moveToFirst() ) {
@@ -137,7 +137,7 @@ public class DBHelper extends SQLiteOpenHelper {
 			  c1.close();
 		  }
 		  
-		  s = new Staff(name, c.getInt(2), c.getString(3), sche, c.getString(5), c.getString(6));
+		  s = new Staff(c.getString(1), c.getInt(2), c.getString(3), sche, c.getString(5), c.getString(6));
 		  
 		  c.close();
 	  }

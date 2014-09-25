@@ -7,18 +7,14 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.MediaController;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.VideoView;
 
 public class StaffActivity extends Activity {
 
@@ -31,14 +27,14 @@ public class StaffActivity extends Activity {
 		
         ActionBar actionBar = getActionBar();
         actionBar.setHomeButtonEnabled(true);
-        actionBar.setTitle("Back To Main Screen");
+        actionBar.setTitle("Back To Home");
         
 		Intent intent = getIntent();
-		String staff_name = intent.getStringExtra(SearchStaffActivity.STAFF_MESSAGE);
+		int staffId = intent.getIntExtra(SearchStaffActivity.STAFF_MESSAGE, -1);
 		
         DBHelper d = new DBHelper(this);
         d.getReadableDatabase();
-        Staff s = d.getStaff(staff_name);
+        Staff s = d.getStaff(staffId);
 		d.close();
 		
 	    // Create the view
@@ -51,7 +47,7 @@ public class StaffActivity extends Activity {
 		TextView nameView = new TextView(this);
 		nameView.setId(1);
 	    nameView.setTextSize(40);
-	    nameView.setText(s.getName());
+	    nameView.setText("\t" + s.getName());
 		lp = new RelativeLayout.LayoutParams(
 		        RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 		lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT, -1);
@@ -60,7 +56,7 @@ public class StaffActivity extends Activity {
 		TextView facultyView = new TextView(this);
 		facultyView.setId(2);
 		facultyView.setTextSize(20);
-		facultyView.setText("Faculty: " + s.getFaculty());
+		facultyView.setText("\tRole: " + s.getFaculty());
 		lp = new RelativeLayout.LayoutParams(
 		        RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 		lp.addRule(RelativeLayout.BELOW, nameView.getId());
@@ -69,7 +65,7 @@ public class StaffActivity extends Activity {
 		TextView telephoneView = new TextView(this);
 		telephoneView.setId(3);
 		telephoneView.setTextSize(20);
-		telephoneView.setText("Telephone: " + s.getTelephone());
+		telephoneView.setText("\tTelephone: " + s.getTelephone());
 		lp = new RelativeLayout.LayoutParams(
 		        RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 		lp.addRule(RelativeLayout.BELOW, facultyView.getId());
@@ -78,7 +74,7 @@ public class StaffActivity extends Activity {
 		TextView emailView = new TextView(this);
 		emailView.setId(4);
 		emailView.setTextSize(20);
-		emailView.setText("Email: " + s.getEmail());
+		emailView.setText("\tEmail: " + s.getEmail());
 		lp = new RelativeLayout.LayoutParams(
 		        RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 		lp.addRule(RelativeLayout.BELOW, telephoneView.getId());
@@ -87,7 +83,7 @@ public class StaffActivity extends Activity {
 		TextView scheduleView = new TextView(this);
 		scheduleView.setId(5);
 		scheduleView.setTextSize(20);
-		scheduleView.setText("Schedule:");
+		scheduleView.setText("\tSchedule:");
 		lp = new RelativeLayout.LayoutParams(
 		        RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 		lp.addRule(RelativeLayout.BELOW, emailView.getId());
@@ -96,11 +92,11 @@ public class StaffActivity extends Activity {
 		TextView schedule = new TextView(this);
 		schedule.setId(6);
 		schedule.setTextSize(10);
-		schedule.setText("Mon - \t " + s.getSchedule().getMon()
-		+ "\nTue - \t " + s.getSchedule().getTue()
-		+ "\nWed - \t " + s.getSchedule().getWed()
-		+ "\nThu - \t " + s.getSchedule().getThu()
-		+ "\nFri - \t\t " + s.getSchedule().getFri());
+		schedule.setText("\tMon - \t " + s.getSchedule().getMon()
+		+ "\n\tTue - \t " + s.getSchedule().getTue()
+		+ "\n\tWed - \t " + s.getSchedule().getWed()
+		+ "\n\tThu - \t " + s.getSchedule().getThu()
+		+ "\n\tFri - \t\t " + s.getSchedule().getFri());
 		lp = new RelativeLayout.LayoutParams(
 		        RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 		lp.addRule(RelativeLayout.BELOW, scheduleView.getId());
