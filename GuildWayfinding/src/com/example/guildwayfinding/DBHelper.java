@@ -17,31 +17,34 @@ public class DBHelper extends SQLiteOpenHelper {
 
   // Database creation sql statement
   private static final String CREATE_STAFF = "CREATE TABLE STAFF " +
-			 "(ID INT PRIMARY KEY NOT NULL," +
+			 "(ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT," +
 				" NAME TEXT NOT NULL, " +
 				 " ROOM INT SECONDARY KEY NOT NULL, " +
-				 " FACULTY TEXT NOT NULL, " + 
+				 " FACULTY TEXT NOT NULL, " +
 				 " SCHEDULE INT SECONDARY KEY NOT NULL, " +
 				 " TELEPHONE TEXT, " +
 				 " EMAIL TEXT);";
-  
+
   private static final String CREATE_SCHEDULE = "CREATE TABLE SCHEDULE " +
 			"(ID INT PRIMARY KEY NOT NULL, " +
-			" MONDAY TEXT NOT NULL, " + 
+			" MONDAY TEXT NOT NULL, " +
 			 " TUESDAY TEXT NOT NULL, " +
-			 " WEDNESDAY TEXT NOT NULL, " + 
+			 " WEDNESDAY TEXT NOT NULL, " +
 			 " THURSDAY TEXT NOT NULL, " +
 			 " FRIDAY TEXT NOT NULL); ";
+
+private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INT PRIMARY KEY NOT NULL, DESCRIPTION TEXT);";
 
   public DBHelper(Context context) {
     super(context, DATABASE_NAME, null, DATABASE_VERSION);
   }
-  
+
 
   @Override
   public void onCreate(SQLiteDatabase database) {
     database.execSQL(CREATE_STAFF);
     database.execSQL(CREATE_SCHEDULE);
+    database.execSQL(CREATE_TABLE);
   }
 
   @Override
@@ -53,24 +56,72 @@ public class DBHelper extends SQLiteOpenHelper {
     db.execSQL("DROP TABLE IF EXISTS SCHEDULE");
     onCreate(db);
   }
-  
-  public void addStaff(int id, String name, int room, String faculty, int schedule, String telephone, String email)
+
+  public void addStaff(String name, int room, String faculty, int schedule, String telephone, String email)
   {
 	  SQLiteDatabase db = this.getWritableDatabase();
-	  String sql = "INSERT INTO STAFF (ID,NAME,ROOM,FACULTY,SCHEDULE,TELEPHONE,EMAIL) " +
-				 "VALUES (" + id + ", '" + name + "', " + room + ", '" + faculty + "', " + schedule + ", '" + telephone + "', '" + email + "');";
+	  String sql = "INSERT INTO STAFF (NAME,ROOM,FACULTY,SCHEDULE,TELEPHONE,EMAIL) " +
+				 "VALUES ('" + name + "', " + room + ", '" + faculty + "', " + schedule + ", '" + telephone + "', '" + email + "');";
 	  db.execSQL(sql);
   }
-  
+
   public void addSchedule(int id, String monday, String tuesday, String wednesday, String thursday, String friday)
   {
 	  SQLiteDatabase db = this.getWritableDatabase();
 	  String sql = "INSERT INTO SCHEDULE (ID, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY) " +
-				 "VALUES (" + id + ", '" + monday + "', '" + tuesday + "', '" + wednesday + 
+				 "VALUES (" + id + ", '" + monday + "', '" + tuesday + "', '" + wednesday +
 				 "', '" + thursday + "', '" + friday + "');";
 	  db.execSQL(sql);
   }
-  
+
+  public void addRoom (int id, String description)
+  {
+      SQLiteDatabase db = this.getWritableDatabase();
+	  String sql = "INSERT INTO ROOM (ID, DESCRIPTION) " +
+				 "VALUES (" + id + ", '" + description + "');";
+	  db.execSQL(sql);
+  }
+
+  public void editStaff(int id, String name, int room, String faculty, int schedule, String telephone, String email)
+  {
+      SQLiteDatabase db = this.getWritableDatabase();
+      if (name != NULL)
+      {
+          String sql = "UPDATE STAFF SET NAME = '" + name + "' WHERE ID = " + ID ";";
+          db.execSQL(sql);
+      }
+
+      if (room != NULL)
+      {
+          String sql = "UPDATE STAFF SET ROOM = " + room + " WHERE ID = " + ID ";";
+          db.execSQL(sql);
+      }
+
+      if (faculty != NULL)
+      {
+          String sql = "UPDATE STAFF SET FACULTY = '" + faculty + "' WHERE ID = " + ID ";";
+          db.execSQL(sql);
+      }
+
+      if (schedule != NULL)
+      {
+          String sql = "UPDATE STAFF SET SCHEDULE = " + schedule + " WHERE ID = " + ID ";";
+          db.execSQL(sql);
+      }
+
+      if (telephone != NULL)
+      {
+          String sql = "UPDATE STAFF SET TELEPHONE = '" + telephone + "' WHERE ID = " + ID ";";
+          db.execSQL(sql);
+      }
+
+      if (email != NULL)
+      {
+          String sql = "UPDATE STAFF SET EMAI; = '" + email + "' WHERE ID = " + ID ";";
+          db.execSQL(sql);
+      }
+
+  }
   public List<String> getStaffsIdsNames()
   {
 	  List<String> l = new ArrayList<String>();
@@ -87,7 +138,7 @@ public class DBHelper extends SQLiteOpenHelper {
 	  c.close();
 	  return l;
   }
-  
+
   public List<String> getFacultyNames()
   {
 	  List<String> l = new ArrayList<String>();
@@ -104,7 +155,7 @@ public class DBHelper extends SQLiteOpenHelper {
 	  c.close();
 	  return l;
   }
-  
+
   public List<String> getFacultyStaffsIdsNames(String faculty)
   {
 	  List<String> l = new ArrayList<String>();
@@ -120,29 +171,29 @@ public class DBHelper extends SQLiteOpenHelper {
 	  }
 	  return l;
   }
-  
+
   public Staff getStaff(int id) {
 	  Staff s = null;
 	  SQLiteDatabase db = this.getReadableDatabase();
 	  String sql = "SELECT * FROM STAFF WHERE id =  '" + id + "';";
 	  Cursor c = db.rawQuery(sql, null);
-	  
+
 	  if( c != null && c.moveToFirst() ) {
 		  Schedule sche = null;
 		  String sql1 = "SELECT * FROM SCHEDULE WHERE ID =  '" + c.getInt(4) + "';";
 		  Cursor c1 = db.rawQuery(sql1, null);
 		  if( c1 != null && c1.moveToFirst() ) {
-			  sche = new Schedule(c1.getString(1), c1.getString(2), c1.getString(3), 
+			  sche = new Schedule(c1.getString(1), c1.getString(2), c1.getString(3),
 					  c1.getString(4), c1.getString(5));
 			  c1.close();
 		  }
-		  
+
 		  s = new Staff(c.getString(1), c.getInt(2), c.getString(3), sche, c.getString(5), c.getString(6));
-		  
+
 		  c.close();
 	  }
-	  
+
 	  return s;
   }
 
-} 
+}
