@@ -7,6 +7,9 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 public class StaffActivity extends Activity {
 
@@ -37,89 +41,33 @@ public class StaffActivity extends Activity {
         Staff s = d.getStaff(staffId);
 		d.close();
 		
-	    // Create the view
-		LinearLayout parent = new LinearLayout(this);
-		parent.setWeightSum(10f);
+		setContentView(R.layout.activity_staff);
 		
-		RelativeLayout layout = new RelativeLayout(this);
-		layout.setId(0);
+		TextView nameView = (TextView) findViewById(R.id.name);
+	    nameView.setText(s.getName());
+		 
+		TextView info = (TextView) findViewById(R.id.info);
+		info.setText("\nFaculty: " + s.getFaculty());
+		info.append("\nTelephone: " + s.getTelephone());
+		info.append("\nEmail: " + s.getEmail());
+		info.append("\nSchedule:");
 		
-		TextView nameView = new TextView(this);
-		nameView.setId(1);
-	    nameView.setTextSize(40);
-	    nameView.setText("\t" + s.getName());
-		lp = new RelativeLayout.LayoutParams(
-		        RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-		lp.addRule(RelativeLayout.ALIGN_PARENT_LEFT, -1);
-	    layout.addView(nameView, lp);  
-	    
-		TextView facultyView = new TextView(this);
-		facultyView.setId(2);
-		facultyView.setTextSize(20);
-		facultyView.setText("\tRole: " + s.getFaculty());
-		lp = new RelativeLayout.LayoutParams(
-		        RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-		lp.addRule(RelativeLayout.BELOW, nameView.getId());
-		layout.addView(facultyView, lp);
+		info.append("\nMon - \t " + s.getSchedule().getMon()
+		+ "\nTue - \t " + s.getSchedule().getTue()
+		+ "\nWed - \t " + s.getSchedule().getWed()
+		+ "\nThu - \t " + s.getSchedule().getThu()
+		+ "\nFri - \t " + s.getSchedule().getFri());
 		
-		TextView telephoneView = new TextView(this);
-		telephoneView.setId(3);
-		telephoneView.setTextSize(20);
-		telephoneView.setText("\tTelephone: " + s.getTelephone());
-		lp = new RelativeLayout.LayoutParams(
-		        RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-		lp.addRule(RelativeLayout.BELOW, facultyView.getId());
-		layout.addView(telephoneView, lp);
-		
-		TextView emailView = new TextView(this);
-		emailView.setId(4);
-		emailView.setTextSize(20);
-		emailView.setText("\tEmail: " + s.getEmail());
-		lp = new RelativeLayout.LayoutParams(
-		        RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-		lp.addRule(RelativeLayout.BELOW, telephoneView.getId());
-		layout.addView(emailView, lp);
-		
-		TextView scheduleView = new TextView(this);
-		scheduleView.setId(5);
-		scheduleView.setTextSize(20);
-		scheduleView.setText("\tSchedule:");
-		lp = new RelativeLayout.LayoutParams(
-		        RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-		lp.addRule(RelativeLayout.BELOW, emailView.getId());
-		layout.addView(scheduleView, lp);
-
-		TextView schedule = new TextView(this);
-		schedule.setId(6);
-		schedule.setTextSize(10);
-		schedule.setText("\tMon - \t " + s.getSchedule().getMon()
-		+ "\n\tTue - \t " + s.getSchedule().getTue()
-		+ "\n\tWed - \t " + s.getSchedule().getWed()
-		+ "\n\tThu - \t " + s.getSchedule().getThu()
-		+ "\n\tFri - \t\t " + s.getSchedule().getFri());
-		lp = new RelativeLayout.LayoutParams(
-		        RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-		lp.addRule(RelativeLayout.BELOW, scheduleView.getId());
-		layout.addView(schedule, lp);
-
-		ImageView guildLogo = new ImageView(this);
-		guildLogo.setImageResource(R.drawable.guild);
-		guildLogo.setId(7);
-		lp = new RelativeLayout.LayoutParams(
-		        RelativeLayout.LayoutParams.WRAP_CONTENT, 160);
-		lp.addRule(RelativeLayout.BELOW, schedule.getId());
-		layout.addView(guildLogo, lp);
-	
-		LinearLayout.LayoutParams lParams = new LinearLayout.LayoutParams(
-		        LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-		lParams.weight = 5f;
-		parent.addView(layout, lParams);
-	
-		GifWebView map = new GifWebView(this, "file:///android_asset/0.gif");
-		map.setId(8);
-		parent.addView(map, lParams);
-		
-	    setContentView(parent);
+		String fileName = "android.resource://"+  getPackageName() + "/raw/vp8";
+		VideoView vv = (VideoView) findViewById(R.id.video);
+		vv.setVideoURI(Uri.parse(fileName));
+		vv.start();
+		vv.setOnPreparedListener(new OnPreparedListener() {
+		    @Override
+		    public void onPrepared(MediaPlayer mp) {
+		        mp.setLooping(true);
+		    }
+		});
 	}
 
 	@Override
@@ -139,11 +87,5 @@ public class StaffActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
-	}
-	
-	private class GifWebView extends WebView {
-		public GifWebView(Context context, String path) { 
-			super(context); loadUrl(path);
-		}
 	}
 }

@@ -50,6 +50,7 @@ public class SearchStaffActivity extends ListActivity {
         mGestureDetector = new GestureDetector(this, new SideIndexGestureListener());
 
         DBHelper d = new DBHelper(this);
+        //d = populate(d);
         d.getReadableDatabase();
 		List<String> staffs = d.getStaffsIdsNames();
 		d.close();
@@ -212,5 +213,63 @@ public class SearchStaffActivity extends ListActivity {
             //ListView listView = (ListView) findViewById(android.R.id.list);
             getListView().setSelection(subitemPosition);
         }
+    }
+    private DBHelper populate(DBHelper d){
+    	d.addStaff(0, "Abraham Smith", 0, "Computer Science", 0, "0424123234", "abraham_smith@staff.uwa.edu.au");
+    	d.addStaff(1, "Bryan Doyle", 1, "Biology", 0, "0234134234", "bryan_doyle@staff.uwa.edu.au");
+    	d.addStaff(2, "Charlie Beck", 2, "Chemistry", 0, "0234134235", "charlie_beck@staff.uwa.edu.au");
+    	d.addStaff(3, "Daniel Russell", 3, "Chemistry", 0, "0234134236",
+    	"daniel_russell@staff.uwa.edu.au");
+    	d.addStaff(4, "Enrique Martinez", 4, "Engineering", 0, "0234134237", "enrique_martinez@staff.uwa.edu.au");
+    	d.addStaff(5, "Frank Overwood", 5, "Politics", 0, "0234134238", "frank_overwood@staff.uwa.edu.au");
+    	d.addStaff(6, "Gary Oak", 6, "Economics", 0, "0234134239", "gary_oak@staff.uwa.edu.au");
+    	d.addStaff(7, "Harry Archer", 7, "Economics", 0, "0234134240", "harry_archer@staff.uwa.edu.au");
+    	d.addStaff(8, "Ingrid Nelson", 8, "Marketing", 0, "0234134241", "ingrid_nelson@staff.uwa.edu.au");
+    	d.addStaff(9, "Jenson Button", 9, "Engineering", 0, "0234134242", "jenson_button@staff.uwa.edu.au");
+    	d.addStaff(10, "Kimi Raik", 10, "Physics", 0, "0234134243", "kimi_raik@staff.uwa.edu.au");
+    	d.addStaff(11, "Lewis Hamilton", 11, "Physics", 0, "0234134244", "lewis_hamilton@staff.uwa.edu.au");
+    	d.addStaff(12, "Marco Gasol", 12, "Biology", 0, "0233495323", "marco_gasol@staff.uwa.edu.au");
+    	d.addStaff(13, "Nigel Lawson", 13, "Computer Science", 0, "0234745644", "nigel_lawson@staff.uwa.edu.au");
+    	d.addStaff(14, "Orlando Johnson", 14, "Biochem", 0, "0231139244", "orlando_johnson@staff.uwa.edu.au");
+    	d.addStaff(15, "Pam Stanley", 15, "Chemistry", 0, "0255392044", "pam_stanley@staff.uwa.edu.au");
+    	d.addStaff(16, "Quentin Bryce", 16, "Politics", 0, "0231480234", "quentin_bryce@staff.uwa.edu.au");
+    	d.addStaff(17, "Rex Tan", 17, "Mathematics", 0, "0248579230", "rex_tan@staff.uwa.edu.au");
+    	d.addStaff(18, "Sark Albert", 18, "Economics", 0, "0231974240", "sark_albert@staff.uwa.edu.au");
+    	d.addStaff(19, "Tamika Rumio", 19, "Art", 0, "0289112290", "tamika_rumio@staff.uwa.edu.au");
+    	d.addStaff(20, "Una Malaka", 20, "Art", 0, "0232329244", "ula_malaka@staff.uwa.edu.au");
+    	d.addStaff(21, "Vince Jackson", 21, "Engineering", 0, "0234921244", "vince_jackson@staff.uwa.edu.au");
+    	d.addStaff(22, "Wesley Barker", 22, "Physics", 0, "026789134240", "wesley_barkerr@staff.uwa.edu.au");
+    	d.addStaff(23, "Xavier Markus", 23, "Psychology", 0, "0239312240", "xavier_markus@staff.uwa.edu.au");
+    	d.addStaff(24, "Yolanda Bertram", 24, "Mathematics", 0, "0241991240", "yolanda_bertram@staff.uwa.edu.au");
+    	d.addStaff(25, "Zohaib Hazi", 25, "Zoology", 0, "0247583240", "zohaib_hazi@staff.uwa.edu.au");
+
+    	d.addSchedule(0, "1500-1700",  "1300-1400",  "0900-1700",  "1200-1400",  "0900-1100");
+    	d.addSchedule(1, "1500-1700",  "1300-1400",  "0900-1700",  "1200-1400",  "0900-1100");
+    	d.addSchedule(2, "1700-1800",  "0900-1400",  "0900-1700",  "0700-1400",  "0600-1100");
+    	d.addSchedule(3, "1100-1700",  "1300-1400",  "1100-1400",  "1200-1500",  "0900-1400");
+    	d.addSchedule(4, "1500-1700",  "1000-1400",  "1600-1700",  "1000-1400",  "1000-1100");
+    	d.addSchedule(5, "1000-1700",  "1000-1400",  "1000-1700",  "1000-1400",  "1000-1100");
+    	d.addSchedule(6, "1500-1700",  "1300-1700",  "0900-1700",  "1200-1700",  "0900-1117");
+    	d.addSchedule(7, "1000-1700",  "1000-1700",  "1000-1700",  "1000-1700",  "1000-1700");
+    	d.addSchedule(8, "-",  "1400-1600",  "0900-1700",  "-",  "0900-1100");
+    	d.addSchedule(9, "-",  "-",  "-",  "-",  "-");
+    	d.addSchedule(10, "0800-1700",  "0800-1400",  "0800-1700",  "0800-1400",  "0800-1100");
+    	d.addSchedule(11, "1200-1400",  "1300-1400",  "0900-1400",  "1200-1400",  "0900-1400");
+    	d.addSchedule(12, "1400-1700",  "1400-1500",  "1400-1700",  "1200-1400",  "1400-1500");
+    	d.addSchedule(13, "1500-1700",  "1300-1400",  "0900-1700",  "1200-1400",  "0900-1100");
+    	d.addSchedule(14, "0900-1000",  "1000-1100",  "1100-1700",  "1200-1600",  "1000-1100");
+    	d.addSchedule(15, "0800-1700",  "0800-1400",  "0900-1700",  "0800-1400",  "0800-1100");
+    	d.addSchedule(16, "1300-1500",  "1300-1500",  "1300-1500",  "1300-1500",  "1300-1500");
+    	d.addSchedule(17, "-",  "-",  "-",  "-",  "-");
+    	d.addSchedule(18, "1500-1700",  "1300-1400",  "-",  "-",  "1200-1600");
+    	d.addSchedule(19, "-",  "1000-1400",  "1000-1700",  "1200-1700",  "1100-1300");
+    	d.addSchedule(20, "1200-1700",  "1200-1400",  "1200-1700",  "1200-1400",  "1200-1100");
+    	d.addSchedule(21, "-",  "-",  "-",  "-",  "0900-1700");
+    	d.addSchedule(22, "1500-1700",  "1300-1400",  "0900-1700",  "1200-1400",  "0900-1100");
+    	d.addSchedule(23,  "1200-1700",  "-",  "-",  "-",  "1200-1600");
+    	d.addSchedule(24, "1530-1700",  "09-1400",  "0900-1700",  "0900-1400",  "0900-1100");
+    	d.addSchedule(25, "1100-1700",  "1100-1400",  "1100-1700",  "1100-1400",  "1100-1200");
+    
+    	return d;
     }
 }
