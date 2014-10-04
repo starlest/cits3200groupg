@@ -44,7 +44,7 @@ private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INT PRIMARY KE
   public void onCreate(SQLiteDatabase database) {
     database.execSQL(CREATE_STAFF);
     database.execSQL(CREATE_SCHEDULE);
-    database.execSQL(CREATE_TABLE);
+    database.execSQL(CREATE_ROOM);
   }
 
   @Override
@@ -82,42 +82,42 @@ private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INT PRIMARY KE
 	  db.execSQL(sql);
   }
 
-  public void editStaff(int id, String name, int room, String faculty, int schedule, String telephone, String email)
+  public void editStaff(int id, String name, String room, String faculty, int schedule, String telephone, String email)
   {
       SQLiteDatabase db = this.getWritableDatabase();
-      if (name != NULL)
+      if (name != null)
       {
-          String sql = "UPDATE STAFF SET NAME = '" + name + "' WHERE ID = " + ID ";";
+          String sql = "UPDATE STAFF SET NAME = '" + name + "' WHERE ID = " + id +";";
           db.execSQL(sql);
       }
 
-      if (room != NULL)
+      if (room != null)
       {
-          String sql = "UPDATE STAFF SET ROOM = " + room + " WHERE ID = " + ID ";";
+          String sql = "UPDATE STAFF SET ROOM = " + room + " WHERE ID = " + id +";";
           db.execSQL(sql);
       }
 
-      if (faculty != NULL)
+      if (faculty != null)
       {
-          String sql = "UPDATE STAFF SET FACULTY = '" + faculty + "' WHERE ID = " + ID ";";
+          String sql = "UPDATE STAFF SET FACULTY = '" + faculty + "' WHERE ID = " + id +";";
           db.execSQL(sql);
       }
 
-      if (schedule != NULL)
+      if (schedule != -1)
       {
-          String sql = "UPDATE STAFF SET SCHEDULE = " + schedule + " WHERE ID = " + ID ";";
+          String sql = "UPDATE STAFF SET SCHEDULE = " + schedule + " WHERE ID = " + id +";";
           db.execSQL(sql);
       }
 
-      if (telephone != NULL)
+      if (telephone != null)
       {
-          String sql = "UPDATE STAFF SET TELEPHONE = '" + telephone + "' WHERE ID = " + ID ";";
+          String sql = "UPDATE STAFF SET TELEPHONE = '" + telephone + "' WHERE ID = " + id +";";
           db.execSQL(sql);
       }
 
-      if (email != NULL)
+      if (email != null)
       {
-          String sql = "UPDATE STAFF SET EMAI; = '" + email + "' WHERE ID = " + ID ";";
+          String sql = "UPDATE STAFF SET EMAI; = '" + email + "' WHERE ID = " + id +";";
           db.execSQL(sql);
       }
 
