@@ -215,34 +215,45 @@ public class SearchStaffActivity extends ListActivity {
         }
     }
     private DBHelper populate(DBHelper d){
-    	d.addStaff("Abraham Smith", 0, "Computer Science", 0, "0424123234", "abraham_smith@staff.uwa.edu.au");
-    	d.addStaff("Bryan Doyle", 1, "Biology", 0, "0234134234", "bryan_doyle@staff.uwa.edu.au");
-    	d.addStaff("Charlie Beck", 2, "Chemistry", 0, "0234134235", "charlie_beck@staff.uwa.edu.au");
-    	d.addStaff("Daniel Russell", 3, "Chemistry", 0, "0234134236",
-    	"daniel_russell@staff.uwa.edu.au");
-    	d.addStaff("Enrique Martinez", 4, "Engineering", 0, "0234134237", "enrique_martinez@staff.uwa.edu.au");
-    	d.addStaff("Frank Overwood", 5, "Politics", 0, "0234134238", "frank_overwood@staff.uwa.edu.au");
-    	d.addStaff("Gary Oak", 6, "Economics", 0, "0234134239", "gary_oak@staff.uwa.edu.au");
-    	d.addStaff("Harry Archer", 7, "Economics", 0, "0234134240", "harry_archer@staff.uwa.edu.au");
-    	d.addStaff("Ingrid Nelson", 8, "Marketing", 0, "0234134241", "ingrid_nelson@staff.uwa.edu.au");
-    	d.addStaff("Jenson Button", 9, "Engineering", 0, "0234134242", "jenson_button@staff.uwa.edu.au");
-    	d.addStaff("Kimi Raik", 10, "Physics", 0, "0234134243", "kimi_raik@staff.uwa.edu.au");
-    	d.addStaff("Lewis Hamilton", 11, "Physics", 0, "0234134244", "lewis_hamilton@staff.uwa.edu.au");
-    	d.addStaff("Marco Gasol", 12, "Biology", 0, "0233495323", "marco_gasol@staff.uwa.edu.au");
-    	d.addStaff("Nigel Lawson", 13, "Computer Science", 0, "0234745644", "nigel_lawson@staff.uwa.edu.au");
-    	d.addStaff("Orlando Johnson", 14, "Biochem", 0, "0231139244", "orlando_johnson@staff.uwa.edu.au");
-    	d.addStaff("Pam Stanley", 15, "Chemistry", 0, "0255392044", "pam_stanley@staff.uwa.edu.au");
-    	d.addStaff("Quentin Bryce", 16, "Politics", 0, "0231480234", "quentin_bryce@staff.uwa.edu.au");
-    	d.addStaff("Rex Tan", 17, "Mathematics", 0, "0248579230", "rex_tan@staff.uwa.edu.au");
-    	d.addStaff("Sark Albert", 18, "Economics", 0, "0231974240", "sark_albert@staff.uwa.edu.au");
-    	d.addStaff("Tamika Rumio", 19, "Art", 0, "0289112290", "tamika_rumio@staff.uwa.edu.au");
-    	d.addStaff("Una Malaka", 20, "Art", 0, "0232329244", "ula_malaka@staff.uwa.edu.au");
-    	d.addStaff("Vince Jackson", 21, "Engineering", 0, "0234921244", "vince_jackson@staff.uwa.edu.au");
-    	d.addStaff("Wesley Barker", 22, "Physics", 0, "026789134240", "wesley_barkerr@staff.uwa.edu.au");
-    	d.addStaff("Xavier Markus", 23, "Psychology", 0, "0239312240", "xavier_markus@staff.uwa.edu.au");
-    	d.addStaff("Yolanda Bertram", 24, "Mathematics", 0, "0241991240", "yolanda_bertram@staff.uwa.edu.au");
-    	d.addStaff("Zohaib Hazi", 25, "Zoology", 0, "0247583240", "zohaib_hazi@staff.uwa.edu.au");
-
+    	d.addStaff("Aden Date", 27, "Volunteering Hub", 0, "64885891", "aden.date@guild.uwa.edu.au");
+    	d.addStaff("Sophie Greer", 27, "Volunteering Hub", 0, "64885891", "sophie.greer@guild.uwa.edu.au");
+    	d.addStaff("Chelsea Hayes", 30, "Student Centre", 0, "64882295", "chelsea.hayes@guild.uwa.edu.au");
+    	d.addStaff("Gary Morris", 45, "Tavern", 0, "64882318", "gary.morris@guild.uwa.edu.au");
+    	d.addStaff("Vishal Shah", 104, "Finance Office", 0, "64882928", "vishal.shah@guild.uwa.edu.au");
+    	d.addStaff("Daryl Sanders", 104, "Finance Office", 0, "64883407", "daryl.sanders@guild.uwa.edu.au");
+    	d.addStaff("Nicola Norris", 104, "Finance Office", 0, "64882293", "nicola.norris@guild.uwa.edu.au");
+    	d.addStaff("Myriam Hernandez", 104, "Finance Office", 0, "64882296", "nicola.norris@guild.uwa.edu.au");
+    	d.addStaff("Jia Jing Hong", 104, "Finance Office", 0, "64882811", "jiajing.hong@guild.uwa.edu.au");
+    	d.addStaff("Melissa Davison", 104, "Finance Office", 0, "64882811", "melissa.davison@guild.uwa.edu.au");
+    	d.addStaff("Danielle Fitzgerald", 105, "Student Assist Office", 0, "64882292", "danielle.fitzgerald@guild.uwa.edu.au");
+    	d.addStaff("Patrice Mitchell", 105, "Student Assist Office", 0, "64888017", "patrice.mitchell@guild.uwa.edu.au");
+    	d.addStaff("Steff Langer-Kool", 105, "Student Assist Office", 0, "64882230", "steffi.langer-kool@guild.uwa.edu.au");
+    	d.addStaff("Kelvin Lee", 106, "Administration Office", 0, "64883068", "kelvin.lee@guild.uwa.edu.au");
+    	d.addStaff("Jessica Toon", 106, "Administration Office", 0, "64881681", "jessica.toon@guild.uwa.edu.au");
+    	d.addStaff("Jonathon Zahra", 106, "Administration Office", 0, "64882923", "jonathon.zahra@guild.uwa.edu.au");
+    	d.addStaff("Beverly Macintyre", 106, "Administration Office", 0, "64882832", "beverly.macintryre@guild.uwa.edu.au");
+    	d.addStaff("Ken Saverimutto", 107, "Catering Director Office", 0, "64882295", "ken.saverimutto@guild.uwa.edu.au");
+    	d.addStaff("Tony Goodman", 108, "Director of Student and Corporate Services Office", 0, "64882271", "tony.goodman@guild.uwa.edu.au");
+    	d.addStaff("Rodney Taylor", 109, "Catering Administration Office", 0, "64883763", "rodney.taylor@guild.uwa.edu.au");
+    	d.addStaff("Irene Conway", 109, "Catering Administration Office", 0, "64881822", "irene.conway@guild.uwa.edu.au");
+    	d.addStaff("Geraldine Lambert", 109, "Catering Administration Office", 0, "64882315", "geraldine.lambert@guild.uwa.edu.au");
+    	d.addStaff("Chloe Jackson", 110, "Events and Creative Office", 0, "64885340", "chloe.jackson@guild.uwa.edu.au" );
+    	d.addStaff("Stephanie Stewart", 110, "Events and Creative Office", 0, "64882291", "stephanie.stewart@guild.uwa.edu.au");
+    	d.addStaff("Lukas Wilmmler", 110, "Events and Creative Office", 0, "64883762", "lukas.wilmmler@guild.uwa.edu.au");
+    	d.addStaff("Karrie McClelland", 110, "Events and Creative Office", 0,  "64883408", "karrie.mcclelland@guild.uwa.edu.au");
+    	d.addStaff("Alex Pond", 110, "Events and Creative Office", 0, "64882211", "alex.pond@guild.uwa.edu.au");
+    	d.addStaff("Kate Hoolahan", 110, "Events and Creative Office", 0, "64883929", "kate.hoolahan@guild.uwa.edu.au");
+    	d.addStaff("Wayne HoweIls", 111, "Managing Director Office", 0, "64883760", "wayne.howells@guild.uwa.edu.au");
+    	d.addStaff("Jenny Ophe I", 115, "Human Resources Office", 0, "64884312", "jenny.ophel@guild.uwa.edu.au");
+    	d.addStaff("Cameron Fitzgeraldd", 116, "Student Representative Office", 0, "64883773", "vp@guild.uwa.edu.au");
+    	d.addStaff("Samuel Shipley", 116, "Student Representative Office", 0, "64883773", "secretary@guild.uwa.edu.au");
+    	d.addStaff("Daniel Jo", 116, "Student Representative Office", 0, "64883773", "treasurer@guild.uwa.edu.au");
+    	d.addStaff("Elizabeth O’Shea", 116, "Student Representative Office", 0, "64883773", "ed@guild.uwa.edu.au");
+    	d.addStaff("Madelene Mulhollad", 116, "Student Representative Office", 0, "64883773", "soc@guild.uwa.edu.au");
+    	d.addStaff("Honnny Palayukan", 116, "Student Representative Office", 0, "64883773", "pac@guild.uwa.edu.au");
+    	d.addStaff("David Raithel", 116, "Postgraduate Student’s Association Office", 0, "64883194", "psa@guild.uwa.edu.au");
+    	d.addStaff("Thomas Henderson", 116, "President Office", 0, "64882294", "president@guild.uwa.edu.au");
+    	
     	d.addSchedule(0, "1500-1700",  "1300-1400",  "0900-1700",  "1200-1400",  "0900-1100");
     	d.addSchedule(1, "1500-1700",  "1300-1400",  "0900-1700",  "1200-1400",  "0900-1100");
     	d.addSchedule(2, "1700-1800",  "0900-1400",  "0900-1700",  "0700-1400",  "0600-1100");
@@ -269,7 +280,26 @@ public class SearchStaffActivity extends ListActivity {
     	d.addSchedule(23,  "1200-1700",  "-",  "-",  "-",  "1200-1600");
     	d.addSchedule(24, "1530-1700",  "09-1400",  "0900-1700",  "0900-1400",  "0900-1100");
     	d.addSchedule(25, "1100-1700",  "1100-1400",  "1100-1700",  "1100-1400",  "1100-1200");
-    
+
+    	d.addRoom(001, "Eye Care Centre");
+    	d.addRoom(002, "Guild Second Hand Bookshop");
+    	d.addRoom(003, "Winthrop Australia Retail Outlet");
+    	d.addRoom(8, "Guild Village Cafe");
+    	d.addRoom(011, "Campus Pharmacy");
+    	d.addRoom(012, "Co-Op Bookshop");
+    	d.addRoom(014, "Talking Heads Hairdresser");
+    	d.addRoom(015, "Campus News & Gifts");
+    	d.addRoom(027, "Guild Volunteering Hub");
+    	d.addRoom(030, "Guild Student Centre");
+    	d.addRoom(041, "Refectory Office");
+    	d.addRoom(045, "Tavern Office");
+    	d.addRoom(104, "Finance Office");
+    	d.addRoom(105, "Student Assist Office");
+    	d.addRoom(106, "Administration Office");
+    	d.addRoom(107, "Catering Director Office");
+    	d.addRoom(108, "Director of Student and Corporate Services Office");
+    	d.addRoom(109, "Catering Administration Office");
+    	
     	return d;
     }
 }

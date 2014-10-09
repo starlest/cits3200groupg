@@ -13,11 +13,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
   private static final String DATABASE_NAME = "guild.db";
-  private static final int DATABASE_VERSION = 8;
+  private static final int DATABASE_VERSION = 10;
 
   // Database creation sql statement
   private static final String CREATE_STAFF = "CREATE TABLE STAFF " +
-			 "(ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT," +
+			 "(ID INTEGER PRIMARY KEY," +
 				" NAME TEXT NOT NULL, " +
 				 " ROOM INT SECONDARY KEY NOT NULL, " +
 				 " FACULTY TEXT NOT NULL, " +
@@ -33,7 +33,7 @@ public class DBHelper extends SQLiteOpenHelper {
 			 " THURSDAY TEXT NOT NULL, " +
 			 " FRIDAY TEXT NOT NULL); ";
 
-private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INT PRIMARY KEY NOT NULL, DESCRIPTION TEXT);";
+private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INTEGER PRIMARY KEY, DESCRIPTION TEXT);";
 
   public DBHelper(Context context) {
     super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -54,14 +54,15 @@ private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INT PRIMARY KE
             + newVersion + ", which will destroy all old data");
     db.execSQL("DROP TABLE IF EXISTS STAFF");
     db.execSQL("DROP TABLE IF EXISTS SCHEDULE");
+    db.execSQL("DROP TABLE IF EXISTS ROOM");
     onCreate(db);
   }
 
   public void addStaff(String name, int room, String faculty, int schedule, String telephone, String email)
   {
 	  SQLiteDatabase db = this.getWritableDatabase();
-	  String sql = "INSERT INTO STAFF (NAME,ROOM,FACULTY,SCHEDULE,TELEPHONE,EMAIL) " +
-				 "VALUES ('" + name + "', " + room + ", '" + faculty + "', " + schedule + ", '" + telephone + "', '" + email + "');";
+	  String sql = "INSERT INTO STAFF (ID,NAME,ROOM,FACULTY,SCHEDULE,TELEPHONE,EMAIL) " +
+				 "VALUES (NULL,'" + name + "', " + room + ", '" + faculty + "', " + schedule + ", '" + telephone + "', '" + email + "');";
 	  db.execSQL(sql);
   }
 
@@ -126,7 +127,7 @@ private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INT PRIMARY KE
   {
 	  List<String> l = new ArrayList<String>();
 	  SQLiteDatabase db = this.getReadableDatabase();
-	  String sql = "SELECT id,NAME FROM STAFF;";
+	  String sql = "SELECT id,NAME FROM STAFF ORDER BY NAME;";
 	  Cursor c = db.rawQuery(sql, null);
 	  if( c != null && c.moveToFirst() ) {
 		  while (!c.isAfterLast()) {

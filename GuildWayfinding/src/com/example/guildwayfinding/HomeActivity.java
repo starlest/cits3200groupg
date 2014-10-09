@@ -18,6 +18,9 @@ public class HomeActivity extends ActionBarActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeButtonEnabled(false);
         actionBar.setTitle("Home");
+        
+        Intent intent = new Intent(this, AppIntentService.class);
+        startService(intent);
 	}
 
 	@Override

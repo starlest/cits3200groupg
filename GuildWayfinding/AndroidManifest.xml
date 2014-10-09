@@ -3,6 +3,7 @@
     package="com.example.guildwayfinding"
     android:versionCode="1"
     android:versionName="1.0" >
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <uses-sdk
         android:minSdkVersion="16"
@@ -13,6 +14,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.AppCompat.Light" >
+        <service android:name=".AppIntentService" />
         <activity
             android:name=".HomeActivity"
             android:label="@string/app_name" >
