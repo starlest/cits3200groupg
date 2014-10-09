@@ -12,21 +12,41 @@ import android.widget.TextView;
 
 public class AlphabetListAdapter extends BaseAdapter {
 
-    public static abstract class Row {}
+    public static abstract class Row {
+    	private int id;
+    	
+    	public int getId() {
+    		return id;
+    	}
+    	
+    	public void setId(int i) {
+    		this.id = i;
+    	}
+    }
     
     public static final class Section extends Row {
         public final String text;
 
         public Section(String text) {
             this.text = text;
+            this.setId(-1);
+        }
+        
+        public String toString() {
+        	return text;
         }
     }
     
     public static final class Item extends Row {
         public final String text;
-
-        public Item(String text) {
+        
+        public Item(String text, int id) {
             this.text = text;
+            this.setId(id);
+        }
+        
+        public String toString() {
+        	return text;
         }
     }
     
@@ -45,10 +65,9 @@ public class AlphabetListAdapter extends BaseAdapter {
     public Row getItem(int position) {
         return rows.get(position);
     }
-
-    @Override
+    
     public long getItemId(int position) {
-        return position;
+        return rows.get(position).getId();
     }
     
     @Override
