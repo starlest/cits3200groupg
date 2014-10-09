@@ -4,19 +4,27 @@ public class Staff {
 	private String name;
 	private int room;
 	private String faculty;
-	private Schedule schedule;
 	private String telephone;
 	private String email;
+	private String mon;
+	private String tues;
+	private String wed;
+	private String thurs;
+	private String fri;
 
 	
-	public Staff(String name, int room, String faculty, Schedule schedule, String telephone, String email) 
+	public Staff(String name, int room, String faculty, String telephone, String email, String Mon, String Tues, String Wed, String Thurs, String Fri) 
 	{
 		this.name = name;
 		this.room = room;
 		this.faculty = faculty;
-		this.schedule = schedule;
 		this.telephone = telephone;
 		this.email = email;
+		this.mon = Mon;
+		this.tues = Tues;
+		this.wed = Wed;
+		this.thurs = Thurs;
+		this.fri = Fri;
 	}
 	
 	public String getName() {
@@ -31,15 +39,31 @@ public class Staff {
 		return faculty;
 	}
 	
-	public Schedule getSchedule() {
-		return schedule;
-	}
-	
 	public String getTelephone() {
 		return telephone;
 	}
 	
 	public String getEmail() {
 		return email;
+	}
+	
+	public String getMon() {
+		return mon;
+	}
+	
+	public String getTues() {
+		return tues;
+	}
+	
+	public String getWed() {
+		return wed;
+	}
+	
+	public String getThurs() {
+		return thurs;
+	}
+	
+	public String getFri() {
+		return fri;
 	}
 }

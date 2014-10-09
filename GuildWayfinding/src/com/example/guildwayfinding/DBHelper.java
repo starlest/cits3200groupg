@@ -13,25 +13,21 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
   private static final String DATABASE_NAME = "guild.db";
-  private static final int DATABASE_VERSION = 10;
+  private static final int DATABASE_VERSION = 13;
 
   // Database creation sql statement
   private static final String CREATE_STAFF = "CREATE TABLE STAFF " +
 			 "(ID INTEGER PRIMARY KEY," +
 				" NAME TEXT NOT NULL, " +
-				 " ROOM INT SECONDARY KEY NOT NULL, " +
+				 " ROOM INT NOT NULL, " +
 				 " FACULTY TEXT NOT NULL, " +
-				 " SCHEDULE INT SECONDARY KEY NOT NULL, " +
 				 " TELEPHONE TEXT, " +
-				 " EMAIL TEXT);";
-
-  private static final String CREATE_SCHEDULE = "CREATE TABLE SCHEDULE " +
-			"(ID INT PRIMARY KEY NOT NULL, " +
-			" MONDAY TEXT NOT NULL, " +
-			 " TUESDAY TEXT NOT NULL, " +
-			 " WEDNESDAY TEXT NOT NULL, " +
-			 " THURSDAY TEXT NOT NULL, " +
-			 " FRIDAY TEXT NOT NULL); ";
+				 " EMAIL TEXT," +
+				 " MONDAY TEXT," +
+				 " TUESDAY TEXT," +
+				 " WEDNESDAY TEXT," +
+				 " THURSDAY TEXT," +
+				 " FRIDAY TEXT);";
 
 private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INTEGER PRIMARY KEY, DESCRIPTION TEXT);";
 
@@ -43,7 +39,6 @@ private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INTEGER PRIMAR
   @Override
   public void onCreate(SQLiteDatabase database) {
     database.execSQL(CREATE_STAFF);
-    database.execSQL(CREATE_SCHEDULE);
     database.execSQL(CREATE_ROOM);
   }
 
@@ -53,25 +48,15 @@ private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INTEGER PRIMAR
         "Upgrading database from version " + oldVersion + " to "
             + newVersion + ", which will destroy all old data");
     db.execSQL("DROP TABLE IF EXISTS STAFF");
-    db.execSQL("DROP TABLE IF EXISTS SCHEDULE");
     db.execSQL("DROP TABLE IF EXISTS ROOM");
     onCreate(db);
   }
 
-  public void addStaff(String name, int room, String faculty, int schedule, String telephone, String email)
+  public void addStaff(String name, int room, String faculty, String telephone, String email, String Mon, String Tues, String Wed, String Thurs, String Fri)
   {
 	  SQLiteDatabase db = this.getWritableDatabase();
-	  String sql = "INSERT INTO STAFF (ID,NAME,ROOM,FACULTY,SCHEDULE,TELEPHONE,EMAIL) " +
-				 "VALUES (NULL,'" + name + "', " + room + ", '" + faculty + "', " + schedule + ", '" + telephone + "', '" + email + "');";
-	  db.execSQL(sql);
-  }
-
-  public void addSchedule(int id, String monday, String tuesday, String wednesday, String thursday, String friday)
-  {
-	  SQLiteDatabase db = this.getWritableDatabase();
-	  String sql = "INSERT INTO SCHEDULE (ID, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY) " +
-				 "VALUES (" + id + ", '" + monday + "', '" + tuesday + "', '" + wednesday +
-				 "', '" + thursday + "', '" + friday + "');";
+	  String sql = "INSERT INTO STAFF (ID,NAME,ROOM,FACULTY,TELEPHONE,EMAIL,MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY) " +
+				 "VALUES (NULL,'" + name + "', " + room + ", '" + faculty + "', '" + telephone + "', '" + email + "', '" + Mon + "', '" + Tues + "', '" + Wed + "', '" + Thurs + "', '" + Fri + "');";
 	  db.execSQL(sql);
   }
 
@@ -83,42 +68,23 @@ private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INTEGER PRIMAR
 	  db.execSQL(sql);
   }
 
-  public void editStaff(int id, String name, String room, String faculty, int schedule, String telephone, String email)
+  public void editStaff(int id, String name, String room, String faculty, String telephone, String email, String Mon, String Tues, String Wed, String Thurs, String Fri)
   {
       SQLiteDatabase db = this.getWritableDatabase();
       if (name != null)
       {
-          String sql = "UPDATE STAFF SET NAME = '" + name + "' WHERE ID = " + id +";";
-          db.execSQL(sql);
-      }
-
-      if (room != null)
-      {
-          String sql = "UPDATE STAFF SET ROOM = " + room + " WHERE ID = " + id +";";
-          db.execSQL(sql);
-      }
-
-      if (faculty != null)
-      {
-          String sql = "UPDATE STAFF SET FACULTY = '" + faculty + "' WHERE ID = " + id +";";
-          db.execSQL(sql);
-      }
-
-      if (schedule != -1)
-      {
-          String sql = "UPDATE STAFF SET SCHEDULE = " + schedule + " WHERE ID = " + id +";";
-          db.execSQL(sql);
-      }
-
-      if (telephone != null)
-      {
-          String sql = "UPDATE STAFF SET TELEPHONE = '" + telephone + "' WHERE ID = " + id +";";
-          db.execSQL(sql);
-      }
-
-      if (email != null)
-      {
-          String sql = "UPDATE STAFF SET EMAI; = '" + email + "' WHERE ID = " + id +";";
+          String sql = 
+        		  "UPDATE STAFF SET NAME = '" + name + "', "
+        		  	+ "ROOM = "+room+","
+        		  	+ "FACULTY = '" + faculty + "', "
+        		  	+ "TELEPHONE = '" + telephone + "', "
+        		  	+ "EMAIL = '" + email + "', "
+        		  	+ "MONDAY = '" + Mon + "', "
+        		  	+ "TUESDAY = '" + Tues + "', "
+        		  	+ "WEDNESDAY = '" + Wed + "', "
+        		  	+ "THURSDAY = '" + Thurs + "', "
+        		  	+ "FRIDAY = '" + Fri + "' "
+        		  	+ "WHERE ID = " + id +";";
           db.execSQL(sql);
       }
 
@@ -180,16 +146,8 @@ private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INTEGER PRIMAR
 	  Cursor c = db.rawQuery(sql, null);
 
 	  if( c != null && c.moveToFirst() ) {
-		  Schedule sche = null;
-		  String sql1 = "SELECT * FROM SCHEDULE WHERE ID =  '" + c.getInt(4) + "';";
-		  Cursor c1 = db.rawQuery(sql1, null);
-		  if( c1 != null && c1.moveToFirst() ) {
-			  sche = new Schedule(c1.getString(1), c1.getString(2), c1.getString(3),
-					  c1.getString(4), c1.getString(5));
-			  c1.close();
-		  }
 
-		  s = new Staff(c.getString(1), c.getInt(2), c.getString(3), sche, c.getString(5), c.getString(6));
+		  s = new Staff(c.getString(1), c.getInt(2), c.getString(3), c.getString(4), c.getString(5), c.getString(6), c.getString(7), c.getString(8), c.getString(9), c.getString(10));
 
 		  c.close();
 	  }

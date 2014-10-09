@@ -52,11 +52,11 @@ public class StaffActivity extends Activity {
 		info.append("\nEmail: " + s.getEmail());
 		info.append("\nSchedule:");
 		
-		info.append("\nMon - \t " + s.getSchedule().getMon()
-		+ "\nTue - \t " + s.getSchedule().getTue()
-		+ "\nWed - \t " + s.getSchedule().getWed()
-		+ "\nThu - \t " + s.getSchedule().getThu()
-		+ "\nFri - \t " + s.getSchedule().getFri());
+		info.append("\nMon - \t " + s.getMon()
+		+ "\nTue - \t " + s.getTues()
+		+ "\nWed - \t " + s.getWed()
+		+ "\nThu - \t " + s.getThurs()
+		+ "\nFri - \t " + s.getFri());
 		
 		String fileName = "android.resource://"+  getPackageName() + "/raw/vp8";
 		VideoView vv = (VideoView) findViewById(R.id.video);

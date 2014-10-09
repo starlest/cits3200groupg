@@ -50,7 +50,7 @@ public class AppIntentService extends IntentService {
 		DBHelper db = new DBHelper(this);
 	
 		String action = inputStream.readUTF();//what we receive
-		String[] split = action.split(" ");
+		String[] split = action.split("---");
 		String method = split[0];
 		
 
@@ -69,27 +69,27 @@ public class AppIntentService extends IntentService {
 
 
 		} else if(method.equals("DETAILS")){
-			Log.i("AppIntentService", "Details Command Received id:"+split[1]);
+			Log.i("AppIntentService", "Details Command Received");
 			String id = split[1];
 			Staff s = db.getStaff(Integer.parseInt(id));
 			
-			outputStream.writeUTF(id+","+s.getName()+","+s.getRoom()+","+s.getFaculty()+","+s.getTelephone()+","+s.getEmail());
-			Log.i("AppIntentService", "sent: "+id+","+s.getName()+","+s.getRoom()+","+s.getFaculty()+","+s.getTelephone()+","+s.getEmail());
-			
+			outputStream.writeUTF(id+"&"+s.getName()+"&"+s.getRoom()+"&"+s.getFaculty()+"&"+s.getTelephone()+"&"+s.getEmail()+"&"+s.getMon()+"&"+s.getTues()+"&"+s.getWed()+"&"+s.getThurs()+"&"+s.getFri());
+		
 			outputStream.writeUTF("/DONE");
 			outputStream.flush();
 
 
 		} else if (method.equals("EDIT")){
-		
-			String[] parts = split[1].split(",");
-			//db.editStaff(Integer.parseInt(parts[0]),parts[1],parts[2],parts[3],parts[4],parts[5],parts[6]);
+			Log.i("AppIntentService", "Edit Command Received");
+			String[] parts = split[1].split("&");
+			db.editStaff(Integer.parseInt(parts[0]),parts[1],parts[2],parts[3],parts[4],parts[5],parts[6],parts[7],parts[8],parts[9],parts[10]);
 			
 		}
 		run();
 		
 	} catch (Exception e) {
 		e.printStackTrace();
+		run();
 	}
 	
   }
