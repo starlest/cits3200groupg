@@ -24,6 +24,7 @@ import android.widget.TextView;
 import com.example.guildwayfinding.AlphabetListAdapter.Item;
 import com.example.guildwayfinding.AlphabetListAdapter.Row;
 import com.example.guildwayfinding.AlphabetListAdapter.Section;
+import com.example.guildwayfinding.SearchStaffActivity;
 
 public class SearchFacultyActivity extends ListActivity {
 
@@ -35,6 +36,7 @@ public class SearchFacultyActivity extends ListActivity {
     private static float sideIndexX;
     private static float sideIndexY;
     private int indexListSize;
+    private DBHelper d;
     
     public final static String FACULTY_MESSAGE = "com.example.myfirstapp.FACULTY_MESSAGE";
     
@@ -63,7 +65,7 @@ public class SearchFacultyActivity extends ListActivity {
         
         mGestureDetector = new GestureDetector(this, new SideIndexGestureListener());
 
-        DBHelper d = new DBHelper(this);
+        d = new DBHelper(this);
         d.getReadableDatabase();
 		List<String> faculties = d.getFacultyNames();
 		d.close();
@@ -126,8 +128,17 @@ public class SearchFacultyActivity extends ListActivity {
     protected void onListItemClick (ListView l, View v, int position, long id) {
     	String faculty = adapter.getItem(position).toString();
     	if (faculty.length() != 1) {
-    		Intent intent = new Intent(this, FacultyStaffsActivity.class);
-    		intent.putExtra(FACULTY_MESSAGE, faculty);
+    		Intent intent;
+    		if (!d.getFacultyStaffsIdsNames(faculty).isEmpty()) {
+    			intent = new Intent(this, FacultyStaffsActivity.class);
+    			intent.putExtra(FACULTY_MESSAGE, faculty);
+    			d.close();
+    		}
+    		else {
+    			intent = new Intent(this, StaffActivity.class);
+    			intent.putExtra(FACULTY_MESSAGE, faculty);
+    			intent.putExtra(SearchStaffActivity.STAFF_MESSAGE, -2);
+    		}
     		startActivity(intent);
     	}
     }

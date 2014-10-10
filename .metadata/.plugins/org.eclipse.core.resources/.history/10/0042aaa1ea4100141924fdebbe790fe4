@@ -1,9 +1,0 @@
-package com.example.guildwayfinding;
-
-public class Schedule {
-	private String mon, tue, wed, thu, fri, sat, sun;
-	
-	public Schedule(String ) {
-		
-	}
-}

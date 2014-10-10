@@ -36,38 +36,73 @@ public class StaffActivity extends Activity {
 		Intent intent = getIntent();
 		int staffId = intent.getIntExtra(SearchStaffActivity.STAFF_MESSAGE, -1);
 		
-        DBHelper d = new DBHelper(this);
-        d.getReadableDatabase();
-        Staff s = d.getStaff(staffId);
-		d.close();
+		DBHelper d = new DBHelper(this);
 		
-		setContentView(R.layout.activity_staff);
+		if (staffId == -2) {	
+			String faculty = intent.getStringExtra(SearchFacultyActivity.FACULTY_MESSAGE);
+			
+			setContentView(R.layout.activity_staff);
+			
+			TextView nameView = (TextView) findViewById(R.id.name);
+		    nameView.setText(faculty);
+			 
+			TextView info = (TextView) findViewById(R.id.info);
+			info.setText("\nFaculty: " + " ");
+			info.append("\nTelephone: " + " ");
+			info.append("\nEmail: " + " ");
+			info.append("\nSchedule:");
+			
+			info.append("\nMon - \t " + " "
+			+ "\nTue - \t " + " "
+			+ "\nWed - \t " + " "
+			+ "\nThu - \t " + " "
+			+ "\nFri - \t " + " ");
+			
+			String fileName = "android.resource://"+  getPackageName() + "/raw/vp8";
+			VideoView vv = (VideoView) findViewById(R.id.video);
+			vv.setVideoURI(Uri.parse(fileName));
+			vv.start();
+			vv.setOnPreparedListener(new OnPreparedListener() {
+			    @Override
+			    public void onPrepared(MediaPlayer mp) {
+			        mp.setLooping(true);
+			    }
+			});
+		}
 		
-		TextView nameView = (TextView) findViewById(R.id.name);
-	    nameView.setText(s.getName());
+		else {
+			d.getReadableDatabase();
+			Staff s = d.getStaff(staffId);
+			d.close();
+		
+			setContentView(R.layout.activity_staff);
+		
+			TextView nameView = (TextView) findViewById(R.id.name);
+			nameView.setText(s.getName());
 		 
-		TextView info = (TextView) findViewById(R.id.info);
-		info.setText("\nFaculty: " + s.getFaculty());
-		info.append("\nTelephone: " + s.getTelephone());
-		info.append("\nEmail: " + s.getEmail());
-		info.append("\nSchedule:");
+			TextView info = (TextView) findViewById(R.id.info);
+			info.setText("\nFaculty: " + s.getFaculty());
+			info.append("\nTelephone: " + s.getTelephone());
+			info.append("\nEmail: " + s.getEmail());
+			info.append("\nSchedule:");
 		
-		info.append("\nMon - \t " + s.getMon()
-		+ "\nTue - \t " + s.getTues()
-		+ "\nWed - \t " + s.getWed()
-		+ "\nThu - \t " + s.getThurs()
-		+ "\nFri - \t " + s.getFri());
+			info.append("\nMon - \t " + s.getMon()
+					+ "\nTue - \t " + s.getTues()
+					+ "\nWed - \t " + s.getWed()
+					+ "\nThu - \t " + s.getThurs()
+					+ "\nFri - \t " + s.getFri());
 		
-		String fileName = "android.resource://"+  getPackageName() + "/raw/vp8";
-		VideoView vv = (VideoView) findViewById(R.id.video);
-		vv.setVideoURI(Uri.parse(fileName));
-		vv.start();
-		vv.setOnPreparedListener(new OnPreparedListener() {
-		    @Override
-		    public void onPrepared(MediaPlayer mp) {
-		        mp.setLooping(true);
-		    }
-		});
+			String fileName = "android.resource://"+  getPackageName() + "/raw/vp8";
+			VideoView vv = (VideoView) findViewById(R.id.video);
+			vv.setVideoURI(Uri.parse(fileName));
+			vv.start();
+			vv.setOnPreparedListener(new OnPreparedListener() {
+				@Override
+				public void onPrepared(MediaPlayer mp) {
+					mp.setLooping(true);
+				}
+			});
+		}
 	}
 
 	@Override

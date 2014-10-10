@@ -110,7 +110,7 @@ private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INTEGER PRIMAR
   {
 	  List<String> l = new ArrayList<String>();
 	  SQLiteDatabase db = this.getReadableDatabase();
-	  String sql = "SELECT DISTINCT FACULTY FROM STAFF;";
+	  String sql = "SELECT DESCRIPTION FROM ROOM;";
 	  Cursor c = db.rawQuery(sql, null);
 	  if( c != null && c.moveToFirst() ) {
 		  while (!c.isAfterLast()) {
@@ -128,7 +128,15 @@ private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INTEGER PRIMAR
 	  List<String> l = new ArrayList<String>();
 	  SQLiteDatabase db = this.getReadableDatabase();
 	  String sql = "SELECT id, NAME FROM STAFF WHERE FACULTY = '" + faculty + "';";
-	  Cursor c = db.rawQuery(sql, null);
+	  Cursor c;
+	  
+	  try {
+		  c = db.rawQuery(sql, null);
+	  }
+	  catch (Exception e) {
+		  return l;
+	  }
+	  
 	  if( c != null && c.moveToFirst() ) {
 		  while (!c.isAfterLast()) {
 			  l.add(c.getString(1) + "," + c.getString(0));
