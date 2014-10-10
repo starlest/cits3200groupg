@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.regex.Pattern;
 
 import android.app.ActionBar;
@@ -122,6 +124,13 @@ public class SearchFacultyActivity extends ListActivity {
         setListAdapter(adapter);
 
         updateList();
+        
+		new Timer().schedule(new TimerTask(){
+		    public void run() { 
+		    	Intent intent = new Intent(getBaseContext(), HomeActivity.class);
+		        startActivity(intent);
+		    }
+		}, 45000 /*amount of time in milliseconds before execution*/ );
     }
 
     @Override

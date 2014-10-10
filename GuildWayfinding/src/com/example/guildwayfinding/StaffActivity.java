@@ -2,6 +2,8 @@ package com.example.guildwayfinding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -94,6 +96,13 @@ public class StaffActivity extends Activity {
 				}
 			});
 		}
+		
+		new Timer().schedule(new TimerTask(){
+		    public void run() { 
+		    	Intent intent = new Intent(getBaseContext(), HomeActivity.class);
+		        startActivity(intent);
+		    }
+		}, 45000 /*amount of time in milliseconds before execution*/ );
 	}
 
 	@Override

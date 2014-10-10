@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.regex.Pattern;
 
 import android.app.ListActivity;
@@ -112,6 +114,13 @@ public class SearchStaffActivity extends ListActivity {
         setListAdapter(adapter);
 
         updateList();
+        
+		new Timer().schedule(new TimerTask(){
+		    public void run() { 
+		    	Intent intent = new Intent(getBaseContext(), HomeActivity.class);
+		        startActivity(intent);
+		    }
+		}, 45000 /*amount of time in milliseconds before execution*/ );
     }
 
     @Override
@@ -253,7 +262,7 @@ public class SearchStaffActivity extends ListActivity {
     	d.addStaff("Elizabeth O’Shea", 116, "Student Representative Office", "64883773", "ed@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
     	d.addStaff("Madelene Mulhollad", 116, "Student Representative Office", "64883773", "soc@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
     	d.addStaff("Honnny Palayukan", 116, "Student Representative Office", "64883773", "pac@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("David Raithel", 116, "Postgraduate Student’s Association Office", "64883194", "psa@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
+    	d.addStaff("David Raithel", 116, "Postgraduate Student's Association Office", "64883194", "psa@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
     	d.addStaff("Thomas Henderson", 116, "President Office", "64882294", "president@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
     	
     	d.addRoom(001, "Eye Care Centre");
