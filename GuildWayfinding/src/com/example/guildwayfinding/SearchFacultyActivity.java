@@ -145,7 +145,8 @@ public class SearchFacultyActivity extends ListActivity {
     			d.close();
     		}
     		else {
-    			intent = new Intent(this, StaffActivity.class);
+    			intent = new Intent(SearchFacultyActivity.this, StaffActivity.class);
+    			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     			intent.putExtra(FACULTY_MESSAGE, faculty);
     			intent.putExtra(SearchStaffActivity.STAFF_MESSAGE, -2);
     		}

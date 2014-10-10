@@ -127,7 +127,8 @@ public class SearchStaffActivity extends ListActivity {
     protected void onListItemClick (ListView l, View v, int position, long id) {
     	int staffId = adapter.getItem(position).getId();
     	if (staffId != -1) {
-    		Intent intent = new Intent(this, StaffActivity.class);
+    		Intent intent = new Intent(SearchStaffActivity.this, StaffActivity.class);
+    		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     		intent.putExtra(STAFF_MESSAGE, staffId);
     		startActivity(intent);
     	}
