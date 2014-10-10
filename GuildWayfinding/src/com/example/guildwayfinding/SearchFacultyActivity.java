@@ -135,6 +135,7 @@ public class SearchFacultyActivity extends ListActivity {
 
     @Override
     protected void onListItemClick (ListView l, View v, int position, long id) {
+    	if (adapter.getItem(position).getId() == -1) return;
     	String faculty = adapter.getItem(position).toString();
     	if (faculty.length() != -1) {
     		Intent intent;
