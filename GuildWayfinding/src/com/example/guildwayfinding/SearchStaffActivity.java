@@ -50,7 +50,7 @@ public class SearchStaffActivity extends ListActivity {
 
         ActionBar actionBar = getActionBar();
         actionBar.setHomeButtonEnabled(true);
-        actionBar.setTitle("Back To Home");
+        actionBar.setTitle("Back");
         
         mGestureDetector = new GestureDetector(this, new SideIndexGestureListener());
 
