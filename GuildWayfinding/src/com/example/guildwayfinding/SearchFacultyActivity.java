@@ -39,6 +39,7 @@ public class SearchFacultyActivity extends ListActivity {
     private static float sideIndexY;
     private int indexListSize;
     private DBHelper d;
+    private TimerTask t;
     
     public final static String FACULTY_MESSAGE = "com.example.myfirstapp.FACULTY_MESSAGE";
     
@@ -125,12 +126,14 @@ public class SearchFacultyActivity extends ListActivity {
 
         updateList();
         
-		new Timer().schedule(new TimerTask(){
+		t = new TimerTask(){
 		    public void run() { 
 		    	Intent intent = new Intent(getBaseContext(), HomeActivity.class);
 		        startActivity(intent);
 		    }
-		}, 45000 /*amount of time in milliseconds before execution*/ );
+		};
+		
+		new Timer().schedule(t, 45000);
     }
 
     @Override
@@ -231,5 +234,16 @@ public class SearchFacultyActivity extends ListActivity {
             //ListView listView = (ListView) findViewById(android.R.id.list);
             getListView().setSelection(subitemPosition);
         }
+    }
+    
+    @Override
+    protected void onPause() {
+    	this.onStop();
+    }
+    
+    @Override
+    protected void onStop() {
+    	t.cancel();
+    	super.onDestroy();
     }
 }

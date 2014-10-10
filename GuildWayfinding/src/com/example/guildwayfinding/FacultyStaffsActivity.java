@@ -37,6 +37,7 @@ public class FacultyStaffsActivity extends ListActivity {
     private static float sideIndexX;
     private static float sideIndexY;
     private int indexListSize;
+    private TimerTask t;
     
     public final static String STAFF_MESSAGE = "com.example.myfirstapp.STAFF_MESSAGE";
 
@@ -115,12 +116,14 @@ public class FacultyStaffsActivity extends ListActivity {
 
         updateList();
         
-		new Timer().schedule(new TimerTask(){
+		t = new TimerTask(){
 		    public void run() { 
 		    	Intent intent = new Intent(getBaseContext(), HomeActivity.class);
 		        startActivity(intent);
 		    }
-		}, 45000 /*amount of time in milliseconds before execution*/ );
+		};
+		
+		new Timer().schedule(t, 45000);
     }
 
     @Override
@@ -225,5 +228,15 @@ public class FacultyStaffsActivity extends ListActivity {
             //ListView listView = (ListView) findViewById(android.R.id.list);
             getListView().setSelection(subitemPosition);
         }
+    }
+    
+    @Override
+    protected void onPause() {
+    	this.onStop();
+    }
+    @Override
+    protected void onStop() {
+    	t.cancel();
+    	super.onDestroy();
     }
 }

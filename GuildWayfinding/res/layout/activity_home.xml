@@ -22,7 +22,7 @@
         android:layout_above="@id/imageView1"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="85dp"
-        android:text="Looking for a..."
+        android:text="Looking for..."
         android:textColor="#0404B4"
         android:onClick="search_faculty_button_message" />
 
