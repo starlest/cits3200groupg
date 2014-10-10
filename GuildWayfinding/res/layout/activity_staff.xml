@@ -1,28 +1,556 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.guildwayfinding.StaffActivity"
     android:id="@+id/staff_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
     android:padding="25dip"
-    android:orientation="horizontal" >
+    tools:context="com.example.guildwayfinding.StaffActivity" >
     
     <LinearLayout android:id="@+id/side"
-    android:layout_height="match_parent"
-    android:layout_width="400px"
-    android:layout_marginRight="6dip" 
-    android:orientation="vertical" >
+    	android:layout_height="match_parent"
+    	android:layout_width="400px"
+    	android:layout_weight="1"
+    	android:layout_marginRight="6dip" 
+    	android:orientation="vertical" >
     
 	    <TextView
 	        android:id="@+id/name"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:textSize="20pt" />
+	        android:textSize="15pt" />
 
 		<TextView
 		    android:id="@+id/info"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content" />
+		
+		<!-- schedule -->
+		<TableLayout android:id="@+id/schedule"
+			android:layout_height="match_parent"
+			android:layout_width="match_parent">
+			
+		    <!-- days -->
+			<TableRow>
+		    	<TextView
+		        	android:layout_column="1"
+		        	android:text=" "
+		        	android:padding="3dip"
+		        	android:textSize="4pt" />
+		    	<TextView
+		        	android:layout_column="2"
+		        	android:text="Monday"
+		        	android:layout_width="0dip"
+         			android:layout_weight="1"
+		        	android:padding="3dip"
+		        	android:textSize="4pt" />
+		    	<TextView
+		        	android:layout_column="3"
+		        	android:text="Tuesday"
+		        	android:layout_width="0dip"
+         			android:layout_weight="1"
+		        	android:padding="3dip"
+		        	android:textSize="4pt" />
+		    	<TextView
+		        	android:layout_column="4"
+		        	android:text="Wednesday"
+		        	android:layout_width="0dip"
+         			android:layout_weight="1"
+		        	android:padding="3dip"
+		        	android:textSize="4pt" />
+		    	<TextView
+		        	android:layout_column="5"
+		        	android:text="Thursday"
+		        	android:layout_width="0dip"
+         			android:layout_weight="1"
+		        	android:padding="3dip"
+		        	android:textSize="4pt" />
+		    	<TextView
+		        	android:layout_column="6"
+		        	android:text="Friday"
+		        	android:layout_width="0dip"
+         			android:layout_weight="1"
+		        	android:padding="3dip"
+		        	android:textSize="4pt" />
+			</TableRow>
+			<!-- 0800 -->
+			<TableRow>
+			    <TextView
+			        android:layout_column="1"
+		        	android:text="0800"
+		        	android:padding="3dip"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/mon_800"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="2"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/tue_800"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="3"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/wed_800"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="4"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/thu_800"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="5"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/fri_800"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="6"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			</TableRow>
+			<!-- 0900 -->
+			<TableRow>
+			    <TextView
+			        android:layout_column="1"
+		        	android:text="0900"
+		        	android:padding="3dip"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/mon_900"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="2"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/tue_900"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="3"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/wed_900"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="4"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/thu_900"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="5"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/fri_900"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="6"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			</TableRow>
+			<!-- 1000 -->
+			<TableRow>
+			    <TextView
+			        android:layout_column="1"
+		        	android:text="1000"
+		        	android:padding="3dip"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/mon_1000"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="2"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/tue_1000"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="3"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/wed_1000"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="4"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/thu_1000"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="5"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/fri_1000"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="6"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			</TableRow>
+			<!-- 1100 -->
+			<TableRow>
+			    <TextView
+			        android:layout_column="1"
+		        	android:text="1100"
+		        	android:padding="3dip"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/mon_1100"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="2"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/tue_1100"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="3"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/wed_1100"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="4"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/thu_1100"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="5"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/fri_1100"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="6"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			</TableRow>
+			<!-- 1200 -->
+			<TableRow>
+			    <TextView
+			        android:layout_column="1"
+		        	android:text="1200"
+		        	android:padding="3dip"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/mon_1200"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="2"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/tue_1200"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="3"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/wed_1200"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="4"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/thu_1200"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="5"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/fri_1200"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="6"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			</TableRow>
+			<!-- 1300 -->
+			<TableRow>
+			    <TextView
+			        android:layout_column="1"
+		        	android:text="1300"
+		        	android:padding="3dip"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/mon_1300"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="2"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/tue_1300"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="3"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/wed_1300"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="4"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/thu_1300"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="5"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/fri_1300"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="6"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			</TableRow>
+			<!-- 1400 -->
+			<TableRow>
+			    <TextView
+			        android:layout_column="1"
+		        	android:text="1400"
+		        	android:padding="3dip"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/mon_1400"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="2"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/tue_1400"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="3"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/wed_1400"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="4"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/thu_1400"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="5"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/fri_1400"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="6"
+		        	android:text="    "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			</TableRow>
+			<!-- 1500 -->
+			<TableRow>
+			    <TextView
+			        android:layout_column="1"
+		        	android:text="1500"
+		        	android:padding="3dip"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/mon_1500"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="2"
+		        	android:text="  "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/tue_1500"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="3"
+		        	android:text="  "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/wed_1500"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="4"
+		        	android:text="  "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/thu_1500"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="5"
+		        	android:text="  "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/fri_1500"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="6"
+		        	android:text="  "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			</TableRow>
+			<!-- 1600 -->
+			<TableRow>
+			    <TextView
+			        android:layout_column="1"
+		        	android:text="1600"
+		        	android:padding="3dip"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/mon_1600"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="2"
+		        	android:text="  "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/tue_1600"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="3"
+		        	android:text="  "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/wed_1600"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="4"
+		        	android:text="  "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/thu_1600"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="5"
+		        	android:text="  "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			    <TextView
+			        android:id="@+id/fri_1600"
+			        android:layout_width="0dip"
+         			android:layout_weight="1"
+			        android:layout_column="6"
+		        	android:text="  "
+		        	android:padding="3dip"
+		        	android:background="#0404B4"
+		        	android:textSize="4pt" />
+			</TableRow>
+		</TableLayout>
 
 		<ImageView
 		    android:id="@+id/imageView1"
@@ -33,9 +561,10 @@
 	
 	</LinearLayout>
 
-    <VideoView  
+    <VideoView 
         android:id="@+id/video"
         android:layout_width="400px"
-        android:layout_height="600px" />
+        android:layout_height="600px"
+        android:layout_weight="1" />
 
 </LinearLayout>

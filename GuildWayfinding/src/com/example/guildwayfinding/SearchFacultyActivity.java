@@ -61,7 +61,7 @@ public class SearchFacultyActivity extends ListActivity {
 
         ActionBar actionBar = getActionBar();
         actionBar.setHomeButtonEnabled(true);
-        actionBar.setTitle("Back To Home");
+        actionBar.setTitle("Back");
         
         mGestureDetector = new GestureDetector(this, new SideIndexGestureListener());
 
@@ -127,7 +127,7 @@ public class SearchFacultyActivity extends ListActivity {
     @Override
     protected void onListItemClick (ListView l, View v, int position, long id) {
     	String faculty = adapter.getItem(position).toString();
-    	if (faculty.length() != 1) {
+    	if (faculty.length() != -1) {
     		Intent intent;
     		if (!d.getFacultyStaffsIdsNames(faculty).isEmpty()) {
     			intent = new Intent(this, FacultyStaffsActivity.class);

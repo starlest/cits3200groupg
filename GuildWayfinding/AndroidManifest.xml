@@ -51,7 +51,7 @@
         <activity
             android:name=".FacultyStaffsActivity"
             android:label="@string/title_activity_faculty_staffs" 
-            android:parentActivityName=".HomeActivity"
+            android:parentActivityName=".SearchFacultyActivity"
             android:screenOrientation="landscape" >
         </activity>
     </application>

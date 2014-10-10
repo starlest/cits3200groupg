@@ -7,6 +7,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnPreparedListener;
 import android.net.Uri;
@@ -47,16 +48,10 @@ public class StaffActivity extends Activity {
 		    nameView.setText(faculty);
 			 
 			TextView info = (TextView) findViewById(R.id.info);
-			info.setText("\nFaculty: " + " ");
-			info.append("\nTelephone: " + " ");
-			info.append("\nEmail: " + " ");
-			info.append("\nSchedule:");
-			
-			info.append("\nMon - \t " + " "
-			+ "\nTue - \t " + " "
-			+ "\nWed - \t " + " "
-			+ "\nThu - \t " + " "
-			+ "\nFri - \t " + " ");
+			info.setText("\n\nFaculty: " + " ");
+			info.append("\n\nTelephone: " + " ");
+			info.append("\n\nEmail: " + " ");
+			info.append("\n\nSchedule:\n");
 			
 			String fileName = "android.resource://"+  getPackageName() + "/raw/vp8";
 			VideoView vv = (VideoView) findViewById(R.id.video);
@@ -82,16 +77,12 @@ public class StaffActivity extends Activity {
 		 
 			TextView info = (TextView) findViewById(R.id.info);
 			info.setText("\nFaculty: " + s.getFaculty());
-			info.append("\nTelephone: " + s.getTelephone());
-			info.append("\nEmail: " + s.getEmail());
-			info.append("\nSchedule:");
-		
-			info.append("\nMon - \t " + s.getMon()
-					+ "\nTue - \t " + s.getTues()
-					+ "\nWed - \t " + s.getWed()
-					+ "\nThu - \t " + s.getThurs()
-					+ "\nFri - \t " + s.getFri());
-		
+			info.append("\n\nTelephone: " + s.getTelephone());
+			info.append("\n\nEmail: " + s.getEmail());
+			info.append("\n\nSchedule:");
+			
+			populateSchedule(s);
+			
 			String fileName = "android.resource://"+  getPackageName() + "/raw/vp8";
 			VideoView vv = (VideoView) findViewById(R.id.video);
 			vv.setVideoURI(Uri.parse(fileName));
@@ -111,16 +102,61 @@ public class StaffActivity extends Activity {
 		getMenuInflater().inflate(R.menu.staff, menu);
 		return true;
 	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
+	
+	private void populateSchedule(Staff s) {
+		int[] mon = s.getMon();
+		for (int i = 0; i < mon.length; i++) {
+			if (mon[i] == 1) {
+				String time = "mon_" + (800 + i * 100);
+				int ID = getResources().getIdentifier(time,
+					    "id", getPackageName());
+				TextView v = (TextView) findViewById(ID);
+				v.setBackgroundColor(Color.GREEN);
+			}
 		}
-		return super.onOptionsItemSelected(item);
+		
+		int[] tues = s.getTues();
+		for (int i = 0; i < tues.length; i++) {
+			if (tues[i] == 1) {
+				String time = "tue_" + (800 + i * 100);
+				int ID = getResources().getIdentifier(time,
+					    "id", getPackageName());
+				TextView v = (TextView) findViewById(ID);
+				v.setBackgroundColor(Color.GREEN);
+			}
+		}
+		
+		int[] wed = s.getWed();
+		for (int i = 0; i < wed.length; i++) {
+			if (wed[i] == 1) {
+				String time = "wed_" + (800 + i * 100);
+				int ID = getResources().getIdentifier(time,
+					    "id", getPackageName());
+				TextView v = (TextView) findViewById(ID);
+				v.setBackgroundColor(Color.GREEN);
+			}
+		}
+		
+		int[] thurs = s.getThurs();
+		for (int i = 0; i < thurs.length; i++) {
+			if (thurs[i] == 1) {
+				String time = "thu_" + (800 + i * 100);
+				int ID = getResources().getIdentifier(time,
+					    "id", getPackageName());
+				TextView v = (TextView) findViewById(ID);
+				v.setBackgroundColor(Color.GREEN);
+			}
+		}
+		
+		int[] fri = s.getFri();
+		for (int i = 0; i < fri.length; i++) {
+			if (fri[i] == 1) {
+				String time = "fri_" + (800 + i * 100);
+				int ID = getResources().getIdentifier(time,
+					    "id", getPackageName());
+				TextView v = (TextView) findViewById(ID);
+				v.setBackgroundColor(Color.GREEN);
+			}
+		}
 	}
 }

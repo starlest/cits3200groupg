@@ -117,7 +117,7 @@ public class FacultyStaffsActivity extends ListActivity {
     @Override
     protected void onListItemClick (ListView l, View v, int position, long id) {
     	int staffId = adapter.getItem(position).getId();
-    	if (staffId != 1) {
+    	if (staffId != -1) {
     		Intent intent = new Intent(this, StaffActivity.class);
     		intent.putExtra(STAFF_MESSAGE, staffId);
     		startActivity(intent);

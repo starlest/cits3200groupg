@@ -47,23 +47,53 @@ public class Staff {
 		return email;
 	}
 	
-	public String getMon() {
-		return mon;
+	public int[] getMon() {
+		int[] availability = new int[9]; 
+		String[] parts = mon.split(",");
+		for (int i = 0; i < parts.length; i++) {
+			int time = Integer.parseInt(parts[i]); 
+			availability[(time - 800) / 100] = 1;
+		}
+		return availability;
 	}
 	
-	public String getTues() {
-		return tues;
+	public int[] getTues() {
+		int[] availability = new int[9]; 
+		String[] parts = tues.split(",");
+		for (int i = 0; i < parts.length; i++) {
+			int time = Integer.parseInt(parts[i]); 
+			availability[(time - 800) / 100] = 1;
+		}
+		return availability;
 	}
 	
-	public String getWed() {
-		return wed;
+	public int[] getWed() {
+		int[] availability = new int[9]; 
+		String[] parts = wed.split(",");
+		for (int i = 0; i < parts.length; i++) {
+			int time = Integer.parseInt(parts[i]); 
+			availability[(time - 800) / 100] = 1;
+		}
+		return availability;
 	}
 	
-	public String getThurs() {
-		return thurs;
+	public int[] getThurs() {
+		int[] availability = new int[9]; 
+		String[] parts = thurs.split(",");
+		for (int i = 0; i < parts.length; i++) {
+			int time = Integer.parseInt(parts[i]); 
+			availability[(time - 800) / 100] = 1;
+		}
+		return availability;
 	}
 	
-	public String getFri() {
-		return fri;
+	public int[] getFri() {
+		int[] availability = new int[9]; 
+		String[] parts = fri.split(",");
+		for (int i = 0; i < parts.length; i++) {
+			int time = Integer.parseInt(parts[i]);
+			availability[(time - 800) / 100] = 1;
+		}
+		return availability;
 	}
 }
