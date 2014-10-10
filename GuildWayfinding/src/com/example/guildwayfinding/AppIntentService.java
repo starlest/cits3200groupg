@@ -49,44 +49,43 @@ public class AppIntentService extends IntentService {
 	
 		DBHelper db = new DBHelper(this);
 	
-		String action = inputStream.readUTF();//what we receive
-		String[] split = action.split("---");
-		String method = split[0];
 		
-
-		//Handle request
-		if (method.equals("LIST")) {		
-			Log.i("AppIntentService", "List Command Received");
-			List<String> list = db.getStaffsIdsNames();
-			Iterator<String> it = list.iterator();
+		while(true){//what we receive
+			String action =inputStream.readUTF();
+			String[] split = action.split("---");
+			String method = split[0];
 			
-			while(it.hasNext()){
-				outputStream.writeUTF(it.next());
+	
+			//Handle request
+			if (method.equals("LIST")) {		
+				Log.i("AppIntentService", "List Command Received");
+				List<String> list = db.getStaffsIdsNames();
+				Iterator<String> it = list.iterator();
+				
+				while(it.hasNext()){
+					outputStream.writeUTF(it.next());
+				}
+				
+				outputStream.writeUTF("/DONE");
+				outputStream.flush();
+	
+	
+			} else if(method.equals("DETAILS")){
+				Log.i("AppIntentService", "Details Command Received");
+				String id = split[1];
+				Staff s = db.getStaff(Integer.parseInt(id));
+				
+				outputStream.writeUTF(id+"&"+s.getName()+"&"+s.getRoom()+"&"+s.getFaculty()+"&"+s.getTelephone()+"&"+s.getEmail()+"&"+s.getMon()+"&"+s.getTues()+"&"+s.getWed()+"&"+s.getThurs()+"&"+s.getFri());
+			
+				outputStream.flush();
+	
+	
+			} else if (method.equals("EDIT")){
+				Log.i("AppIntentService", "Edit Command Received");
+				String[] parts = split[1].split("&");
+				db.editStaff(Integer.parseInt(parts[0]),parts[1],parts[2],parts[3],parts[4],parts[5],parts[6],parts[7],parts[8],parts[9],parts[10]);
 			}
-			
-			outputStream.writeUTF("/DONE");
-			outputStream.flush();
-
-
-		} else if(method.equals("DETAILS")){
-			Log.i("AppIntentService", "Details Command Received");
-			String id = split[1];
-			Staff s = db.getStaff(Integer.parseInt(id));
-			
-			outputStream.writeUTF(id+"&"+s.getName()+"&"+s.getRoom()+"&"+s.getFaculty()+"&"+s.getTelephone()+"&"+s.getEmail()+"&"+s.getMon()+"&"+s.getTues()+"&"+s.getWed()+"&"+s.getThurs()+"&"+s.getFri());
-		
-			outputStream.writeUTF("/DONE");
-			outputStream.flush();
-
-
-		} else if (method.equals("EDIT")){
-			Log.i("AppIntentService", "Edit Command Received");
-			String[] parts = split[1].split("&");
-			db.editStaff(Integer.parseInt(parts[0]),parts[1],parts[2],parts[3],parts[4],parts[5],parts[6],parts[7],parts[8],parts[9],parts[10]);
-			
 		}
-		run();
-		
 	} catch (Exception e) {
 		e.printStackTrace();
 		run();

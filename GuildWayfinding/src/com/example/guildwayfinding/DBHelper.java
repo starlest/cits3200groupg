@@ -13,7 +13,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
   private static final String DATABASE_NAME = "guild.db";
-  private static final int DATABASE_VERSION = 14;
+  private static final int DATABASE_VERSION = 15;
 
   // Database creation sql statement
   private static final String CREATE_STAFF = "CREATE TABLE STAFF " +
@@ -56,7 +56,7 @@ private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INTEGER PRIMAR
   {
 	  SQLiteDatabase db = this.getWritableDatabase();
 	  String sql = "INSERT INTO STAFF (ID,NAME,ROOM,FACULTY,TELEPHONE,EMAIL,MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY) " +
-				 "VALUES (NULL,'" + name + "', " + room + ", '" + faculty + "', '" + telephone + "', '" + email + "', '" + Mon + "', '" + Tues + "', '" + Wed + "', '" + Thurs + "', '" + Fri + "');";
+				 "VALUES (NULL,'" + name.replaceAll("'", "''") + "', " + room + ", '" + faculty.replaceAll("'", "''") + "', '" + telephone + "', '" + email + "', '" + Mon + "', '" + Tues + "', '" + Wed + "', '" + Thurs + "', '" + Fri + "');";
 	  db.execSQL(sql);
   }
 
