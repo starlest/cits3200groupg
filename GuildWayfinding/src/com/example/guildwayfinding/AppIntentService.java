@@ -26,32 +26,27 @@ public class AppIntentService extends IntentService {
    */
   @Override
   protected void onHandleIntent(Intent intent) {
-	try {
 		Log.i("AppIntentService", "Started");
-		server = new ServerSocket(4000); //app port
-		run();
-	}  catch (Exception e) {
-		e.printStackTrace();
-	}
+		start();
   }
-  public void run() {
+  
+  public void start() {
 	try {
-		Socket socket = server.accept();
+		//Socket socket = server.accept();
+		Socket socket = new Socket("192.168.1.29",8000);
 		
-		Log.i("AppIntentService", "Connection-Received");
 		
-		OutputStream os = socket.getOutputStream();
-		InputStream is = socket.getInputStream();
-		
-		ObjectOutputStream outputStream = new ObjectOutputStream(os);
-		ObjectInputStream inputStream = new ObjectInputStream(is);
+		PrintWriter outputStream = new PrintWriter(socket.getOutputStream());
+		BufferedReader inputStream = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 	
-	
+		Log.i("AppIntentService", "Connected");
+		
 		DBHelper db = new DBHelper(this);
 	
 		
-		while(true){//what we receive
-			String action =inputStream.readUTF();
+		while(true){
+			String action = inputStream.readLine();
+			Log.i("AppIntentService", "line: "+action);
 			String[] split = action.split("---");
 			String method = split[0];
 			
@@ -63,19 +58,23 @@ public class AppIntentService extends IntentService {
 				Iterator<String> it = list.iterator();
 				
 				while(it.hasNext()){
-					outputStream.writeUTF(it.next());
+					String next = it.next();
+					outputStream.println(next);
+					//Log.i("AppIntentService", next);
 				}
 				
-				outputStream.writeUTF("/DONE");
+				outputStream.println("/DONE");
 				outputStream.flush();
-	
+				
+				if (outputStream.checkError())
+					Log.i("AppIntentService", "Error");
 	
 			} else if(method.equals("DETAILS")){
 				Log.i("AppIntentService", "Details Command Received");
 				String id = split[1];
 				Staff s = db.getStaff(Integer.parseInt(id));
 				
-				outputStream.writeUTF(id+"&"+s.getName()+"&"+s.getRoom()+"&"+s.getFaculty()+"&"+s.getTelephone()+"&"+s.getEmail()+"&"+s.getMon()+"&"+s.getTues()+"&"+s.getWed()+"&"+s.getThurs()+"&"+s.getFri());
+				outputStream.println(id+"&"+s.getName()+"&"+s.getRoom()+"&"+s.getFaculty()+"&"+s.getTelephone()+"&"+s.getEmail()+"&"+s.mon+"&"+s.tues+"&"+s.wed+"&"+s.thurs+"&"+s.fri);
 			
 				outputStream.flush();
 	
@@ -87,9 +86,15 @@ public class AppIntentService extends IntentService {
 			}
 		}
 	} catch (Exception e) {
-		e.printStackTrace();
-		run();
+		Log.i("AppIntentService", "Error connecting to Server, Retrying in 10secs");
+		
+		//retry after 10 secs
+		new Timer().schedule(new TimerTask() {          
+		    @Override
+		    public void run() {
+		        start();      
+		    }
+		}, 10000);
 	}
-	
   }
 }

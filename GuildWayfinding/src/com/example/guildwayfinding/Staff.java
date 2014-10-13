@@ -6,11 +6,11 @@ public class Staff {
 	private String faculty;
 	private String telephone;
 	private String email;
-	private String mon;
-	private String tues;
-	private String wed;
-	private String thurs;
-	private String fri;
+	public String mon;
+	public String tues;
+	public String wed;
+	public String thurs;
+	public String fri;
 
 	
 	public Staff(String name, int room, String faculty, String telephone, String email, String Mon, String Tues, String Wed, String Thurs, String Fri) 
