@@ -27,6 +27,7 @@ public class StaffActivity extends Activity {
 
 	List<String> list = new ArrayList<String>();
 	RelativeLayout.LayoutParams lp;
+	private TimerTask t;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -97,12 +98,15 @@ public class StaffActivity extends Activity {
 			});
 		}
 		
-		new Timer().schedule(new TimerTask(){
+
+		t = new TimerTask(){
 		    public void run() { 
 		    	Intent intent = new Intent(getBaseContext(), HomeActivity.class);
 		        startActivity(intent);
 		    }
-		}, 45000 /*amount of time in milliseconds before execution*/ );
+		};
+		
+		new Timer().schedule(t, 45000);
 	}
 
 	@Override
@@ -168,4 +172,15 @@ public class StaffActivity extends Activity {
 			}
 		}
 	}
+	
+    @Override
+    protected void onPause() {
+    	this.onStop();
+    }
+    
+    @Override
+    protected void onStop() {
+    	t.cancel();
+    	super.onDestroy();
+    }
 }

@@ -13,6 +13,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
   private static final String DATABASE_NAME = "guild.db";
+
   private static final int DATABASE_VERSION = 16;
 
   // Database creation sql statement
