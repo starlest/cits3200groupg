@@ -14,7 +14,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
   private static final String DATABASE_NAME = "guild.db";
 
-  private static final int DATABASE_VERSION = 16;
+  private static final int DATABASE_VERSION = 17;
 
   // Database creation sql statement
   private static final String CREATE_STAFF = "CREATE TABLE STAFF " +
@@ -155,8 +155,13 @@ private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INTEGER PRIMAR
 	  Cursor c = db.rawQuery(sql, null);
 
 	  if( c != null && c.moveToFirst() ) {
-
-		  s = new Staff(c.getString(1), c.getInt(2), c.getString(3), c.getString(4), c.getString(5), c.getString(6), c.getString(7), c.getString(8), c.getString(9), c.getString(10));
+		  int r = c.getInt(2);
+		  int firstDigit = Integer.parseInt(Integer.toString(r).substring(0, 1));
+		  String room;
+		  if (firstDigit == 1) room = "G" + Integer.parseInt(Integer.toString(r).substring(1));
+		  else if (firstDigit == 2) room = "1" + Integer.parseInt(Integer.toString(r).substring(1));
+		  else room = "2" + Integer.parseInt(Integer.toString(r).substring(1));
+		  s = new Staff(c.getString(1), room, c.getString(3), c.getString(4), c.getString(5), c.getString(6), c.getString(7), c.getString(8), c.getString(9), c.getString(10));
 
 		  c.close();
 	  }
