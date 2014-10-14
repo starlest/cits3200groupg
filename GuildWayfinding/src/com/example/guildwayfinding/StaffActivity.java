@@ -52,6 +52,7 @@ public class StaffActivity extends Activity {
 			 
 			TextView info = (TextView) findViewById(R.id.info);
 			info.setText("\n\nFaculty: " + " ");
+			info.append("\n\nRoom: " + " ");
 			info.append("\n\nTelephone: " + " ");
 			info.append("\n\nEmail: " + " ");
 			info.append("\n\nSchedule:\n");
@@ -80,6 +81,7 @@ public class StaffActivity extends Activity {
 		 
 			TextView info = (TextView) findViewById(R.id.info);
 			info.setText("\nFaculty: " + s.getFaculty());
+			info.append("\n\nRoom: " + s.getRoom());
 			info.append("\n\nTelephone: " + s.getTelephone());
 			info.append("\n\nEmail: " + s.getEmail());
 			info.append("\n\nSchedule:");
