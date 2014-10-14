@@ -7950,3 +7950,6 @@ com.android.ddmlib.ShellCommandUnresponsiveException
 
 !ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:37:28.551
 !MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:47:02.935
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
