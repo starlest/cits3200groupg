@@ -15,4 +15,8 @@
 <fullyQualifiedTypeName name="android.widget.MediaController"/>
 <fullyQualifiedTypeName name="android.media.MediaPlayer"/>
 <fullyQualifiedTypeName name="android.media.MediaPlayer.OnPreparedListener"/>
+<fullyQualifiedTypeName name="android.graphics.Color"/>
+<fullyQualifiedTypeName name="android.os.Handler"/>
+<fullyQualifiedTypeName name="java.util.TimerTask"/>
+<fullyQualifiedTypeName name="java.util.Timer"/>
 </qualifiedTypeNameHistroy>
