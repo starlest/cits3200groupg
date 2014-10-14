@@ -36,6 +36,7 @@ public class StaffActivity extends Activity {
 		int staffId = intent.getIntExtra(SearchStaffActivity.STAFF_MESSAGE, -1);
 		
 		DBHelper d = new DBHelper(this);
+		d.getReadableDatabase();
 		
 		if (staffId == -2) {	
 			String faculty = intent.getStringExtra(SearchFacultyActivity.FACULTY_MESSAGE);
@@ -47,12 +48,12 @@ public class StaffActivity extends Activity {
 			 
 			TextView info = (TextView) findViewById(R.id.info);
 			info.setText("\n\nFaculty: " + " ");
-			info.append("\n\nRoom: " + " ");
+			info.append("\n\nRoom: " + d.getFacultyDirection(faculty));
 			info.append("\n\nTelephone: " + " ");
 			info.append("\n\nEmail: " + " ");
 			info.append("\n\nSchedule:\n");
 			
-			String fileName = "android.resource://"+  getPackageName() + "/raw/vp8";
+			String fileName = "android.resource://"+  getPackageName() + "/raw/a" + d.getFacultyDirection(faculty).toLowerCase();
 			VideoView vv = (VideoView) findViewById(R.id.video);
 			vv.setVideoURI(Uri.parse(fileName));
 			vv.start();
@@ -65,9 +66,7 @@ public class StaffActivity extends Activity {
 		}
 		
 		else {
-			d.getReadableDatabase();
 			Staff s = d.getStaff(staffId);
-			d.close();
 		
 			setContentView(R.layout.activity_staff);
 		
@@ -104,6 +103,7 @@ public class StaffActivity extends Activity {
 		};
 		
 		new Timer().schedule(t, 45000);
+		d.close();
 	}
 
 	@Override

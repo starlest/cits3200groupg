@@ -280,8 +280,8 @@ public class SearchStaffActivity extends ListActivity {
     	d.addRoom(112, "Co-Op Bookshop");
     	d.addRoom(114, "Talking Heads Hairdresser");
     	d.addRoom(115, "Campus News & Gifts");
-    	d.addRoom(127, "Guild Volunteering Hub");
-    	d.addRoom(130, "Guild Student Centre");
+    	d.addRoom(127, "Volunteering Hub");
+    	d.addRoom(130, "Student Centre");
     	d.addRoom(141, "Refectory Office");
     	d.addRoom(145, "Tavern Office");
     	d.addRoom(204, "Finance Office");
