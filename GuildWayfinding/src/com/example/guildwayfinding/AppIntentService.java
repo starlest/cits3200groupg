@@ -46,7 +46,6 @@ public class AppIntentService extends IntentService {
 		
 		while(true){
 			String action = inputStream.readLine();
-			Log.i("AppIntentService", "line: "+action);
 			String[] split = action.split("---");
 			String method = split[0];
 			
@@ -83,6 +82,12 @@ public class AppIntentService extends IntentService {
 				Log.i("AppIntentService", "Edit Command Received");
 				String[] parts = split[1].split("&");
 				db.editStaff(Integer.parseInt(parts[0]),parts[1],parts[2],parts[3],parts[4],parts[5],parts[6],parts[7],parts[8],parts[9],parts[10]);
+				
+			} else if (method.equals("ADD")){
+				
+				Log.i("AppIntentService", "Add Command Received");
+				String[] parts = split[1].split("&");
+				db.addStaff(parts[0],Integer.parseInt(parts[1]),parts[2],parts[3],parts[4],parts[5],parts[6],parts[7],parts[8],parts[9]);
 			}
 		}
 	} catch (Exception e) {
