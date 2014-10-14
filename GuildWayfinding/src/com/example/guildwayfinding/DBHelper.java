@@ -68,6 +68,13 @@ private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INTEGER PRIMAR
 				 "VALUES (" + id + ", '" + description + "');";
 	  db.execSQL(sql);
   }
+  
+  public void deleteStaff(int id)
+  {
+	  SQLiteDatabase db = this.getWritableDatabase();
+	  String sql = "DELETE FROM STAFF WHERE id = "+id;
+	  db.execSQL(sql);
+  }
 
   public void editStaff(int id, String name, String room, String faculty, String telephone, String email, String Mon, String Tues, String Wed, String Thurs, String Fri)
   {
@@ -158,9 +165,9 @@ private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INTEGER PRIMAR
 		  int r = c.getInt(2);
 		  int firstDigit = Integer.parseInt(Integer.toString(r).substring(0, 1));
 		  String room;
-		  if (firstDigit == 1) room = "G" + Integer.parseInt(Integer.toString(r).substring(1));
-		  else if (firstDigit == 2) room = "1" + Integer.parseInt(Integer.toString(r).substring(1));
-		  else room = "2" + Integer.parseInt(Integer.toString(r).substring(1));
+		  if (firstDigit == 1) room = "G" + Integer.toString(r).substring(1);
+		  else if (firstDigit == 2) room = "1" + Integer.toString(r).substring(1);
+		  else room = "2" + Integer.toString(r).substring(1);
 		  s = new Staff(c.getString(1), room, c.getString(3), c.getString(4), c.getString(5), c.getString(6), c.getString(7), c.getString(8), c.getString(9), c.getString(10));
 
 		  c.close();

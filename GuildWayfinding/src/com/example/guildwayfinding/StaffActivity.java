@@ -88,7 +88,7 @@ public class StaffActivity extends Activity {
 			
 			populateSchedule(s);
 			
-			String fileName = "android.resource://"+  getPackageName() + "/raw/vp8";
+			String fileName = "android.resource://"+  getPackageName() + "/raw/a" + s.getRoom().toLowerCase();
 			VideoView vv = (VideoView) findViewById(R.id.video);
 			vv.setVideoURI(Uri.parse(fileName));
 			vv.start();
