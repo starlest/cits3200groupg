@@ -40,12 +40,15 @@ public class AppIntentService extends IntentService {
 		BufferedReader inputStream = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 	
 		Log.i("AppIntentService", "Connected");
-		
-		DBHelper db = new DBHelper(this);
 	
 		
 		while(true){
 			String action = inputStream.readLine();
+			
+			DBHelper db = new DBHelper(this);
+			
+			Log.i("AppIntentService", action);
+			
 			String[] split = action.split("---");
 			String method = split[0];
 			
@@ -74,23 +77,28 @@ public class AppIntentService extends IntentService {
 				Staff s = db.getStaff(Integer.parseInt(id));
 				
 				outputStream.println(id+"&"+s.getName()+"&"+s.getRoom()+"&"+s.getFaculty()+"&"+s.getTelephone()+"&"+s.getEmail()+"&"+s.mon+"&"+s.tues+"&"+s.wed+"&"+s.thurs+"&"+s.fri);
-			
 				outputStream.flush();
 	
 	
 			} else if (method.equals("EDIT")){
 				Log.i("AppIntentService", "Edit Command Received");
-				String[] parts = split[1].split("&");
+				String[] parts = split[1].split("&", -1);
 				db.editStaff(Integer.parseInt(parts[0]),parts[1],parts[2],parts[3],parts[4],parts[5],parts[6],parts[7],parts[8],parts[9],parts[10]);
 				
 			} else if (method.equals("ADD")){
 				
 				Log.i("AppIntentService", "Add Command Received");
-				String[] parts = split[1].split("&");
+				String[] parts = split[1].split("&", -1);
 				db.addStaff(parts[0],Integer.parseInt(parts[1]),parts[2],parts[3],parts[4],parts[5],parts[6],parts[7],parts[8],parts[9]);
+			} else if (method.equals("DELETE")){
+					
+				Log.i("AppIntentService", "delete Command Received");
+				db.deleteStaff(Integer.parseInt(split[1]));
 			}
+			db.close();
 		}
 	} catch (Exception e) {
+		e.printStackTrace();
 		Log.i("AppIntentService", "Error connecting to Server, Retrying in 10secs");
 		
 		//retry after 10 secs

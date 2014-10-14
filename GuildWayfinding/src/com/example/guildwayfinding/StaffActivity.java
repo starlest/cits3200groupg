@@ -98,7 +98,8 @@ public class StaffActivity extends Activity {
 			});
 		}
 		
-
+		d.close();
+		
 		t = new TimerTask(){
 		    public void run() { 
 		    	Intent intent = new Intent(getBaseContext(), HomeActivity.class);

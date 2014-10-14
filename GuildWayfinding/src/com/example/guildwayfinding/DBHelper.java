@@ -68,6 +68,13 @@ private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INTEGER PRIMAR
 				 "VALUES (" + id + ", '" + description + "');";
 	  db.execSQL(sql);
   }
+  
+  public void deleteStaff(int id)
+  {
+	  SQLiteDatabase db = this.getWritableDatabase();
+	  String sql = "DELETE FROM STAFF WHERE id = "+id;
+	  db.execSQL(sql);
+  }
 
   public void editStaff(int id, String name, String room, String faculty, String telephone, String email, String Mon, String Tues, String Wed, String Thurs, String Fri)
   {
