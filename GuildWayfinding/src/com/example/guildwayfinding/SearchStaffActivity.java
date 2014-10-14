@@ -12,7 +12,6 @@ import java.util.regex.Pattern;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.GestureDetector;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -229,7 +228,9 @@ public class SearchStaffActivity extends ListActivity {
             getListView().setSelection(subitemPosition);
         }
     }
-    private DBHelper populate(DBHelper d){
+    
+    @SuppressWarnings("unused")
+	private DBHelper populate(DBHelper d){
     	d.addStaff("Aden Date", 127, "Volunteering Hub", "64885891", "aden.date@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
     	d.addStaff("Sophie Greer", 127, "Volunteering Hub", "64885891", "sophie.greer@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
     	d.addStaff("Chelsea Hayes", 130, "Student Centre", "64882295", "chelsea.hayes@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
