@@ -7794,3 +7794,247 @@ com.android.ddmlib.ShellCommandUnresponsiveException
 
 !ENTRY com.android.ide.eclipse.adt 4 0 2014-10-14 22:51:45.164
 !MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 02:40:27.293
+!MESSAGE No command output when running: 'am start -n com.example.guildwayfinding/com.example.guildwayfinding.HomeActivity -a android.intent.action.MAIN -c android.intent.category.LAUNCHER' on device emulator-5554
+!STACK 0
+com.android.ddmlib.ShellCommandUnresponsiveException
+	at com.android.ddmlib.AdbHelper.executeRemoteCommand(AdbHelper.java:430)
+	at com.android.ddmlib.AdbHelper.executeRemoteCommand(AdbHelper.java:347)
+	at com.android.ddmlib.Device.executeShellCommand(Device.java:609)
+	at com.android.ide.eclipse.adt.internal.launch.ActivityLaunchAction.doLaunchAction(ActivityLaunchAction.java:67)
+	at com.android.ide.eclipse.adt.internal.launch.ActivityLaunchAction.doLaunchAction(ActivityLaunchAction.java:109)
+	at com.android.ide.eclipse.adt.internal.launch.AndroidLaunchController.doLaunchAction(AndroidLaunchController.java:1293)
+	at com.android.ide.eclipse.adt.internal.launch.AndroidLaunchController.doLaunchAction(AndroidLaunchController.java:1305)
+	at com.android.ide.eclipse.adt.internal.launch.AndroidLaunchController.launchApp(AndroidLaunchController.java:1277)
+	at com.android.ide.eclipse.adt.internal.launch.AndroidLaunchController.clientChanged(AndroidLaunchController.java:1642)
+	at com.android.ddmlib.AndroidDebugBridge.clientChanged(AndroidDebugBridge.java:926)
+	at com.android.ddmlib.Device.update(Device.java:774)
+	at com.android.ddmlib.Client.update(Client.java:903)
+	at com.android.ddmlib.HandleAppName.handleAPNM(HandleAppName.java:112)
+	at com.android.ddmlib.HandleAppName.handleChunk(HandleAppName.java:65)
+	at com.android.ddmlib.MonitorThread.callHandler(MonitorThread.java:414)
+	at com.android.ddmlib.MonitorThread.processClientActivity(MonitorThread.java:322)
+	at com.android.ddmlib.MonitorThread.run(MonitorThread.java:263)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 02:46:41.400
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 02:47:25.122
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 02:47:33.031
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 02:48:04.181
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 02:49:01.020
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 02:51:42.966
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 02:52:03.319
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 02:52:27.700
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 02:52:32.482
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 02:53:03.208
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 02:53:14.572
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 02:53:26.650
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 02:53:34.466
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 02:56:27.003
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:02:17.419
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:02:40.040
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:03:34.738
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:09:45.874
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:10:02.345
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:10:10.135
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:10:33.173
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:10:35.926
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:10:58.215
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:13:03.109
+!MESSAGE No command output when running: 'am start -n com.example.guildwayfinding/com.example.guildwayfinding.HomeActivity -a android.intent.action.MAIN -c android.intent.category.LAUNCHER' on device emulator-5554
+!STACK 0
+com.android.ddmlib.ShellCommandUnresponsiveException
+	at com.android.ddmlib.AdbHelper.executeRemoteCommand(AdbHelper.java:430)
+	at com.android.ddmlib.AdbHelper.executeRemoteCommand(AdbHelper.java:347)
+	at com.android.ddmlib.Device.executeShellCommand(Device.java:609)
+	at com.android.ide.eclipse.adt.internal.launch.ActivityLaunchAction.doLaunchAction(ActivityLaunchAction.java:67)
+	at com.android.ide.eclipse.adt.internal.launch.ActivityLaunchAction.doLaunchAction(ActivityLaunchAction.java:109)
+	at com.android.ide.eclipse.adt.internal.launch.AndroidLaunchController.doLaunchAction(AndroidLaunchController.java:1293)
+	at com.android.ide.eclipse.adt.internal.launch.AndroidLaunchController.doLaunchAction(AndroidLaunchController.java:1305)
+	at com.android.ide.eclipse.adt.internal.launch.AndroidLaunchController.launchApp(AndroidLaunchController.java:1277)
+	at com.android.ide.eclipse.adt.internal.launch.AndroidLaunchController.clientChanged(AndroidLaunchController.java:1642)
+	at com.android.ddmlib.AndroidDebugBridge.clientChanged(AndroidDebugBridge.java:926)
+	at com.android.ddmlib.Device.update(Device.java:774)
+	at com.android.ddmlib.Client.update(Client.java:903)
+	at com.android.ddmlib.HandleAppName.handleAPNM(HandleAppName.java:112)
+	at com.android.ddmlib.HandleAppName.handleChunk(HandleAppName.java:65)
+	at com.android.ddmlib.MonitorThread.callHandler(MonitorThread.java:414)
+	at com.android.ddmlib.MonitorThread.processClientActivity(MonitorThread.java:322)
+	at com.android.ddmlib.MonitorThread.run(MonitorThread.java:263)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:14:06.603
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:19:04.017
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:19:40.505
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:23:20.302
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:25:14.561
+!MESSAGE No command output when running: 'am start -n com.example.guildwayfinding/com.example.guildwayfinding.HomeActivity -a android.intent.action.MAIN -c android.intent.category.LAUNCHER' on device emulator-5554
+!STACK 0
+com.android.ddmlib.ShellCommandUnresponsiveException
+	at com.android.ddmlib.AdbHelper.executeRemoteCommand(AdbHelper.java:430)
+	at com.android.ddmlib.AdbHelper.executeRemoteCommand(AdbHelper.java:347)
+	at com.android.ddmlib.Device.executeShellCommand(Device.java:609)
+	at com.android.ide.eclipse.adt.internal.launch.ActivityLaunchAction.doLaunchAction(ActivityLaunchAction.java:67)
+	at com.android.ide.eclipse.adt.internal.launch.ActivityLaunchAction.doLaunchAction(ActivityLaunchAction.java:109)
+	at com.android.ide.eclipse.adt.internal.launch.AndroidLaunchController.doLaunchAction(AndroidLaunchController.java:1293)
+	at com.android.ide.eclipse.adt.internal.launch.AndroidLaunchController.doLaunchAction(AndroidLaunchController.java:1305)
+	at com.android.ide.eclipse.adt.internal.launch.AndroidLaunchController.launchApp(AndroidLaunchController.java:1277)
+	at com.android.ide.eclipse.adt.internal.launch.AndroidLaunchController.clientChanged(AndroidLaunchController.java:1642)
+	at com.android.ddmlib.AndroidDebugBridge.clientChanged(AndroidDebugBridge.java:926)
+	at com.android.ddmlib.Device.update(Device.java:774)
+	at com.android.ddmlib.Client.update(Client.java:903)
+	at com.android.ddmlib.HandleAppName.handleAPNM(HandleAppName.java:112)
+	at com.android.ddmlib.HandleAppName.handleChunk(HandleAppName.java:65)
+	at com.android.ddmlib.MonitorThread.callHandler(MonitorThread.java:414)
+	at com.android.ddmlib.MonitorThread.processClientActivity(MonitorThread.java:322)
+	at com.android.ddmlib.MonitorThread.run(MonitorThread.java:263)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:27:37.736
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:28:17.008
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:37:28.551
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:47:02.935
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:49:54.908
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:50:55.417
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:51:22.686
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:51:32.036
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:51:53.095
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 03:52:59.273
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 04:02:39.042
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 04:03:29.280
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 04:03:50.875
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 04:04:03.527
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 04:05:35.132
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 04:05:55.466
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 04:06:03.608
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 04:07:13.308
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 04:07:24.878
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 04:07:40.284
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 04:08:06.160
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 04:08:32.887
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 04:08:49.679
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 04:10:56.203
+!MESSAGE No command output when running: 'am start -n com.example.guildwayfinding/com.example.guildwayfinding.HomeActivity -a android.intent.action.MAIN -c android.intent.category.LAUNCHER' on device emulator-5554
+!STACK 0
+com.android.ddmlib.ShellCommandUnresponsiveException
+	at com.android.ddmlib.AdbHelper.executeRemoteCommand(AdbHelper.java:430)
+	at com.android.ddmlib.AdbHelper.executeRemoteCommand(AdbHelper.java:347)
+	at com.android.ddmlib.Device.executeShellCommand(Device.java:609)
+	at com.android.ide.eclipse.adt.internal.launch.ActivityLaunchAction.doLaunchAction(ActivityLaunchAction.java:67)
+	at com.android.ide.eclipse.adt.internal.launch.ActivityLaunchAction.doLaunchAction(ActivityLaunchAction.java:109)
+	at com.android.ide.eclipse.adt.internal.launch.AndroidLaunchController.doLaunchAction(AndroidLaunchController.java:1293)
+	at com.android.ide.eclipse.adt.internal.launch.AndroidLaunchController.doLaunchAction(AndroidLaunchController.java:1305)
+	at com.android.ide.eclipse.adt.internal.launch.AndroidLaunchController.launchApp(AndroidLaunchController.java:1277)
+	at com.android.ide.eclipse.adt.internal.launch.AndroidLaunchController.clientChanged(AndroidLaunchController.java:1642)
+	at com.android.ddmlib.AndroidDebugBridge.clientChanged(AndroidDebugBridge.java:926)
+	at com.android.ddmlib.Device.update(Device.java:774)
+	at com.android.ddmlib.Client.update(Client.java:903)
+	at com.android.ddmlib.HandleAppName.handleAPNM(HandleAppName.java:112)
+	at com.android.ddmlib.HandleAppName.handleChunk(HandleAppName.java:65)
+	at com.android.ddmlib.MonitorThread.callHandler(MonitorThread.java:414)
+	at com.android.ddmlib.MonitorThread.processClientActivity(MonitorThread.java:322)
+	at com.android.ddmlib.MonitorThread.run(MonitorThread.java:263)
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 04:11:58.741
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2014-10-15 04:12:28.425
+!MESSAGE Can't find file C:\Users\Edwin\Desktop\adt-bundle-windows-x86_64-20140702\sdk\extras\android\support\v7\appcompat\.classpath in workspace

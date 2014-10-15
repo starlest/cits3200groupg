@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.util.Log;
 
 public class AppIntentService extends IntentService {
-	private ServerSocket server;
 
   /**
    * A constructor is required, and must call the super IntentService(String)
@@ -96,6 +95,7 @@ public class AppIntentService extends IntentService {
 				db.deleteStaff(Integer.parseInt(split[1]));
 			}
 			db.close();
+			socket.close();
 		}
 	} catch (Exception e) {
 		e.printStackTrace();

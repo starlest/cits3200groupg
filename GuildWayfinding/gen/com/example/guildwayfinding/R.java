@@ -1287,7 +1287,7 @@ containing a value of this type.
         public static final int ag15=0x7f050014;
         public static final int ag27=0x7f050015;
         public static final int ag30=0x7f050016;
-        public static final int ag41g=0x7f050017;
+        public static final int ag41=0x7f050017;
         public static final int vp8=0x7f050018;
     }
     public static final class string {

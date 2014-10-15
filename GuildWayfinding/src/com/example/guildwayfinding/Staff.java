@@ -2,7 +2,7 @@ package com.example.guildwayfinding;
 
 public class Staff {
 	private String name;
-	private int room;
+	private String room;
 	private String faculty;
 	private String telephone;
 	private String email;
@@ -13,7 +13,7 @@ public class Staff {
 	public String fri;
 
 	
-	public Staff(String name, int room, String faculty, String telephone, String email, String Mon, String Tues, String Wed, String Thurs, String Fri) 
+	public Staff(String name, String room, String faculty, String telephone, String email, String Mon, String Tues, String Wed, String Thurs, String Fri) 
 	{
 		this.name = name;
 		this.room = room;
@@ -31,7 +31,7 @@ public class Staff {
 		return name;
 	}
 	
-	public int getRoom() {
+	public String getRoom() {
 		return room;
 	}
 	

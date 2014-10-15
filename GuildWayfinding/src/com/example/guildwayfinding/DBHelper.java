@@ -16,6 +16,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
   private static final int DATABASE_VERSION = 20;
 
+
   // Database creation sql statement
   private static final String CREATE_STAFF = "CREATE TABLE STAFF " +
 			 "(ID INTEGER PRIMARY KEY," +
@@ -163,13 +164,37 @@ private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INTEGER PRIMAR
 	  Cursor c = db.rawQuery(sql, null);
 
 	  if( c != null && c.moveToFirst() ) {
-
-		  s = new Staff(c.getString(1), c.getInt(2), c.getString(3), c.getString(4), c.getString(5), c.getString(6), c.getString(7), c.getString(8), c.getString(9), c.getString(10));
+		  int r = c.getInt(2);
+		  int firstDigit = Integer.parseInt(Integer.toString(r).substring(0, 1));
+		  String room;
+		  if (firstDigit == 1) room = "G" + Integer.toString(r).substring(1);
+		  else if (firstDigit == 2) room = "1" + Integer.toString(r).substring(1);
+		  else room = "2" + Integer.toString(r).substring(1);
+		  s = new Staff(c.getString(1), room, c.getString(3), c.getString(4), c.getString(5), c.getString(6), c.getString(7), c.getString(8), c.getString(9), c.getString(10));
 
 		  c.close();
 	  }
 
 	  return s;
+  }
+  
+  public String getFacultyDirection(String faculty) {
+	  SQLiteDatabase db = this.getReadableDatabase();
+	  String sql = "SELECT id FROM ROOM WHERE description =  '" + faculty + "';";
+	  Cursor c = db.rawQuery(sql, null);
+	  String room = "";
+	  
+	  if( c != null && c.moveToFirst() ) {
+		  int r = c.getInt(0);
+		  int firstDigit = Integer.parseInt(Integer.toString(r).substring(0, 1));
+		  if (firstDigit == 1) room = "G" + Integer.toString(r).substring(1);
+		  else if (firstDigit == 2) room = "1" + Integer.toString(r).substring(1);
+		  else room = "2" + Integer.toString(r).substring(1);
+
+		  c.close();
+	  }
+	  
+	  return room;
   }
 
 }

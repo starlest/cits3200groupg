@@ -28,3 +28,8 @@ local.properties
 
 # TeXlipse plugin
 .texlipse
+*.dex
+GuildWayfinding/bin/classes.dex
+*.class
+*.dex
+*.class

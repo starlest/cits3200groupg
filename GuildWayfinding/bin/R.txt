@@ -412,7 +412,7 @@ int raw ag14 0x7f050013
 int raw ag15 0x7f050014
 int raw ag27 0x7f050015
 int raw ag30 0x7f050016
-int raw ag41g 0x7f050017
+int raw ag41 0x7f050017
 int raw vp8 0x7f050018
 int string abc_action_bar_home_description 0x7f0b0001
 int string abc_action_bar_up_description 0x7f0b0002
