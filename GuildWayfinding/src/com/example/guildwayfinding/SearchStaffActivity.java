@@ -228,85 +228,49 @@ public class SearchStaffActivity extends ListActivity {
             getListView().setSelection(subitemPosition);
         }
     }
+    
+    @SuppressWarnings("unused")
+	private DBHelper populate(DBHelper d){
+    	d.addStaff("Aden Date", 127, "Volunteering Hub", "64885891", "aden.date@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Sophie Greer", 127, "Volunteering Hub", "64885891", "sophie.greer@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Chelsea Hayes", 130, "Student Centre", "64882295", "chelsea.hayes@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Gary Morris", 145, "Tavern", "64882318", "gary.morris@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Vishal Shah", 204, "Finance Office", "64882928", "vishal.shah@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Daryl Sanders", 204, "Finance Office", "64883407", "daryl.sanders@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Nicola Norris", 204, "Finance Office", "64882293", "nicola.norris@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Myriam Hernandez", 204, "Finance Office", "64882296", "nicola.norris@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Jia Jing Hong", 204, "Finance Office", "64882811", "jiajing.hong@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Melissa Davison", 204, "Finance Office", "64882811", "melissa.davison@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Danielle Fitzgerald", 205, "Student Assist Office", "64882292", "danielle.fitzgerald@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Patrice Mitchell", 205, "Student Assist Office", "64888017", "patrice.mitchell@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Steff Langer-Kool", 205, "Student Assist Office", "64882230", "steffi.langer-kool@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Kelvin Lee", 206, "Administration Office", "64883068", "kelvin.lee@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Jessica Toon", 206, "Administration Office", "64881681", "jessica.toon@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Jonathon Zahra", 206, "Administration Office", "64882923", "jonathon.zahra@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Beverly Macintyre", 206, "Administration Office", "64882832", "beverly.macintryre@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Ken Saverimutto", 207, "Catering Director Office", "64882295", "ken.saverimutto@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Tony Goodman", 208, "Director of Student and Corporate Services Office", "64882271", "tony.goodman@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Rodney Taylor", 209, "Catering Administration Office", "64883763", "rodney.taylor@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Irene Conway", 209, "Catering Administration Office", "64881822", "irene.conway@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Geraldine Lambert", 209, "Catering Administration Office", "64882315", "geraldine.lambert@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Chloe Jackson",210, "Events and Creative Office", "64885340", "chloe.jackson@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Stephanie Stewart", 210, "Events and Creative Office", "64882291", "stephanie.stewart@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Lukas Wilmmler", 210, "Events and Creative Office", "64883762", "lukas.wilmmler@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Karrie McClelland", 210, "Events and Creative Office",  "64883408", "karrie.mcclelland@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Alex Pond", 210, "Events and Creative Office", "64882211", "alex.pond@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Kate Hoolahan", 210, "Events and Creative Office", "64883929", "kate.hoolahan@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Wayne HoweIls", 211, "Managing Director Office", "64883760", "wayne.howells@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Jenny Ophe I", 215, "Human Resources Office", "64884312", "jenny.ophel@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Cameron Fitzgeraldd", 216, "Student Representative Office", "64883773", "vp@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Samuel Shipley", 216, "Student Representative Office", "64883773", "secretary@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Daniel Jo", 216, "Student Representative Office", "64883773", "treasurer@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Elizabeth O’Shea", 216, "Student Representative Office", "64883773", "ed@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Madelene Mulhollad", 216, "Student Representative Office", "64883773", "soc@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Honnny Palayukan", 216, "Student Representative Office", "64883773", "pac@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("David Raithel", 216, "Postgraduate Student’s Association Office", "64883194", "psa@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Thomas Henderson", 216, "President Office", "64882294", "president@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
 
-    private DBHelper populate(DBHelper d){
-    	d.addStaff("Aden Date", 127, "Volunteering Hub", "64885891", "aden.date@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Sophie Greer", 127, "Volunteering Hub", "64885891", "sophie.greer@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Chelsea Hayes", 130, "Student Centre", "64882295", "chelsea.hayes@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Gary Morris", 145, "Tavern", "64882318", "gary.morris@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Vishal Shah", 104, "Finance Office", "64882928", "vishal.shah@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Daryl Sanders", 104, "Finance Office", "64883407", "daryl.sanders@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Nicola Norris", 104, "Finance Office", "64882293", "nicola.norris@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Myriam Hernandez", 104, "Finance Office", "64882296", "nicola.norris@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Jia Jing Hong", 104, "Finance Office", "64882811", "jiajing.hong@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Melissa Davison", 104, "Finance Office", "64882811", "melissa.davison@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Danielle Fitzgerald", 105, "Student Assist Office", "64882292", "danielle.fitzgerald@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Patrice Mitchell", 105, "Student Assist Office", "64888017", "patrice.mitchell@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Steff Langer-Kool", 105, "Student Assist Office", "64882230", "steffi.langer-kool@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Kelvin Lee", 106, "Administration Office", "64883068", "kelvin.lee@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Jessica Toon", 106, "Administration Office", "64881681", "jessica.toon@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Jonathon Zahra", 106, "Administration Office", "64882923", "jonathon.zahra@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Beverly Macintyre", 106, "Administration Office", "64882832", "beverly.macintryre@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Ken Saverimutto", 107, "Catering Director Office", "64882295", "ken.saverimutto@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Tony Goodman", 108, "Director of Student and Corporate Services Office", "64882271", "tony.goodman@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Rodney Taylor", 109, "Catering Administration Office", "64883763", "rodney.taylor@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Irene Conway", 109, "Catering Administration Office", "64881822", "irene.conway@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Geraldine Lambert", 109, "Catering Administration Office", "64882315", "geraldine.lambert@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Chloe Jackson", 110, "Events and Creative Office", "64885340", "chloe.jackson@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Stephanie Stewart", 110, "Events and Creative Office", "64882291", "stephanie.stewart@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Lukas Wilmmler", 110, "Events and Creative Office", "64883762", "lukas.wilmmler@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Karrie McClelland", 110, "Events and Creative Office",  "64883408", "karrie.mcclelland@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Alex Pond", 110, "Events and Creative Office", "64882211", "alex.pond@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Kate Hoolahan", 110, "Events and Creative Office", "64883929", "kate.hoolahan@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Wayne HoweIls", 111, "Managing Director Office", "64883760", "wayne.howells@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Jenny Ophe I", 115, "Human Resources Office", "64884312", "jenny.ophel@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Cameron Fitzgeraldd", 116, "Student Representative Office", "64883773", "vp@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Samuel Shipley", 116, "Student Representative Office", "64883773", "secretary@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Daniel Jo", 116, "Student Representative Office", "64883773", "treasurer@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Elizabeth OÕShea", 116, "Student Representative Office", "64883773", "ed@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Madelene Mulhollad", 116, "Student Representative Office", "64883773", "soc@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Honnny Palayukan", 116, "Student Representative Office", "64883773", "pac@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("David Raithel", 116, "Postgraduate Student's Association Office", "64883194", "psa@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Thomas Henderson", 116, "President Office", "64882294", "president@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	/*
-    	d.addStaff("", 1, "Eye Care Centre", "64881491", "eyecarecentres@westnet.com.au", "0830,1630", "0830,1630", "0830,1630", "0830,1630", "0830, 1630");
-    	d.addStaff("", 2, "Guild Second Hand Bookshop", "64882310", "bookshop@guild.uwa.edu.au", "1000,1500", "1000,1500", "1000,1500", "1000,1500", "1000,1500");
-    	d.addStaff("", 3, "Winthrop Australia Retail Outlet", "64882777", "uwa@winaust.com.au", "0845,1700", "0845,1700", "0845,1700", "0845,1700", "0845,1700");
-    	d.addStaff("", 8, "Guild Village CafŽ", "64882295", "catering@guild.uwa.ed.au", "0730,1900", "0730,1900", "0730,1900", "0730,1900", "0730,1700");
-    	d.addStaff("", 11, "Campus Pharmacy", "64882290", "campuspharmacy@westnet.com.au", "0900,1700", "0900,1700", "0900,1700", "0900,1700", "0900,1700");
-    	d.addStaff("", 12, "Co-Op Bookshop", "61445705", "uw@coop.com.au", "0845,1730", "0845,1730", "0845,1730", "0845,1730", "0845,1730");
-    	d.addStaff("", 14, "Talking Heads Hairdresser", "93812638", "sjharris@iinet.net.au", "0900,1700", "0900,1700", "0900,1700", "0900,1700", "0900,1700");
-    	d.addStaff("", 15, "Campus News & Gifts", "64882283", "campusnews_uwa@live.com.au", "0800,1700", "0800,1700", "0800,1700", "0800,1700", "0800,1700");
-    	d.addStaff("", 27, "Guild Volunteering Hub", "64885891", "volunteering@guild.uwa.edu.au", "0900,1700", "0900,1700", "0900,1700", "0900,1700", "0900,1700" );
-    	d.addStaff("", 30, "Guild Student Centre", "64882295", "hello@guild.uwa.edu.au", "0830,1700", "0830,1700", "0830,1700", "0830,1700", "0830,1700");
-    	d.addStaff("", 41, "Reflectory Office", "64882287", "refectory@guild.uwa.edu.au", "", "", "", "", "");
-    	d.addStaff("", 45, "Tavern Office", "64882295", "tavern@guild.uwa.edu.au", "", "", "", "", "");
-    	d.addStaff("", 129, "Winthrop Australia", "64882777", "uwa@winaust.com.au", "0845,1700", "0845,1700", "0845,1700", "0845,1700", "0845,1700");
-    	d.addStaff("", 128, "UniPrint", "64883624", "uniprintshop@admin.uwa.edu.au", "0830,1730", "0830,1730", "0830,1730", "0830,1730", "0830,1730");
-    	d.addStaff("", 131, "STA Travel", "64882302", "uwa@branch.statravel.com.au", "0900,1700", "0900,1700", "0900,1700", "0900,1700", "0900,1700");
-    	d.addStaff("", 132, "Westpac Bank", "92848899", "dpadley@westpac.com.au", "0930,1600", "0930,1600", "0930,1600", "0930,1600", "0930,1700");
-    	d.addStaff("", 135, "UniCredit", "64881218", "uw@unicredit.com.au", "", "", "", "1100,1500", "1100,1500");
-    	d.addStaff("", 137, "Philips & Father", "64888507","info@philipsandfather.com", "0930,1630", "0930,1630", "0930,1630", "0930,1630", "0930,1630");
-    	d.addStaff("", 152, "Pelican Office", "64882284", "pelican@guild.uwa.edu.au", "", "", "", "", "");
-    	d.addStaff("", 181, "Science Union", "", "", "", "", "", "", "");
-    	d.addStaff("", 182, "University Computer Club", "", "ucc-president@guild.uwa.edu.au", "", "", "", "", "");
-    	d.addStaff("", 182, "University Science Fiction (and Fantasy) Association", "", "unisfa-president@guild.uwa.edu.au", "", "", "", "", "");
-    	d.addStaff("", 183, "Unigames", "", "unigames-president@guild.uwa.edu.au", "", "", "", "", "");
-    	d.addStaff("", 184, "University Dance Society", "", "", "", "", "", "", "");
-    	d.addStaff("", 184, "UWAnime and JapSSoc", "", "japsoc-president@guild.uwa.edu.au", "", "", "", "", "");
-    	d.addStaff("", 184, "Uwa Society for Creative Anachronism", "", "uwaasca-president@guild.uwa.edu.au", "", "", "", "", "");
-    	d.addStaff("", 202, "UWA Medical Centre", "64882118", "0830,1700", "0830,1700", "0830,1700", "0830,1700", "0830,1700", "0830,1700");
-    	d.addStaff("", 252, "NUS Office", "", "nus@guild.uwa.edu.au", "", "", "", "", "");
-    	d.addStaff("", 253, "Uni Camp for kids Office", "64888763", "committee@unicampforkidds.org.au", "", "", "", "", "");
-    	d.addStaff("", 254, "Women`s Department Office (Safe Zone)", "", "womens@guild.uwa.edu.au", "", "", "", "", "");
-    	d.addStaff("", 255, "PROSH Office", "", "prosh@guild.uwa.edu.au", "", "", "", "", "");
-    	d.addStaff("", 256, "Christian Union Club Room", "", "cu-committee@guild.uwa.edu.au", "", "", "", "", "");
-    	d.addStaff("", 257, "Multicultural Week Lounge", "", "enquiries@multiculturalweek.org", "", "", "", "", "");
-    	d.addStaff("", 259, "Environment Department Office", "", "environment@guild.uwa.edu.au", "", "", "", "", "");
-    	d.addStaff("", 260, "AIESES Club Room", "", "aiesec-committee@guild.uwa.edu.au", "", "", "", "", "");
-    	d.addStaff("", 262, "International Students Service Office", "", "iss@guild.uwa.edu.au", "", "", "", "", "");
-    	d.addStaff("", 264, "Queer Department Office", "", "queer@guild.uwa.edu.au", "", "", "", "", "");
-    	*/
+    	
 
     	d.addRoom(101, "Eye Care Centre");
     	d.addRoom(102, "Guild Second Hand Bookshop");
@@ -326,7 +290,6 @@ public class SearchStaffActivity extends ListActivity {
     	d.addRoom(207, "Catering Director Office");
     	d.addRoom(208, "Director of Student and Corporate Services Office");
     	d.addRoom(209, "Catering Administration Office");
-
     	
     	return d;
     }

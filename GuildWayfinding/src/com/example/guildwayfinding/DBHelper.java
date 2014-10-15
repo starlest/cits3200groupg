@@ -16,7 +16,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
   private static final int DATABASE_VERSION = 22;
 
-
   // Database creation sql statement
   private static final String CREATE_STAFF = "CREATE TABLE STAFF " +
 			 "(ID INTEGER PRIMARY KEY," +
@@ -65,7 +64,6 @@ private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INTEGER PRIMAR
   public void addRoom (int id, String description)
   {
       SQLiteDatabase db = this.getWritableDatabase();
-      Log.i("AppIntentService", id+" "+description);
 	  String sql = "INSERT INTO ROOM (ID, DESCRIPTION) " +
 				 "VALUES (" + id + ", '" + description + "');";
 	  db.execSQL(sql);
@@ -120,7 +118,7 @@ private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INTEGER PRIMAR
   {
 	  List<String> l = new ArrayList<String>();
 	  SQLiteDatabase db = this.getReadableDatabase();
-	  String sql = "SELECT DESCRIPTION FROM ROOM;";
+	  String sql = "SELECT DISTINCT FACULTY FROM STAFF;";
 	  Cursor c = db.rawQuery(sql, null);
 	  if( c != null && c.moveToFirst() ) {
 		  while (!c.isAfterLast()) {
@@ -149,8 +147,10 @@ private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INTEGER PRIMAR
 	  
 	  if( c != null && c.moveToFirst() ) {
 		  while (!c.isAfterLast()) {
-			  l.add(c.getString(1) + "," + c.getString(0));
-			  c.moveToNext();
+			  if (!c.getString(1).equals("")) { 
+				  l.add(c.getString(1) + "," + c.getString(0));
+				  c.moveToNext();
+			  }
 		  }
 		  c.close();
 	  }
@@ -176,6 +176,25 @@ private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INTEGER PRIMAR
 	  }
 
 	  return s;
+  }
+  
+  public String getFacultyDirection(String faculty) {
+	  SQLiteDatabase db = this.getReadableDatabase();
+	  String sql = "SELECT ROOM FROM STAFF WHERE faculty =  '" + faculty + "';";
+	  Cursor c = db.rawQuery(sql, null);
+	  String room = "";
+	  
+	  if( c != null && c.moveToFirst() ) {
+		  int r = c.getInt(0);
+		  int firstDigit = Integer.parseInt(Integer.toString(r).substring(0, 1));
+		  if (firstDigit == 1) room = "G" + Integer.toString(r).substring(1);
+		  else if (firstDigit == 2) room = "1" + Integer.toString(r).substring(1);
+		  else room = "2" + Integer.toString(r).substring(1);
+
+		  c.close();
+	  }
+	  
+	  return room;
   }
 
 }
