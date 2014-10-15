@@ -268,25 +268,65 @@ public class SearchStaffActivity extends ListActivity {
     	d.addStaff("Honnny Palayukan", 116, "Student Representative Office", "64883773", "pac@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
     	d.addStaff("David Raithel", 116, "Postgraduate Student's Association Office", "64883194", "psa@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
     	d.addStaff("Thomas Henderson", 116, "President Office", "64882294", "president@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	
-    	d.addRoom(001, "Eye Care Centre");
-    	d.addRoom(002, "Guild Second Hand Bookshop");
-    	d.addRoom(003, "Winthrop Australia Retail Outlet");
+    	/*
+    	d.addStaff("", 1, "Eye Care Centre", "64881491", "eyecarecentres@westnet.com.au", "0830,1630", "0830,1630", "0830,1630", "0830,1630", "0830, 1630");
+    	d.addStaff("", 2, "Guild Second Hand Bookshop", "64882310", "bookshop@guild.uwa.edu.au", "1000,1500", "1000,1500", "1000,1500", "1000,1500", "1000,1500");
+    	d.addStaff("", 3, "Winthrop Australia Retail Outlet", "64882777", "uwa@winaust.com.au", "0845,1700", "0845,1700", "0845,1700", "0845,1700", "0845,1700");
+    	d.addStaff("", 8, "Guild Village Café", "64882295", "catering@guild.uwa.ed.au", "0730,1900", "0730,1900", "0730,1900", "0730,1900", "0730,1700");
+    	d.addStaff("", 11, "Campus Pharmacy", "64882290", "campuspharmacy@westnet.com.au", "0900,1700", "0900,1700", "0900,1700", "0900,1700", "0900,1700");
+    	d.addStaff("", 12, "Co-Op Bookshop", "61445705", "uw@coop.com.au", "0845,1730", "0845,1730", "0845,1730", "0845,1730", "0845,1730");
+    	d.addStaff("", 14, "Talking Heads Hairdresser", "93812638", "sjharris@iinet.net.au", "0900,1700", "0900,1700", "0900,1700", "0900,1700", "0900,1700");
+    	d.addStaff("", 15, "Campus News & Gifts", "64882283", "campusnews_uwa@live.com.au", "0800,1700", "0800,1700", "0800,1700", "0800,1700", "0800,1700");
+    	d.addStaff("", 27, "Guild Volunteering Hub", "64885891", "volunteering@guild.uwa.edu.au", "0900,1700", "0900,1700", "0900,1700", "0900,1700", "0900,1700" );
+    	d.addStaff("", 30, "Guild Student Centre", "64882295", "hello@guild.uwa.edu.au", "0830,1700", "0830,1700", "0830,1700", "0830,1700", "0830,1700");
+    	d.addStaff("", 41, "Reflectory Office", "64882287", "refectory@guild.uwa.edu.au", "", "", "", "", "");
+    	d.addStaff("", 45, "Tavern Office", "64882295", "tavern@guild.uwa.edu.au", "", "", "", "", "");
+    	d.addStaff("", 129, "Winthrop Australia", "64882777", "uwa@winaust.com.au", "0845,1700", "0845,1700", "0845,1700", "0845,1700", "0845,1700");
+    	d.addStaff("", 128, "UniPrint", "64883624", "uniprintshop@admin.uwa.edu.au", "0830,1730", "0830,1730", "0830,1730", "0830,1730", "0830,1730");
+    	d.addStaff("", 131, "STA Travel", "64882302", "uwa@branch.statravel.com.au", "0900,1700", "0900,1700", "0900,1700", "0900,1700", "0900,1700");
+    	d.addStaff("", 132, "Westpac Bank", "92848899", "dpadley@westpac.com.au", "0930,1600", "0930,1600", "0930,1600", "0930,1600", "0930,1700");
+    	d.addStaff("", 135, "UniCredit", "64881218", "uw@unicredit.com.au", "", "", "", "1100,1500", "1100,1500");
+    	d.addStaff("", 137, "Philips & Father", "64888507","info@philipsandfather.com", "0930,1630", "0930,1630", "0930,1630", "0930,1630", "0930,1630");
+    	d.addStaff("", 152, "Pelican Office", "64882284", "pelican@guild.uwa.edu.au", "", "", "", "", "");
+    	d.addStaff("", 181, "Science Union", "", "", "", "", "", "", "");
+    	d.addStaff("", 182, "University Computer Club", "", "ucc-president@guild.uwa.edu.au", "", "", "", "", "");
+    	d.addStaff("", 182, "University Science Fiction (and Fantasy) Association", "", "unisfa-president@guild.uwa.edu.au", "", "", "", "", "");
+    	d.addStaff("", 183, "Unigames", "", "unigames-president@guild.uwa.edu.au", "", "", "", "", "");
+    	d.addStaff("", 184, "University Dance Society", "", "", "", "", "", "", "");
+    	d.addStaff("", 184, "UWAnime and JapSSoc", "", "japsoc-president@guild.uwa.edu.au", "", "", "", "", "");
+    	d.addStaff("", 184, "Uwa Society for Creative Anachronism", "", "uwaasca-president@guild.uwa.edu.au", "", "", "", "", "");
+    	d.addStaff("", 202, "UWA Medical Centre", "64882118", "0830,1700", "0830,1700", "0830,1700", "0830,1700", "0830,1700", "0830,1700");
+    	d.addStaff("", 252, "NUS Office", "", "nus@guild.uwa.edu.au", "", "", "", "", "");
+    	d.addStaff("", 253, "Uni Camp for kids Office", "64888763", "committee@unicampforkidds.org.au", "", "", "", "", "");
+    	d.addStaff("", 254, "Women`s Department Office (Safe Zone)", "", "womens@guild.uwa.edu.au", "", "", "", "", "");
+    	d.addStaff("", 255, "PROSH Office", "", "prosh@guild.uwa.edu.au", "", "", "", "", "");
+    	d.addStaff("", 256, "Christian Union Club Room", "", "cu-committee@guild.uwa.edu.au", "", "", "", "", "");
+    	d.addStaff("", 257, "Multicultural Week Lounge", "", "enquiries@multiculturalweek.org", "", "", "", "", "");
+    	d.addStaff("", 259, "Environment Department Office", "", "environment@guild.uwa.edu.au", "", "", "", "", "");
+    	d.addStaff("", 260, "AIESES Club Room", "", "aiesec-committee@guild.uwa.edu.au", "", "", "", "", "");
+    	d.addStaff("", 262, "International Students Service Office", "", "iss@guild.uwa.edu.au", "", "", "", "", "");
+    	d.addStaff("", 264, "Queer Department Office", "", "queer@guild.uwa.edu.au", "", "", "", "", "");
+    	*/
+    	d.addRoom(1, "Eye Care Centre");
+    	d.addRoom(2, "Guild Second Hand Bookshop");
+    	d.addRoom(3, "Winthrop Australia Retail Outlet");
     	d.addRoom(8, "Guild Village Cafe");
-    	d.addRoom(011, "Campus Pharmacy");
-    	d.addRoom(012, "Co-Op Bookshop");
-    	d.addRoom(014, "Talking Heads Hairdresser");
-    	d.addRoom(015, "Campus News & Gifts");
-    	d.addRoom(027, "Guild Volunteering Hub");
-    	d.addRoom(030, "Guild Student Centre");
-    	d.addRoom(041, "Refectory Office");
-    	d.addRoom(045, "Tavern Office");
+    	d.addRoom(11, "Campus Pharmacy");
+    	d.addRoom(12, "Co-Op Bookshop");
+    	d.addRoom(14, "Talking Heads Hairdresser");
+    	d.addRoom(15, "Campus News & Gifts");
+    	d.addRoom(27, "Guild Volunteering Hub");
+    	d.addRoom(30, "Guild Student Centre");
+    	d.addRoom(41, "Refectory Office");
+    	d.addRoom(45, "Tavern Office");
     	d.addRoom(104, "Finance Office");
     	d.addRoom(105, "Student Assist Office");
     	d.addRoom(106, "Administration Office");
     	d.addRoom(107, "Catering Director Office");
     	d.addRoom(108, "Director of Student and Corporate Services Office");
     	d.addRoom(109, "Catering Administration Office");
+    	
+    	
     	
     	return d;
     }

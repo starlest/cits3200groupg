@@ -14,7 +14,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
   private static final String DATABASE_NAME = "guild.db";
 
-  private static final int DATABASE_VERSION = 16;
+  private static final int DATABASE_VERSION = 20;
 
   // Database creation sql statement
   private static final String CREATE_STAFF = "CREATE TABLE STAFF " +
@@ -64,6 +64,7 @@ private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INTEGER PRIMAR
   public void addRoom (int id, String description)
   {
       SQLiteDatabase db = this.getWritableDatabase();
+      Log.i("AppIntentService", id+" "+description);
 	  String sql = "INSERT INTO ROOM (ID, DESCRIPTION) " +
 				 "VALUES (" + id + ", '" + description + "');";
 	  db.execSQL(sql);
