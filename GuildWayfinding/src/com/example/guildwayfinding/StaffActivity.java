@@ -13,6 +13,7 @@ import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnPreparedListener;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -83,6 +84,7 @@ public class StaffActivity extends Activity {
 			populateSchedule(s);
 			
 			String fileName = "android.resource://"+  getPackageName() + "/raw/a" + s.getRoom().toLowerCase();
+			Log.i("AppIntentService", "filename: "+fileName);
 			VideoView vv = (VideoView) findViewById(R.id.video);
 			vv.setVideoURI(Uri.parse(fileName));
 			vv.start();

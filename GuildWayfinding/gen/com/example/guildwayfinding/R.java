@@ -1277,17 +1277,17 @@ containing a value of this type.
         public static final int a133=0x7f05000a;
         public static final int a135=0x7f05000b;
         public static final int a137=0x7f05000c;
-        public static final int ag01=0x7f05000d;
-        public static final int ag02=0x7f05000e;
-        public static final int ag03=0x7f05000f;
-        public static final int ag08=0x7f050010;
-        public static final int ag11=0x7f050011;
-        public static final int ag12=0x7f050012;
-        public static final int ag14=0x7f050013;
-        public static final int ag15=0x7f050014;
-        public static final int ag27=0x7f050015;
-        public static final int ag30=0x7f050016;
-        public static final int ag41=0x7f050017;
+        public static final int ag1=0x7f05000d;
+        public static final int ag11=0x7f05000e;
+        public static final int ag12=0x7f05000f;
+        public static final int ag14=0x7f050010;
+        public static final int ag15=0x7f050011;
+        public static final int ag2=0x7f050012;
+        public static final int ag27=0x7f050013;
+        public static final int ag3=0x7f050014;
+        public static final int ag30=0x7f050015;
+        public static final int ag41=0x7f050016;
+        public static final int ag8=0x7f050017;
         public static final int vp8=0x7f050018;
     }
     public static final class string {
