@@ -230,10 +230,10 @@ public class SearchStaffActivity extends ListActivity {
     }
 
     private DBHelper populate(DBHelper d){
-    	d.addStaff("Aden Date", 27, "Volunteering Hub", "64885891", "aden.date@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Sophie Greer", 27, "Volunteering Hub", "64885891", "sophie.greer@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Chelsea Hayes", 30, "Student Centre", "64882295", "chelsea.hayes@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
-    	d.addStaff("Gary Morris", 45, "Tavern", "64882318", "gary.morris@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
+    	d.addStaff("Aden Date", 127, "Volunteering Hub", "64885891", "aden.date@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
+    	d.addStaff("Sophie Greer", 127, "Volunteering Hub", "64885891", "sophie.greer@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
+    	d.addStaff("Chelsea Hayes", 130, "Student Centre", "64882295", "chelsea.hayes@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
+    	d.addStaff("Gary Morris", 145, "Tavern", "64882318", "gary.morris@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
     	d.addStaff("Vishal Shah", 104, "Finance Office", "64882928", "vishal.shah@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
     	d.addStaff("Daryl Sanders", 104, "Finance Office", "64883407", "daryl.sanders@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
     	d.addStaff("Nicola Norris", 104, "Finance Office", "64882293", "nicola.norris@guild.uwa.edu.au", "1500,1300",  "1300,1400",  "0900,1300",  "1200,1400",  "0900,1100");
@@ -307,29 +307,7 @@ public class SearchStaffActivity extends ListActivity {
     	d.addStaff("", 262, "International Students Service Office", "", "iss@guild.uwa.edu.au", "", "", "", "", "");
     	d.addStaff("", 264, "Queer Department Office", "", "queer@guild.uwa.edu.au", "", "", "", "", "");
     	*/
-    	d.addRoom(1, "Eye Care Centre");
-    	d.addRoom(2, "Guild Second Hand Bookshop");
-    	d.addRoom(3, "Winthrop Australia Retail Outlet");
-    	d.addRoom(8, "Guild Village Cafe");
-    	d.addRoom(11, "Campus Pharmacy");
-    	d.addRoom(12, "Co-Op Bookshop");
-    	d.addRoom(14, "Talking Heads Hairdresser");
-    	d.addRoom(15, "Campus News & Gifts");
-    	d.addRoom(27, "Guild Volunteering Hub");
-    	d.addRoom(30, "Guild Student Centre");
-    	d.addRoom(41, "Refectory Office");
-    	d.addRoom(45, "Tavern Office");
-    	d.addRoom(104, "Finance Office");
-    	d.addRoom(105, "Student Assist Office");
-    	d.addRoom(106, "Administration Office");
-    	d.addRoom(107, "Catering Director Office");
-    	d.addRoom(108, "Director of Student and Corporate Services Office");
-    	d.addRoom(109, "Catering Administration Office");
 
-<<<<<<< HEAD
-    	
-    	
-=======
     	d.addRoom(101, "Eye Care Centre");
     	d.addRoom(102, "Guild Second Hand Bookshop");
     	d.addRoom(103, "Winthrop Australia Retail Outlet");
@@ -338,8 +316,8 @@ public class SearchStaffActivity extends ListActivity {
     	d.addRoom(112, "Co-Op Bookshop");
     	d.addRoom(114, "Talking Heads Hairdresser");
     	d.addRoom(115, "Campus News & Gifts");
-    	d.addRoom(127, "Guild Volunteering Hub");
-    	d.addRoom(130, "Guild Student Centre");
+    	d.addRoom(127, "Volunteering Hub");
+    	d.addRoom(130, "Student Centre");
     	d.addRoom(141, "Refectory Office");
     	d.addRoom(145, "Tavern Office");
     	d.addRoom(204, "Finance Office");
@@ -348,7 +326,7 @@ public class SearchStaffActivity extends ListActivity {
     	d.addRoom(207, "Catering Director Office");
     	d.addRoom(208, "Director of Student and Corporate Services Office");
     	d.addRoom(209, "Catering Administration Office");
->>>>>>> parent of 8bcc471... Show directions to empty faculties
+
     	
     	return d;
     }
