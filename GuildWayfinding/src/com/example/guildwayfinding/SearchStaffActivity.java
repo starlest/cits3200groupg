@@ -326,8 +326,29 @@ public class SearchStaffActivity extends ListActivity {
     	d.addRoom(108, "Director of Student and Corporate Services Office");
     	d.addRoom(109, "Catering Administration Office");
 
+<<<<<<< HEAD
     	
     	
+=======
+    	d.addRoom(101, "Eye Care Centre");
+    	d.addRoom(102, "Guild Second Hand Bookshop");
+    	d.addRoom(103, "Winthrop Australia Retail Outlet");
+    	d.addRoom(108, "Guild Village Cafe");
+    	d.addRoom(111, "Campus Pharmacy");
+    	d.addRoom(112, "Co-Op Bookshop");
+    	d.addRoom(114, "Talking Heads Hairdresser");
+    	d.addRoom(115, "Campus News & Gifts");
+    	d.addRoom(127, "Guild Volunteering Hub");
+    	d.addRoom(130, "Guild Student Centre");
+    	d.addRoom(141, "Refectory Office");
+    	d.addRoom(145, "Tavern Office");
+    	d.addRoom(204, "Finance Office");
+    	d.addRoom(205, "Student Assist Office");
+    	d.addRoom(206, "Administration Office");
+    	d.addRoom(207, "Catering Director Office");
+    	d.addRoom(208, "Director of Student and Corporate Services Office");
+    	d.addRoom(209, "Catering Administration Office");
+>>>>>>> parent of 8bcc471... Show directions to empty faculties
     	
     	return d;
     }
