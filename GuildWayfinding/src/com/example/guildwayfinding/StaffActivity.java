@@ -47,11 +47,11 @@ public class StaffActivity extends Activity {
 		    nameView.setText(faculty);
 			 
 			TextView info = (TextView) findViewById(R.id.info);
-			info.setText("\n\nFaculty: " + " ");
-			info.append("\n\nRoom: " + d.getFacultyDirection(faculty));
-			info.append("\n\nTelephone: " + " ");
-			info.append("\n\nEmail: " + " ");
-			info.append("\n\nSchedule:\n");
+			info.setText("\n\n\nArea: " + " ");
+			info.append("\n\n\nRoom: " + d.getFacultyDirection(faculty));
+			info.append("\n\n\nTelephone: " + " ");
+			info.append("\n\n\nEmail: " + " ");
+			info.append("\n\n\nSchedule:\n");
 			
 			String fileName = "android.resource://"+  getPackageName() + "/raw/a" + d.getFacultyDirection(faculty).toLowerCase();
 			VideoView vv = (VideoView) findViewById(R.id.video);
@@ -63,6 +63,14 @@ public class StaffActivity extends Activity {
 			        mp.setLooping(true);
 			    }
 			});
+			
+			TextView floor = (TextView) findViewById(R.id.floor);
+			String f = d.getFacultyDirection(faculty);
+			if (f.substring(0, 1).equals("G")) f = "Ground Floor";
+			else if (f.substring(0, 1).equals("1")) f = "First Floor";
+			else f = "Second Floor";
+			floor.setTextColor(Color.RED);
+			floor.setText(f);
 		}
 		
 		else {
@@ -74,11 +82,11 @@ public class StaffActivity extends Activity {
 			nameView.setText(s.getName());
 		 
 			TextView info = (TextView) findViewById(R.id.info);
-			info.setText("\nFaculty: " + s.getFaculty());
-			info.append("\n\nRoom: " + s.getRoom());
-			info.append("\n\nTelephone: " + s.getTelephone());
-			info.append("\n\nEmail: " + s.getEmail());
-			info.append("\n\nSchedule:");
+			info.setText("\n\n\nArea: " + s.getFaculty());
+			info.append("\n\n\nRoom: " + s.getRoom());
+			info.append("\n\n\nTelephone: " + s.getTelephone());
+			info.append("\n\n\nEmail: " + s.getEmail());
+			info.append("\n\n\nSchedule:");
 			
 			populateSchedule(s);
 			
@@ -92,6 +100,14 @@ public class StaffActivity extends Activity {
 					mp.setLooping(true);
 				}
 			});
+			
+			TextView floor = (TextView) findViewById(R.id.floor);
+			String f = s.getRoom();
+			if (f.substring(0, 1).equals("G")) f = "Ground Floor";
+			else if (f.substring(0, 1).equals("1")) f = "First Floor";
+			else f = "Second Floor";
+			floor.setTextColor(Color.RED);
+			floor.setText(f);
 		}
 		
 

@@ -54,7 +54,7 @@ public class SearchStaffActivity extends ListActivity {
         mGestureDetector = new GestureDetector(this, new SideIndexGestureListener());
 
         DBHelper d = new DBHelper(this);
-        //d = populate(d);
+        //this.populate(d);
         d.getReadableDatabase();
 		List<String> staffs = d.getStaffsIdsNames();
 		d.close();
@@ -229,7 +229,6 @@ public class SearchStaffActivity extends ListActivity {
         }
     }
     
-    @SuppressWarnings("unused")
 	private DBHelper populate(DBHelper d){
     	d.addStaff("Aden Date", 127, "Volunteering Hub", "64885891", "aden.date@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
     	d.addStaff("Sophie Greer", 127, "Volunteering Hub", "64885891", "sophie.greer@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");

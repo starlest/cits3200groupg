@@ -1105,6 +1105,7 @@ containing a value of this type.
         public static final int end=0x7f060013;
         public static final int expand_activities_button=0x7f060026;
         public static final int expanded_menu=0x7f06002c;
+        public static final int floor=0x7f060073;
         public static final int fri_1000=0x7f060053;
         public static final int fri_1100=0x7f060058;
         public static final int fri_1200=0x7f06005d;
@@ -1123,7 +1124,7 @@ containing a value of this type.
         public static final int info=0x7f060043;
         public static final int listMode=0x7f060001;
         public static final int list_item=0x7f060029;
-        public static final int map_button=0x7f06003e;
+        public static final int map_button=0x7f06003d;
         public static final int middle=0x7f060012;
         public static final int mon_1000=0x7f06004f;
         public static final int mon_1100=0x7f060054;
@@ -1147,7 +1148,7 @@ containing a value of this type.
         public static final int search_button=0x7f060033;
         public static final int search_close_btn=0x7f060038;
         public static final int search_edit_frame=0x7f060034;
-        public static final int search_faculty_button=0x7f06003d;
+        public static final int search_faculty_button=0x7f06003e;
         public static final int search_go_btn=0x7f06003a;
         public static final int search_mag_icon=0x7f060035;
         public static final int search_plate=0x7f060036;
@@ -1159,12 +1160,12 @@ containing a value of this type.
         public static final int showHome=0x7f060004;
         public static final int showTitle=0x7f060006;
         public static final int side=0x7f060041;
-        public static final int sideIndex=0x7f060073;
+        public static final int sideIndex=0x7f060074;
         public static final int split_action_bar=0x7f06001e;
         public static final int staff_view=0x7f060040;
         public static final int submit_area=0x7f060039;
         public static final int tabMode=0x7f060002;
-        public static final int textView1=0x7f060074;
+        public static final int textView1=0x7f060075;
         public static final int thu_1000=0x7f060052;
         public static final int thu_1100=0x7f060057;
         public static final int thu_1200=0x7f06005c;

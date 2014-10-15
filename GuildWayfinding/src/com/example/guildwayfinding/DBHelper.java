@@ -14,7 +14,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
   private static final String DATABASE_NAME = "guild.db";
 
-  private static final int DATABASE_VERSION = 22;
+  private static final int DATABASE_VERSION = 24;
 
   // Database creation sql statement
   private static final String CREATE_STAFF = "CREATE TABLE STAFF " +
@@ -89,11 +89,12 @@ public class DBHelper extends SQLiteOpenHelper {
       }
 
   }
+  
   public List<String> getStaffsIdsNames()
   {
 	  List<String> l = new ArrayList<String>();
 	  SQLiteDatabase db = this.getReadableDatabase();
-	  String sql = "SELECT id,NAME FROM STAFF ORDER BY NAME;";
+	  String sql = "SELECT id,NAME FROM STAFF WHERE NAME != '' ORDER BY NAME;";
 	  Cursor c = db.rawQuery(sql, null);
 	  if( c != null && c.moveToFirst() ) {
 		  while (!c.isAfterLast()) {
@@ -141,8 +142,8 @@ public class DBHelper extends SQLiteOpenHelper {
 		  while (!c.isAfterLast()) {
 			  if (!c.getString(1).equals("")) { 
 				  l.add(c.getString(1) + "," + c.getString(0));
-				  c.moveToNext();
 			  }
+			  c.moveToNext();
 		  }
 		  c.close();
 	  }
