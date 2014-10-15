@@ -32,7 +32,7 @@ public class AppIntentService extends IntentService {
   public void start() {
 	try {
 		//Socket socket = server.accept();
-		Socket socket = new Socket("192.168.1.29",8000);
+		Socket socket = new Socket("10.20.158.160",8000);
 		
 		
 		PrintWriter outputStream = new PrintWriter(socket.getOutputStream());
@@ -95,7 +95,6 @@ public class AppIntentService extends IntentService {
 				db.deleteStaff(Integer.parseInt(split[1]));
 			}
 			db.close();
-			socket.close();
 		}
 	} catch (Exception e) {
 		e.printStackTrace();

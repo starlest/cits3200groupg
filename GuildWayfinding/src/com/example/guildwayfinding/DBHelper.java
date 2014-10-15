@@ -78,6 +78,9 @@ private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INTEGER PRIMAR
 
   public void editStaff(int id, String name, String room, String faculty, String telephone, String email, String Mon, String Tues, String Wed, String Thurs, String Fri)
   {
+	  if (room.substring(0, 1).equals("G")) room = "1" + room.substring(1);
+	  else if (room.substring(0, 1).equals("1")) room = "2" + room.substring(1);
+	  else room = "3" + room.substring(1);
       SQLiteDatabase db = this.getWritableDatabase();
       if (name != null)
       {
