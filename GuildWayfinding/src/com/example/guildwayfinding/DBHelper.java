@@ -30,7 +30,6 @@ public class DBHelper extends SQLiteOpenHelper {
 				 " THURSDAY TEXT," +
 				 " FRIDAY TEXT);";
 
-private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INTEGER PRIMARY KEY, DESCRIPTION TEXT);";
 
   public DBHelper(Context context) {
     super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -40,7 +39,6 @@ private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INTEGER PRIMAR
   @Override
   public void onCreate(SQLiteDatabase database) {
     database.execSQL(CREATE_STAFF);
-    database.execSQL(CREATE_ROOM);
   }
 
   @Override
@@ -49,7 +47,6 @@ private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INTEGER PRIMAR
         "Upgrading database from version " + oldVersion + " to "
             + newVersion + ", which will destroy all old data");
     db.execSQL("DROP TABLE IF EXISTS STAFF");
-    db.execSQL("DROP TABLE IF EXISTS ROOM");
     onCreate(db);
   }
 
@@ -61,14 +58,6 @@ private static final String CREATE_ROOM = " CREATE TABLE ROOM (ID INTEGER PRIMAR
 	  db.execSQL(sql);
   }
 
-  public void addRoom (int id, String description)
-  {
-      SQLiteDatabase db = this.getWritableDatabase();
-	  String sql = "INSERT INTO ROOM (ID, DESCRIPTION) " +
-				 "VALUES (" + id + ", '" + description + "');";
-	  db.execSQL(sql);
-  }
-  
   public void deleteStaff(int id)
   {
 	  SQLiteDatabase db = this.getWritableDatabase();
