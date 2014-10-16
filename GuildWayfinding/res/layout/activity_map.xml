@@ -14,6 +14,6 @@
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/map" />
+        android:src="@drawable/map2" />
 
 </RelativeLayout>

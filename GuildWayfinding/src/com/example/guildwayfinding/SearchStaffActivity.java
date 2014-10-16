@@ -54,7 +54,7 @@ public class SearchStaffActivity extends ListActivity {
         mGestureDetector = new GestureDetector(this, new SideIndexGestureListener());
 
         DBHelper d = new DBHelper(this);
-        this.populate(d);
+        //this.populate(d);
         d.getReadableDatabase();
 		List<String> staffs = d.getStaffsIdsNames();
 		d.close();
@@ -263,7 +263,7 @@ public class SearchStaffActivity extends ListActivity {
     	d.addStaff("Cameron Fitzgeraldd", 216, "Student Representative Office", "64883773", "vp@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
     	d.addStaff("Samuel Shipley", 216, "Student Representative Office", "64883773", "secretary@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
     	d.addStaff("Daniel Jo", 216, "Student Representative Office", "64883773", "treasurer@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
-    	d.addStaff("Elizabeth O’Shea", 216, "Student Representative Office", "64883773", "ed@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
+    	d.addStaff("Elizabeth O'Shea", 216, "Student Representative Office", "64883773", "ed@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
     	d.addStaff("Madelene Mulhollad", 216, "Student Representative Office", "64883773", "soc@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
     	d.addStaff("Honnny Palayukan", 216, "Student Representative Office", "64883773", "pac@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
     	d.addStaff("David Raithel", 216, "Postgraduate StudentÂ’s Association Office", "64883194", "psa@guild.uwa.edu.au", "1000,1300",  "0900,1000,1100",  "1300,1500",  "1300,1400",  "0900,1100");
