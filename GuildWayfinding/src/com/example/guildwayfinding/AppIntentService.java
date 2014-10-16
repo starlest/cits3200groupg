@@ -32,7 +32,7 @@ public class AppIntentService extends IntentService {
   public void start() {
 	try {
 		//Socket socket = server.accept();
-		Socket socket = new Socket("10.20.158.160",8000);
+		Socket socket = new Socket("192.168.1.29",8000);
 		
 		
 		PrintWriter outputStream = new PrintWriter(socket.getOutputStream());
@@ -82,13 +82,42 @@ public class AppIntentService extends IntentService {
 			} else if (method.equals("EDIT")){
 				Log.i("AppIntentService", "Edit Command Received");
 				String[] parts = split[1].split("&", -1);
-				db.editStaff(Integer.parseInt(parts[0]),parts[1],parts[2],parts[3],parts[4],parts[5],parts[6],parts[7],parts[8],parts[9],parts[10]);
+				
+				String room = parts[2];
+				if (room.substring(0, 1).equals("G")) room = "1" + room.substring(1);
+				else if (room.substring(0, 1).equals("1")) room = "2" + room.substring(1);
+				else room = "3" + room.substring(1);
+				
+				
+				if(getResources().getIdentifier("a" + room.toLowerCase(),"raw",getPackageName())==0){
+					outputStream.println("Error Room Does not Exist");
+					outputStream.flush();
+				} else {
+					db.editStaff(Integer.parseInt(parts[0]),parts[1],parts[2],parts[3],parts[4],parts[5],parts[6],parts[7],parts[8],parts[9],parts[10]);
+					outputStream.println("Success");
+					outputStream.flush();
+				}
+				
 				
 			} else if (method.equals("ADD")){
 				
 				Log.i("AppIntentService", "Add Command Received");
 				String[] parts = split[1].split("&", -1);
-				db.addStaff(parts[0],Integer.parseInt(parts[1]),parts[2],parts[3],parts[4],parts[5],parts[6],parts[7],parts[8],parts[9]);
+				String room = parts[2];
+				
+				if (room.substring(0, 1).equals("G")) room = "1" + room.substring(1);
+				else if (room.substring(0, 1).equals("1")) room = "2" + room.substring(1);
+				else room = "3" + room.substring(1);
+				
+				
+				if(getResources().getIdentifier("a" + room.toLowerCase(),"raw",getPackageName())==0){
+					outputStream.println("Error Room Does not Exist");
+					outputStream.flush();
+				} else {
+					db.addStaff(parts[0],Integer.parseInt(parts[1]),parts[2],parts[3],parts[4],parts[5],parts[6],parts[7],parts[8],parts[9]);
+					outputStream.println("Success");
+					outputStream.flush();
+				}
 			} else if (method.equals("DELETE")){
 					
 				Log.i("AppIntentService", "delete Command Received");
@@ -97,7 +126,7 @@ public class AppIntentService extends IntentService {
 			db.close();
 		}
 	} catch (Exception e) {
-		e.printStackTrace();
+		//e.printStackTrace();
 		Log.i("AppIntentService", "Error connecting to Server, Retrying in 10secs");
 		
 		//retry after 10 secs
