@@ -55,7 +55,7 @@ public class AppIntentService extends IntentService {
 			//Handle request
 			if (method.equals("LIST")) {		
 				Log.i("AppIntentService", "List Command Received");
-				List<String> list = db.getStaffsIdsNames();
+				List<String> list = db.getStaffsList();
 				Iterator<String> it = list.iterator();
 				
 				while(it.hasNext()){

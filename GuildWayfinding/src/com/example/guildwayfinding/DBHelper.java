@@ -106,6 +106,23 @@ public class DBHelper extends SQLiteOpenHelper {
 	  c.close();
 	  return l;
   }
+  
+  public List<String> getStaffsList()
+  {
+	  List<String> l = new ArrayList<String>();
+	  SQLiteDatabase db = this.getReadableDatabase();
+	  String sql = "SELECT id,NAME,FACULTY FROM STAFF ORDER BY NAME;";
+	  Cursor c = db.rawQuery(sql, null);
+	  if( c != null && c.moveToFirst() ) {
+		  while (!c.isAfterLast()) {
+			  l.add(c.getString(0) + "," + c.getString(1) + "," + c.getString(2));
+			  c.moveToNext();
+		  }
+		  c.close();
+	  }
+	  c.close();
+	  return l;
+  }
 
   public List<String> getFacultyNames()
   {
