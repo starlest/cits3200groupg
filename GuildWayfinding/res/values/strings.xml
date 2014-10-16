@@ -8,5 +8,6 @@
     <string name="title_activity_search_faculty">SearchFacultyActivity</string>
     <string name="title_activity_staff">StaffActivity</string>
     <string name="title_activity_faculty_staffs">FacultyStaffsActivity</string>
+    <string name="title_activity_map">MapActivity</string>
 
 </resources>

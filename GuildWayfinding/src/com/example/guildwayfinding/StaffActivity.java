@@ -13,7 +13,6 @@ import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnPreparedListener;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -90,7 +89,6 @@ public class StaffActivity extends Activity {
 			info.append("\n\n\nSchedule:");
 			
 			populateSchedule(s);
-			
 			
 			String fileName = "android.resource://"+  getPackageName() + "/raw/a" + s.getRoom().toLowerCase();
 			VideoView vv = (VideoView) findViewById(R.id.video);

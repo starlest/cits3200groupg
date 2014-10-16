@@ -24,7 +24,8 @@
         android:layout_alignRight="@id/imageView1"
         android:layout_marginRight="33dp"
         android:text="Map"
-        android:textColor="#0404B4" />
+        android:textColor="#0404B4"
+        android:onClick="map_button_message" />
 
     <Button
         android:id="@+id/search_staff_button"

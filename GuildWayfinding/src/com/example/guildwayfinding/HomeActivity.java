@@ -40,4 +40,10 @@ public class HomeActivity extends ActionBarActivity {
 		Intent intent = new Intent(this, SearchFacultyActivity.class);
 		startActivity(intent);
 	}
+	
+	/** Called when the user clicks the search faculty button */
+	public void map_button_message(View view) {
+		Intent intent = new Intent(this, MapActivity.class);
+		startActivity(intent);
+	}
 }
